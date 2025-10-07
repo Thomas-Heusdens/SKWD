@@ -18,6 +18,12 @@ export async function generateMetadata({
         : locale === "nl"
         ? "Startpagina"
         : "Home",
+    description:
+      locale === 'fr'
+        ? "Découvrez SKWD, votre partenaire événementiel en Belgique. Nous connectons étudiants et entreprises pour des événements réussis."
+        : locale === 'nl'
+        ? "Ontdek SKWD, jouw eventpartner in België. Wij verbinden studenten en bedrijven voor succesvolle evenementen."
+        : "Discover SKWD, your event partner in Belgium. We connect students and companies for successful events.",
   };
 }
 

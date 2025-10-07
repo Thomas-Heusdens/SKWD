@@ -1,4 +1,16 @@
 {
   "welcome": "Welcome to our website!",
-  "cta": "Contact us"
+  "cta": "Contact us",
+  "about_title": "About Us",
+  "about_description": "We are a passionate team dedicated to providing great experiences.",
+  "contact_title": "contact Us",
+  "contact_description": "Feel free to reach out for any inquiries or support.",
+  "faq_title": "faq",
+  "faq_description": "Find answers to common questions.",
+  "logistics_title": "logistics",
+  "logistics_description": "Discover our logistical solutions.",
+  "hospitality_title": "hospitality",
+  "hospitality_description": "Discover our hospitality services.",
+  "work_title": "work with us",
+  "work_description": "Join our team and work with us."
 }

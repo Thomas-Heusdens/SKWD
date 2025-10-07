@@ -1,4 +1,16 @@
 {
   "welcome": "Bienvenue sur notre site web !",
-  "cta": "Contactez-nous"
+  "cta": "Contactez-nous",
+  "about_title": "À propos de nous",
+  "about_description": "Nous sommes une équipe passionnée dédiée à offrir des expériences de qualité.",
+  "contact_title": "Contactez-nous",
+  "contact_description": "N'hésitez pas à nous contacter pour toute question ou demande d'assistance.",
+  "faq_title": "FAQ",
+  "faq_description": "Trouvez des réponses aux questions courantes.",
+  "logistics_title": "Logistique",
+  "logistics_description": "Découvrez nos solutions logistiques.",
+  "hospitality_title": "Hospitalité",
+  "hospitality_description": "Découvrez nos services d'hospitalité.",
+  "work_title": "Travaillez avec nous",
+  "work_description": "Rejoignez notre équipe et travaillez avec nous."
 }

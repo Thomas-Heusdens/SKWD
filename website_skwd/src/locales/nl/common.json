@@ -1,4 +1,16 @@
 {
   "welcome": "Welkom op onze website!",
-  "cta": "Contacteer ons"
+  "cta": "Neem contact met ons op",
+  "about_title": "Over ons",
+  "about_description": "Wij zijn een gepassioneerd team dat zich inzet voor geweldige ervaringen.",
+  "contact_title": "Neem contact met ons op",
+  "contact_description": "Neem gerust contact met ons op voor vragen of ondersteuning.",
+  "faq_title": "Veelgestelde vragen",
+  "faq_description": "Vind antwoorden op veelgestelde vragen.",
+  "logistics_title": "Logistiek",
+  "logistics_description": "Ontdek onze logistieke oplossingen.",
+  "hospitality_title": "Gastvrijheid",
+  "hospitality_description": "Ontdek onze gastvrijheidsdiensten.",
+  "work_title": "Werk met ons",
+  "work_description": "Word lid van ons team en werk met ons samen."
 }
