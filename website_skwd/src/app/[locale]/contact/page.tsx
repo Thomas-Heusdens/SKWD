@@ -1,7 +1,7 @@
 import ContactClient from './ContactClient';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
 
   return {
     title:
