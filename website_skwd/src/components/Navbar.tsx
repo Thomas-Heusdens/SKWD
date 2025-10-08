@@ -17,7 +17,7 @@ export default function Navbar() {
     { key: 'about', label: { en: 'About', fr: 'À propos', nl: 'Over ons' } },
     { key: 'hospitality', label: { en: 'Hospitality', fr: 'Hospitalité', nl: 'Hospitality' } },
     { key: 'logistics', label: { en: 'Logistics', fr: 'Logistique', nl: 'Logistiek' } },
-    { key: 'work', label: { en: 'Work With Us', fr: 'Collaborer avec nous', nl: 'Werk met ons' } },
+    { key: 'work', label: { en: 'Work with us', fr: 'Collaborer avec nous', nl: 'Werk met ons' } },
     { key: 'faq', label: { en: 'FAQ', fr: 'FAQ', nl: 'Veelgestelde vragen' } },
     { key: 'contact', label: { en: 'Contact', fr: 'Contact', nl: 'Contact' } },
   ];
@@ -30,22 +30,25 @@ export default function Navbar() {
         w-[90%] max-w-6xl
         px-4 py-3
         rounded-[100px]
-        backdrop-blur-md bg-white/30 shadow-sm
+        backdrop-blur-sm bg-white/10 shadow-sm
         z-50
       "
     >
       {/* Logo */}
       <Link
         href={`/${locale}`}
-        className="flex items-center gap-2 bg-[#1414A8] px-3 py-2 rounded-[50px]"
+        className="flex items-center gap-2 bg-skwd-light-blue rounded-[50px] p-3"
       >
-        <Image
+        <div className="relative w-16 h-6">
+          <Image
             src="/images/logo.png"
             alt="SKWD Logo"
-            width={80}
-            height={80}
-            unoptimized
-            />
+            fill
+            sizes="64px"
+            className="object-contain"
+            priority
+          />
+        </div>
       </Link>
 
       {/* Navigation + language switcher */}
@@ -60,10 +63,10 @@ export default function Navbar() {
               key={link.key}
               href={`/${locale}/${routePath}`}
               className={`
-                font-medium transition-colors
-                hover:text-blue-600
+                font-light transition-colors
+                hover:text-gray-300
                 ${pathname.includes(routePath)
-                  ? 'text-[#FE5F55]'
+                  ? 'font-semibold text-white'
                   : 'text-white'}
               `}
             >

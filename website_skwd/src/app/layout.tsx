@@ -1,21 +1,26 @@
 import Navbar from '@/components/Navbar';
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "500", "600", "800"], // Light, Medium, SemiBold, ExtraBold
+  variable: "--font-barlow",
+});
 
-export const metadata: Metadata = {
-  title: "SKWD",
-  description: "SKWD – Connecting motivated students with professional events and businesses.",
+export const metadata = {
+  title: 'SKWD',
+  description: 'SKWD – Connecting motivated students with professional events and businesses.',
+  icons: {
+    icon: '/logo-skwd.png'
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className="pt-28">
+      <body className={`${barlow.variable} antialiased`}>
+        <main>
           <header>
             <Navbar />
           </header>

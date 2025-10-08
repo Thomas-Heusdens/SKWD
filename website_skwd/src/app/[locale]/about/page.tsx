@@ -6,10 +6,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title:
       locale === 'fr'
-        ? 'À propos de nous'
+        ? 'À propos de nous - SKWD'
         : locale === 'nl'
-        ? 'Over ons'
-        : 'About Us',
+        ? 'Over ons - SKWD'
+        : 'About Us - SKWD',
     description:
       locale === 'fr'
         ? "Découvrez qui nous sommes et comment notre équipe SKWD rend chaque événement unique."
