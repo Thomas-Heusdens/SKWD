@@ -2,10 +2,19 @@
 
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
-import { Linkedin } from 'lucide-react';
+import Stack from "@/components/Stack";
+import RollingCounter from '@/components/RollingCounter';
+import TeamMemberCard from '@/components/TeamMember';
 
 export default function AboutClient() {
   const { t } = useTranslation();
+
+  const images = [
+    { id: 1, img: "/images/planner-2.jpg" },
+    { id: 2, img: "/images/team-2.jpeg" },
+    { id: 3, img: "/images/planner-1.jpeg" },
+    { id: 4, img: "/images/team-hero.jpeg" },
+  ];
 
   return (
     <main id="main-content">
@@ -29,54 +38,25 @@ export default function AboutClient() {
         {/* ===== Section content container ===== */}
         <div className="section-container relative z-10 flex flex-col items-center justify-center text-center">
           {/* Centered team image with dark overlay */}
-          <div className="absolute inset-0 flex items-center justify-center -z-10 peer-hover:z-20 transition-all duration-300 group">
+          <div className="absolute inset-0 flex items-center justify-center z-10 group transition-all duration-300">
             <div className="relative">
-              <Image
-                src="/images/team-hero.jpeg"
-                alt={t('about_team_photo_alt')}
-                width={538}
-                height={360}
-                className="object-cover rounded-lg shadow-lg"
-                priority
+              {/* Stack replaces the single team image */}
+              <Stack
+                sendToBackOnClick={true}
+                cardDimensions={{ width: 540, height: 360 }}
+                cardsData={images}
               />
-              {/* Dark overlay ON TOP of the image - hidden on hover */}
-              <div className="absolute inset-0 bg-black/40 rounded-lg group-hover:opacity-0 transition-opacity duration-300"></div>
             </div>
-          </div>
-
-          {/* Invisible hover trigger layer */}
-          <div className="absolute inset-0 flex items-center justify-center z-30 peer pointer-events-none">
-            <div 
-              className="w-[538px] h-[360px] pointer-events-auto cursor-pointer"
-              onMouseEnter={(e) => {
-                const imageContainer = e.currentTarget.parentElement?.parentElement?.querySelector('.group');
-                imageContainer?.classList.add('!z-20');
-              }}
-              onMouseLeave={(e) => {
-                const imageContainer = e.currentTarget.parentElement?.parentElement?.querySelector('.group');
-                imageContainer?.classList.remove('!z-20');
-              }}
-            ></div>
           </div>
 
           {/* Text overlay container */}
           <div className="relative w-full flex items-center justify-center">
-            {/* Filled background text */}
-            <p className="absolute -z-11 inset-0 flex flex-col items-center justify-center select-none leading-[0.9] text-center">
-              <span className="block font-extrabold text-white text-[clamp(3rem,10vw,12rem)] [-webkit-text-stroke:2px_white] [text-stroke:2px_white]">
-                YOUR STAFFING
-              </span>
-              <span className="block font-extrabold text-skwd-text-highlight text-[clamp(3rem,10vw,12rem)] [-webkit-text-stroke:2px_#FE5F55] [text-stroke:2px_#FE5F55]">
-                AGENCY
-              </span>
-            </p>
-
             {/* Outlined foreground text */}
-            <h1 className="absolute z-10 inset-0 flex flex-col items-center justify-center select-none leading-[0.9] text-center pointer-events-none">
-              <span className="block font-extrabold text-transparent text-[clamp(3rem,10vw,12rem)] [-webkit-text-stroke:2px_white] [text-stroke:2px_white]">
+            <h1 className="absolute hover:z-40 -z-10 inset-0 flex flex-col items-center justify-center select-none leading-[0.9] text-center cursor-pointer">
+              <span className="block font-extrabold text-white text-[clamp(3rem,10vw,12rem)]">
                 YOUR STAFFING
               </span>
-              <span className="block font-extrabold text-transparent text-[clamp(3rem,10vw,12rem)] [-webkit-text-stroke:2px_#FE5F55] [text-stroke:2px_#FE5F55]">
+              <span className="block font-extrabold text-skwd-text-highlight text-[clamp(3rem,10vw,12rem)]">
                 AGENCY
               </span>
             </h1>
@@ -91,36 +71,57 @@ export default function AboutClient() {
         className="py-8 bg-skwd-dark-blue text-white"
       >
         <div className="section-container">
+          <div className="flex justify-between items-center">
+            {/* Left border line */}
+            <div className="h-16 w-px bg-white rounded-full"></div>
 
-          <div className="flex flex-wrap justify-center items-center divide-x divide-white">
             {/* Example number card */}
-            <article className="px-8 text-center">
-              <p className="text-5xl font-extrabold">2019</p>
-              <p className="text-sm tracking-wide font-light">
-                {t('about_numbers_established')}
-              </p>
+            <article className="flex-1 text-center">
+              <RollingCounter
+                finalValue={2024}
+                label={t('about_numbers_established')}
+                places={[1000, 100, 10, 1]}
+              />
             </article>
 
-            <article className="px-8 text-center">
-              <p className="text-5xl font-extrabold">250+</p>
-              <p className="text-sm tracking-wide font-light">
-                {t('about_numbers_students')}
-              </p>
+            {/* Divider line */}
+            <div className="h-16 w-px bg-white rounded-full"></div>
+
+            <article className="flex-1 text-center">
+              <RollingCounter
+                finalValue={250}
+                label={t('about_numbers_students')}
+                suffix="+"
+                places={[100, 10, 1]}
+              />
             </article>
 
-            <article className="px-8 text-center">
-              <p className="text-5xl font-extrabold">80+</p>
-              <p className="text-sm tracking-wide font-light">
-                {t('about_numbers_clients')}
-              </p>
+            {/* Divider line */}
+            <div className="h-16 w-px bg-white rounded-full"></div>
+
+            <article className="flex-1 text-center">
+              <RollingCounter
+                finalValue={80}
+                label={t('about_numbers_clients')}
+                suffix="+"
+                places={[10, 1]}
+              />
             </article>
 
-            <article className="px-8 text-center">
-              <p className="text-5xl font-extrabold">98%</p>
-              <p className="text-sm tracking-wide font-light">
-                {t('about_numbers_fill_rate')}
-              </p>
+            {/* Divider line */}
+            <div className="h-16 w-px bg-white rounded-full"></div>
+
+            <article className="flex-1 text-center">
+              <RollingCounter
+                finalValue={98}
+                label={t('about_numbers_fill_rate')}
+                suffix="%"
+                places={[10, 1]}
+              />
             </article>
+
+            {/* Right border line */}
+            <div className="h-16 w-px bg-white rounded-full"></div>
           </div>
         </div>
       </section>
@@ -129,47 +130,75 @@ export default function AboutClient() {
       <section
         id="team"
         aria-labelledby="team-heading"
-        className="pb-20 bg-skwd-dark-blue text-gray-800"
+        className="pb-20 bg-skwd-dark-blue text-white"
       >
         <div className="section-container">
           <header className="mb-12 text-center mx-auto">
-            <h2
-              id="team-heading"
-              className="text-4xl mb-4"
-              dangerouslySetInnerHTML={{ __html: t('about_team_intro_headline') }}
-            />
-            <p>{t('about_team_intro_text')}</p>
+            <h2 id="team-heading" className="text-4xl mb-4 font-medium text-center">
+              {(() => {
+                const words = t('about_team_intro_headline').split(' ');
+                const lastTwoStart = words.length - 2;
+                return (
+                  <>
+                    <span className="text-white">{words.slice(0, 3).join(' ')}</span>{' '}
+                    <span className="text-skwd-text-highlight">
+                      {words.slice(3, 5).join(' ')}
+                    </span>{' '}
+                    <span className="text-white">
+                      {words.slice(5, lastTwoStart).join(' ')}
+                    </span>{' '}
+                    <span className="text-skwd-text-highlight">
+                      {words.slice(lastTwoStart).join(' ')}
+                    </span>
+                  </>
+                );
+              })()}
+            </h2>
+            <p className='font-light text-sm'>{t('about_team_intro_text')}</p>
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            <article
-              aria-label={t('about_team_member_name_1')}
-              className="flex flex-col items-center text-center"
-            >
-              <figure>
-                <Image
-                  src="/images/team-member1.jpg"
-                  alt="Tommy Ulens"
-                  width={300}
-                  height={300}
-                  className="rounded-lg object-cover"
-                />
-                <figcaption className="mt-4">
-                  <p className="text-lg font-medium">Tommy Ulens</p>
-                  <p className="text-sm opacity-80">{t('about_team_member_role_1')}</p>
-                  <p className="text-sm mt-2">{t('about_team_member_desc_1')}</p>
-                  <a
-                    href={t('about_team_member_linkedin_1')}
-                    aria-label="Tommy Ulens LinkedIn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-3 text-skwd-blue"
-                  >
-                    <Linkedin className="w-4 h-4 text-white" />
-                  </a>
-                </figcaption>
-              </figure>
-            </article>
+            <TeamMemberCard
+              memberNumber={1}
+              imageUrl="/images/ceo.jpeg"
+              name="Tommy Ulens"
+              linkedinUrl="https://www.linkedin.com/in/tommy-ulens-017747225/"
+            />
+            
+            <TeamMemberCard
+              memberNumber={2}
+              imageUrl="/images/benjamin.jpeg"
+              name="Benjamin Fontenai"
+              linkedinUrl="https://www.linkedin.com/in/benjamin-fontenai-a04794236/"
+            />
+
+            <TeamMemberCard
+              memberNumber={3}
+              imageUrl="/images/antoine.jpeg"
+              name="Antoine Collin"
+              linkedinUrl="https://www.linkedin.com/in/antoine-collin-3937292a5/"
+            />
+
+            <TeamMemberCard
+              memberNumber={4}
+              imageUrl="/images/cintia.jpeg"
+              name="Cintia Saliba"
+              linkedinUrl="https://www.linkedin.com/in/cintia-saliba/"
+            />
+
+            <TeamMemberCard
+              memberNumber={5}
+              imageUrl="/images/adam.jpg"
+              name="Adam Sakhraoui"
+              linkedinUrl="https://www.linkedin.com/in/adam-sakhraoui-672281353/"
+            />
+
+            <TeamMemberCard
+              memberNumber={6}
+              imageUrl="/images/thomas.jpg"
+              name="Thomas Heusdens"
+              linkedinUrl="https://www.linkedin.com/in/thomas-heusdens-0bba19258/"
+            />
           </div>
         </div>
       </section>
@@ -189,7 +218,31 @@ export default function AboutClient() {
           />
         </div>
         <div className="section-container">
-          <h2 className="text-4xl">{t('about_quote')}</h2>
+          <h2 className="text-4xl text-center font-semibold">
+            {(() => {
+              const words = t('about_quote').split(' ');
+              const middleStart = Math.floor(words.length / 2) - 1;
+              const middleEnd = middleStart + 2;
+              const endStart = words.length - 3; // three last words
+
+              return (
+                <>
+                  <span className="text-white">
+                    {words.slice(0, middleStart).join(' ')}
+                  </span>{' '}
+                  <span className="text-skwd-text-highlight">
+                    {words.slice(middleStart, middleEnd).join(' ')}
+                  </span>{' '}
+                  <span className="text-white">
+                    {words.slice(middleEnd, endStart).join(' ')}
+                  </span>{' '}
+                  <span className="text-skwd-text-highlight">
+                    {words.slice(endStart).join(' ')}
+                  </span>
+                </>
+              );
+            })()}
+          </h2>
         </div>
       </section>
 
@@ -201,10 +254,15 @@ export default function AboutClient() {
       >
         <div className="section-container">
           <header className="text-center mb-12">
-            <h2 id="why-us-heading" className="text-3xl mb-3">
-              {t('about_why_title')}
+            <h2 id="why-us-heading" className="text-3xl mb-3 text-center font-semibold">
+              <span className="text-white">
+                {t('about_why_title').split(' ').slice(0, -2).join(' ')}
+              </span>{' '}
+              <span className="text-skwd-text-highlight">
+                {t('about_why_title').split(' ').slice(-2).join(' ')}
+              </span>
             </h2>
-            <p>{t('about_why_description')}</p>
+            <p className='font-light text-sm w-[80%] mx-auto'>{t('about_why_description')}</p>
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -247,10 +305,15 @@ export default function AboutClient() {
         <div className="relative section-container flex justify-center z-10">
           <div className="bg-skwd-blue p-10 rounded-2xl max-w-lg text-center">
             <header className="mb-6">
-              <h2 id="contact-cta-heading" className="text-3xl mb-2">
-                {t('about_contact_title')}
+              <h2 id="contact-cta-heading" className="text-3xl mb-2 text-center font-semibold">
+                <span className="text-white">
+                  {t('about_contact_title').split(' ').slice(0, -2).join(' ')}
+                </span>{' '}
+                <span className="text-skwd-text-highlight">
+                  {t('about_contact_title').split(' ').slice(-2).join(' ')}
+                </span>
               </h2>
-              <p>{t('about_contact_description')}</p>
+              <p className='font-light text-sm'>{t('about_contact_description')}</p>
             </header>
 
             <div className="flex justify-center gap-4 flex-wrap">

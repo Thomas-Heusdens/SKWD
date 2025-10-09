@@ -28,7 +28,7 @@ export default function Navbar() {
         fixed top-6 left-1/2 transform -translate-x-1/2
         flex items-center justify-between
         w-[90%] max-w-6xl
-        px-4 py-3
+        px-2.5 py-2
         rounded-[100px]
         backdrop-blur-sm bg-white/10 shadow-sm
         z-50

@@ -78,7 +78,7 @@ export default function LanguageSwitcher() {
                 className="flex items-center gap-3 w-full px-4 h-12 cursor-pointer transition-colors hover:bg-gray-50 focus:outline-none"
                 aria-label={lng.label}
               >
-                <span className="text-xl">{lng.flag}</span>
+                <span className="text-xl text-black">{lng.flag}</span>
                 <span className="text-sm font-medium text-gray-700">{lng.label}</span>
               </button>
             ))}

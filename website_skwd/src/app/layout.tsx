@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Barlow } from "next/font/google";
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar />
           </header>
           {children}
+          <Footer />
         </main>
       </body>
     </html>

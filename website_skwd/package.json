@@ -9,8 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.22",
+    "gsap": "^3.13.0",
     "i18next": "^25.5.3",
     "lucide-react": "^0.545.0",
+    "motion": "^12.23.22",
     "next": "15.5.4",
     "next-i18next": "^15.4.2",
     "next-intl": "^4.3.11",
@@ -18,7 +23,10 @@
     "next-sitemap": "^4.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-i18next": "^16.0.0"
+    "react-i18next": "^16.0.0",
+    "react-intersection-observer": "^9.16.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
