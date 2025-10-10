@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { BadgeCheck, Clock8, ChefHat, Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
+import EmblaCarousel from '@/components/EmblaCarousel';
 
 export default function HospitalityClient() {
   const { t } = useTranslation();
@@ -15,6 +16,34 @@ export default function HospitalityClient() {
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' =
     ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
+
+  const carouselSlides = [
+    {
+      image: '/images/festival.jpeg',
+      title: 'Festivals',
+      description: 'Optional description here'
+    },
+    {
+      image: '/images/wedding.jpeg',
+      title: 'Trouwfeesten',
+      description: 'Another description'
+    },
+    {
+      image: '/images/Corporate.jpg',
+      title: 'Corporate events',
+      description: 'Optional description here'
+    },
+    {
+      image: '/images/Conferenties.jpeg',
+      title: 'Conferenties',
+      description: 'Beautiful landscape'
+    },
+    {
+      image: '/images/sport.JPG',
+      title: 'Sport events',
+      description: 'Optional description here'
+    },
+  ]  
 
   return (
     <main id="main-content">
@@ -72,8 +101,16 @@ export default function HospitalityClient() {
       <section
         id="job-types"
         aria-labelledby="job-types-heading"
-        className="py-20 px-6 text-white"
+        className="relative py-20 px-6 text-white"
       >
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src="/images/pattern-bg.png"
+            alt="Pattern background"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div className="section-container text-center">
           <h2 id="job-types-heading" className="text-4xl font-semibold mb-4 text-center">
             {(() => {
@@ -96,31 +133,8 @@ export default function HospitalityClient() {
             className="relative w-full overflow-hidden"
             aria-label="Job types carousel"
           >
-            {/* TODO: Replace with your React carousel later */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <article
-                  key={i}
-                  className="relative rounded-xl overflow-hidden group h-64 cursor-pointer"
-                >
-                  <Image
-                    src={`/images/hospitality-job${i}.jpg`}
-                    alt={t(`hospitality_job${i}_alt`)}
-                    fill
-                    sizes="(max-width:768px)100vw,33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-all duration-300" />
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-left text-white z-10">
-                    <h3 className="text-2xl font-semibold mb-2">
-                      {t(`hospitality_job${i}_title`)}
-                    </h3>
-                    <p className="text-sm text-white/90">
-                      {t(`hospitality_job${i}_description`)}
-                    </p>
-                  </div>
-                </article>
-              ))}
+            <div className="w-full">
+              <EmblaCarousel slides={carouselSlides} />
             </div>
           </div>
         </div>
@@ -210,41 +224,92 @@ export default function HospitalityClient() {
               delay={4000}
               pauseOnHover={false}
             >
+              {/* STEP 1 */}
               <Card>
-                <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_1')}</h3>
-                <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
-                  <Vote className="w-10 h-10 text-white" />
+                <div className="absolute inset-0 z-0 opacity-10">
+                  <img
+                    src="/images/Tile1.png"
+                    alt=""
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
-                <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_1_title')}</h2>
-                <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>{t('hospitality_step_1_description')}</p>
+                <div className="relative z-10">
+                  <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_1')}</h3>
+                  <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
+                    <Vote className="w-10 h-10 text-white" />
+                  </div>
+                  <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_1_title')}</h2>
+                  <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>
+                    {t('hospitality_step_1_description')}
+                  </p>
+                </div>
               </Card>
+
+              {/* STEP 2 */}
               <Card>
-                <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_2')}</h3>
-                <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
-                  <MousePointer className="w-10 h-10 text-white" />
+                <div className="absolute inset-0 z-0 opacity-10">
+                  <img
+                    src="/images/Tile6.png"
+                    alt=""
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
-                <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_2_title')}</h2>
-                <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>{t('hospitality_step_2_description')}</p>
+                <div className="relative z-10">
+                  <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_2')}</h3>
+                  <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
+                    <MousePointer className="w-10 h-10 text-white" />
+                  </div>
+                  <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_2_title')}</h2>
+                  <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>
+                    {t('hospitality_step_2_description')}
+                  </p>
+                </div>
               </Card>
+
+              {/* STEP 3 */}
               <Card>
-                <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_3')}</h3>
-                <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
-                  <BookA className="w-10 h-10 text-white" />
+                <div className="absolute inset-0 z-0 opacity-10">
+                  <img
+                    src="/images/Tile3.png"
+                    alt=""
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
-                <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_3_title')}</h2>
-                <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>{t('hospitality_step_3_description')}</p>
+                <div className="relative z-10">
+                  <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_3')}</h3>
+                  <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
+                    <BookA className="w-10 h-10 text-white" />
+                  </div>
+                  <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_3_title')}</h2>
+                  <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>
+                    {t('hospitality_step_3_description')}
+                  </p>
+                </div>
               </Card>
+
+              {/* STEP 4 */}
               <Card>
-                <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_4')}</h3>
-                <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
-                  <BicepsFlexed className="w-10 h-10 text-white" />
+                <div className="absolute inset-0 z-0 opacity-10">
+                  <img
+                    src="/images/Tile2.png"
+                    alt=""
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
-                <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_4_title')}</h2>
-                <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>{t('hospitality_step_4_description')}</p>
+                <div className="relative z-10">
+                  <h3 className='ml-4 mt-3 font-light'>{t('hospitality_step_4')}</h3>
+                  <div className="ml-4 inline-block bg-white/15 backdrop-blur rounded-full p-3 mt-6 flex items-center justify-center">
+                    <BicepsFlexed className="w-10 h-10 text-white" />
+                  </div>
+                  <h2 className='text-2xl ml-4 mt-6'>{t('hospitality_step_4_title')}</h2>
+                  <p className='ml-4 mt-2 max-w-[75%] font-light text-sm'>
+                    {t('hospitality_step_4_description')}
+                  </p>
+                </div>
               </Card>
             </CardSwap>
           </div>
-        </div>
+        </div>  
       </section>
 
       {/* ===== MASONRY GALLERY SECTION ===== */}

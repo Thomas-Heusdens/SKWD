@@ -38,3 +38,61 @@
   --color-primary: #1414A8;
   --color-secondary: #07073D;
 }
+
+/* EMBLA CAROUSEL OVERRIDES */
+.embla {
+  width: 100%;
+  margin: 0 auto;
+  --slide-height: 32rem; /* Doubled from 16rem */
+  --slide-spacing: 1rem;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  backface-visibility: hidden;
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  min-width: 0;
+  position: relative;
+}
+
+.embla__slide__card {
+  border-radius: 0.75rem;
+  height: var(--slide-height);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.embla__button {
+  appearance: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  padding: 0;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.embla__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.embla__button__svg {
+  width: 40%;
+  height: 40%;
+}
