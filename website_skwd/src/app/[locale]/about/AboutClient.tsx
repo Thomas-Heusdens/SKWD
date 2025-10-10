@@ -5,9 +5,18 @@ import Image from 'next/image';
 import Stack from "@/components/Stack";
 import RollingCounter from '@/components/RollingCounter';
 import TeamMemberCard from '@/components/TeamMember';
+import { CircleQuestionMark, HandCoins, HeartHandshake, TrendingUp, Users } from 'lucide-react';
+import InfoCard from '@/components/InfoCard';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { localizedRoutes } from '@/lib/routes';
+
 
 export default function AboutClient() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const localeFromPath = pathname.split('/')[1];
+  const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
 
   const images = [
     { id: 1, img: "/images/planner-2.jpg" },
@@ -266,22 +275,34 @@ export default function AboutClient() {
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Example card */}
-            <article className="relative p-6 rounded-xl bg-skwd-blue text-white overflow-hidden">
-              <div className="absolute inset-0 opacity-10">
-                <Image
-                  src="/images/pattern-overlay.png"
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative z-10">
-                <div className="mb-3">{/* Icon placeholder */}</div>
-                <h3 className="text-xl mb-2">{t('about_why_card1_title')}</h3>
-                <p className="text-sm opacity-90">{t('about_why_card1_description')}</p>
-              </div>
-            </article>
+            <InfoCard 
+              cardTitle='about_why_card1_title'
+              cardDescription='about_why_card1_description'
+              icon={Users} 
+              patternOverlaySrc='/images/Tile2.png'
+              color='skwd-blue'
+            />
+            <InfoCard 
+              cardTitle='about_why_card2_title'
+              cardDescription='about_why_card2_description'
+              icon={TrendingUp} 
+              patternOverlaySrc='/images/Tile4.png'
+              color='skwd-blue'
+            />
+            <InfoCard 
+              cardTitle='about_why_card3_title'
+              cardDescription='about_why_card3_description'
+              icon={HandCoins} 
+              patternOverlaySrc='/images/Tile3.png'
+              color='skwd-blue'
+            />
+            <InfoCard 
+              cardTitle='about_why_card4_title'
+              cardDescription='about_why_card4_description'
+              icon={HeartHandshake} 
+              patternOverlaySrc='/images/Tile5.png'
+              color='skwd-blue'
+            />
           </div>
         </div>
       </section>
@@ -290,7 +311,7 @@ export default function AboutClient() {
       <section
         id="contact-cta"
         aria-labelledby="contact-cta-heading"
-        className="relative bg-skwd-light-blue py-24 text-white"
+        className="relative bg-skwd-light-blue py-20 text-white"
       >
         {/* Pattern background full opacity */}
         <div className="absolute inset-0">
@@ -303,8 +324,11 @@ export default function AboutClient() {
         </div>
 
         <div className="relative section-container flex justify-center z-10">
-          <div className="bg-skwd-blue p-10 rounded-2xl max-w-lg text-center">
+          <div className="bg-skwd-blue p-10 rounded-2xl max-w-xl text-center">
             <header className="mb-6">
+              <div className='bg-white/15 mb-4 inline-block backdrop-blur rounded-full p-4'>
+                <CircleQuestionMark className="w-10 h-10 text-white mx-auto" />
+              </div>
               <h2 id="contact-cta-heading" className="text-3xl mb-2 text-center font-semibold">
                 <span className="text-white">
                   {t('about_contact_title').split(' ').slice(0, -2).join(' ')}
@@ -317,12 +341,21 @@ export default function AboutClient() {
             </header>
 
             <div className="flex justify-center gap-4 flex-wrap">
-              <button className="px-5 py-2 bg-skwd-button text-white rounded-lg">
+              {/* FAQ button (internal link) */}
+              <Link
+                href={`/${locale}/${localizedRoutes.faq[locale]}`}
+                className="px-5 py-2 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+              >
                 {t('about_faq_cta')}
-              </button>
-              <button className="px-5 py-2 bg-white text-skwd-button rounded-lg">
+              </Link>
+
+              {/* Contact button (internal link) */}
+              <Link
+                href={`/${locale}/${localizedRoutes.contact[locale]}`}
+                className="px-5 py-2 bg-white text-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
+              >
                 {t('about_contact_cta')}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

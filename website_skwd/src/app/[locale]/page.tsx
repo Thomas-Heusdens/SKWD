@@ -4,9 +4,17 @@ import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
 import { Users, Building2, UtensilsCrossed, Truck } from 'lucide-react';
 import ProjectsBento from '@/components/ProjectsBento';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { localizedRoutes } from '@/lib/routes';
+
 
 export default function HomePage() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const localeFromPath = pathname.split('/')[1];
+  const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
+
 
   return (
     <main>
@@ -58,9 +66,12 @@ export default function HomePage() {
             </div>
             <h2 className="text-3xl text-center font-semibold">{t('hero_clients_title')}</h2>
             <p className="text-white/90 text-center font-light">{t('hero_clients_description')}</p>
-            <button className="inline-block cursor-pointer mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity">
+            <Link
+              href={`/${locale}/${localizedRoutes.work[locale]}`}
+              className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+            >
               {t('hero_clients_cta')}
-            </button>
+            </Link>
           </article>
 
           {/* RIGHT CARD – Work For Us (Students) */}
@@ -70,9 +81,14 @@ export default function HomePage() {
             </div>
             <h2 className="text-3xl font-semibold">{t('hero_students_title')}</h2>
             <p className="text-white/90 text-center font-light">{t('hero_students_description')}</p>
-            <button className="inline-block cursor-pointer mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity">
+            <a
+              href="https://jobs.skwd.be/studentenjob"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+            >
               {t('hero_students_cta')}
-            </button>
+            </a>
           </article>
         </div>
       </section>
@@ -91,7 +107,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="py-16 section-container">
+        <div className="py-20 section-container">
           <h2 id="projects-heading" className="text-3xl text-center font-semibold mb-4">
             <span className="text-white">{t('projects_title').split(' ').slice(0, -2).join(' ')}</span>
             {' '}
@@ -109,7 +125,7 @@ export default function HomePage() {
         className="bg-skwd-light-blue text-white"
         aria-labelledby="testimony-heading"
       >
-        <div className="relative py-16 section-container">
+        <div className="relative py-20 section-container">
           {/* Decorative big quote mark */}
           <h2
             id="testimony-heading"
@@ -162,7 +178,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="py-16 px-6 section-container">
+        <div className="py-20 px-6 section-container">
           <h2 id="sector-heading" className="text-3xl text-center font-semibold mb-4">
             <span className="text-white">{t('sector_title').split(' ').slice(0, -2).join(' ')}</span>
             {' '}
@@ -209,12 +225,13 @@ export default function HomePage() {
                 </p>
 
                 {/* CTA */}
-                <button
-                  className="inline-block mt-4 px-5 py-2 bg-skwd-button cursor-pointer text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+                <Link
+                  href={`/${locale}/${localizedRoutes.hospitality[locale]}`}
+                  className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                   aria-label={t('sector_card1_cta')}
                 >
                   {t('sector_card1_cta')}
-                </button>
+                </Link>
               </div>
             </article>
 
@@ -254,12 +271,13 @@ export default function HomePage() {
                 </p>
 
                 {/* CTA */}
-                <button
-                  className="inline-block mt-4 px-5 py-2 bg-skwd-button cursor-pointer text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+                <Link
+                  href={`/${locale}/${localizedRoutes.logistics[locale]}`}
+                  className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                   aria-label={t('sector_card2_cta')}
                 >
                   {t('sector_card2_cta')}
-                </button>
+                </Link>
               </div>
             </article>
           </div>
