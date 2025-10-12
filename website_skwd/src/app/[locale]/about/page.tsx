@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
 
-  // --- Common OpenGraph image ---
   const ogImage = {
     url: '/images/og-about.jpg',
     width: 1200,
@@ -57,9 +56,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [ogImage.url],
     },
     alternates: {
-      canonical: `https://skwd.be/${locale}/about`,
+      canonical: `https://skwd.be/${
+        locale === 'fr'
+          ? 'fr/a-propos'
+          : locale === 'nl'
+          ? 'nl/over-ons'
+          : 'en/about-us'
+      }`,
       languages: {
-        en: 'https://skwd.be/en/about',
+        en: 'https://skwd.be/en/about-us',
         fr: 'https://skwd.be/fr/a-propos',
         nl: 'https://skwd.be/nl/over-ons',
       },

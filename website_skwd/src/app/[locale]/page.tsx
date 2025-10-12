@@ -24,15 +24,15 @@ export default function HomePage() {
         aria-label="Main choices for visitors"
         className="relative w-full h-screen overflow-hidden"
       >
-        {/* Background split (left & right images) */}
-        <div className="absolute inset-0 flex">
-          {/* LEFT image */}
-          <div className="relative w-1/2 h-full">
+        {/* Background split (responsive) */}
+        <div className="absolute inset-0 flex flex-col md:flex-row">
+          {/* LEFT image → becomes TOP image on small screens */}
+          <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
             <Image
               src="/images/hero-left.JPG"
               alt="Hospitality services background"
               fill
-              sizes="50vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
               priority
               quality={90}
@@ -41,13 +41,13 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-skwd-dark-blue/75 z-10" />
           </div>
 
-          {/* RIGHT image */}
-          <div className="relative w-1/2 h-full">
+          {/* RIGHT image → becomes BOTTOM image on small screens */}
+          <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
             <Image
               src="/images/hero-right.jpeg"
               alt="Logistics services background"
               fill
-              sizes="50vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
               priority
               quality={90}
@@ -58,9 +58,9 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 section-container grid grid-cols-1 md:grid-cols-2 gap-80 items-center h-full text-white">
+        <div className="relative z-20 section-container grid grid-cols-1 md:grid-cols-2 gap-80 max-[1077px]:gap-40 max-[900px]:gap-20 max-[768px]:gap-0 items-center h-full text-white">
           {/* LEFT CARD – Work With Us (Clients) */}
-          <article className="flex flex-col items-center gap-4 rounded-2xl">
+          <article className="flex flex-col items-center gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full">
               <Users className="text-white w-10 h-10" />
             </div>
@@ -75,11 +75,11 @@ export default function HomePage() {
           </article>
 
           {/* RIGHT CARD – Work For Us (Students) */}
-          <article className="flex flex-col items-center gap-4 p-8 rounded-2xl">
+          <article className="flex flex-col items-center gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full">
               <Building2 className="text-white w-10 h-10" />
             </div>
-            <h2 className="text-3xl font-semibold">{t('hero_students_title')}</h2>
+            <h2 className="text-3xl text-center font-semibold">{t('hero_students_title')}</h2>
             <p className="text-white/90 text-center font-light">{t('hero_students_description')}</p>
             <a
               href="https://jobs.skwd.be/studentenjob"
@@ -188,7 +188,7 @@ export default function HomePage() {
             {t('sector_description')}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 max-[1000px]:gap-12">
             {/* Left Card — Hospitality */}
             <article
               aria-labelledby="sector-card1-title"

@@ -56,10 +56,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [ogImage.url],
     },
     alternates: {
-      canonical: `https://skwd.be/${locale}/hospitality`,
+      canonical: `https://skwd.be/${
+        locale === 'fr'
+          ? 'fr/hospitalite'
+          : locale === 'nl'
+          ? 'nl/hospitality'
+          : 'en/hospitality'
+      }`,
       languages: {
         en: 'https://skwd.be/en/hospitality',
-        fr: 'https://skwd.be/fr/hospitality',
+        fr: 'https://skwd.be/fr/hospitalite',
         nl: 'https://skwd.be/nl/hospitality',
       },
     },

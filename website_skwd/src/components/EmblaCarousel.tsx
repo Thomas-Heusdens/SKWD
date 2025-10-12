@@ -65,9 +65,9 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="embla__slide flex-[0_0_calc(100%/1.5-1rem)] min-[480px]:flex-[0_0_calc(100%/1.5-1rem)] md:flex-[0_0_calc(100%/2-1rem)] lg:flex-[0_0_calc(100%/2.5-1rem)] pl-4"
+                className="embla__slide flex-[0_0_calc(100%-1rem)] min-[400px]:flex-[0_0_calc(100%-2rem)] min-[480px]:flex-[0_0_calc(100%/1.2-1rem)] min-[550px]:flex-[0_0_calc(100%/1.5-1rem)] md:flex-[0_0_calc(100%/2-1rem)] lg:flex-[0_0_calc(100%/2.5-1rem)] pl-4"
               >
-                <div className="embla__slide__card relative h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+                <div className="embla__slide__card relative h-[200px] min-[550px]:h-full md:h-[250px] rounded-xl overflow-hidden shadow-lg group cursor-pointer">
                   {/* Background Image */}
                   <img 
                     src={slide.image} 
@@ -80,7 +80,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   
                   {/* Text content */}
                   <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 text-center">
-                    <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-2">
+                    <h3 className="text-white text-xl md:text-xl lg:text-2xl font-semibold mb-2">
                       {slide.title}
                     </h3>
                     {slide.description && (

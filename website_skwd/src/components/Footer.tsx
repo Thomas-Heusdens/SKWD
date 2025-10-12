@@ -25,6 +25,7 @@ export default function Footer() {
       contact_cta: 'Get in touch',
       privacy_policy: 'Privacy Policy & General Terms',
       made_by: 'Made by',
+      work: "Work with us",
     },
     fr: {
       recognition_label: 'Reconnaissance agence intérimaire:',
@@ -40,6 +41,7 @@ export default function Footer() {
       contact_cta: 'Contactez-nous',
       privacy_policy: 'Politique de Confidentialité & Conditions Générales',
       made_by: 'Créé par',
+      work: "Collaborer avec nous",
     },
     nl: {
       recognition_label: 'Erkenning uitzendbureau:',
@@ -55,6 +57,7 @@ export default function Footer() {
       contact_cta: 'Neem contact op',
       privacy_policy: 'Privacy Policy & Algemene voorwaarden',
       made_by: 'Gemaakt door',
+      work: "Werk met ons",
     },
   };
 
@@ -67,10 +70,11 @@ export default function Footer() {
     { key: 'about', label: t.about_us },
     { key: 'hospitality', label: t.horeca_sector },
     { key: 'logistics', label: t.logistics_sector },
+    { key: 'work', label: t.work },
   ];
 
   const studentLinks = [
-    { key: 'work', label: t.apply, external: true, url: 'https://jobs.skwd.be/studentenjob' },
+    { key: '', label: t.apply, external: true, url: 'https://jobs.skwd.be/studentenjob' },
     { key: 'faq', label: t.faq, external: false },
   ];
 
