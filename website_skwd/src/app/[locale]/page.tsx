@@ -2,7 +2,7 @@
 
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
-import { Users, Building2, UtensilsCrossed, Truck } from 'lucide-react';
+import { Building2, UtensilsCrossed, Truck, GraduationCap } from 'lucide-react';
 import ProjectsBento from '@/components/ProjectsBento';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -65,7 +65,7 @@ export default function HomePage() {
           {/* LEFT CARD – Work With Us (Clients) */}
           <article className="flex flex-col items-center gap-2 md:gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
-              <Users className="text-white w-8 h-8 md:w-10 md:h-10" />
+              <Building2 className="text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
             <h2 className="text-2xl md:text-3xl text-center font-semibold">
               {t('hero_clients_title')}
@@ -89,7 +89,7 @@ export default function HomePage() {
           {/* RIGHT CARD – Work For Us (Students) */}
           <article className="flex flex-col items-center gap-2 md:gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
-              <Building2 className="text-white w-8 h-8 md:w-10 md:h-10" />
+              <GraduationCap className="text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
             <h2 className="text-2xl md:text-3xl text-center font-semibold">
               {t('hero_students_title')}

@@ -44,7 +44,7 @@ export default function Navbar() {
           href={`/${locale}`}
           className="flex items-center gap-2 bg-skwd-light-blue rounded-[50px] p-3"
         >
-          <div className="relative w-16 h-6">
+          <div className="relative w-12 h-4 md:w-16 md:h-6">
             <Image
               src="/images/logo.png"
               alt="SKWD Logo"
@@ -108,7 +108,7 @@ export default function Navbar() {
       {/* ===== MOBILE MENU ===== */}
       <div
         className={`
-          fixed left-1/2 transform -translate-x-1/2 top-[100px]
+          fixed left-1/2 transform -translate-x-1/2 top-[80px]
           w-[90%] max-w-6xl rounded-3xl 
           backdrop-blur-md bg-white/10 shadow-lg 
           flex flex-col items-center gap-1 py-4

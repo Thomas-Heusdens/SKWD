@@ -60,10 +60,10 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center gap-2 px-4 h-12 bg-white rounded-full cursor-pointer transition-all hover:bg-gray-50 focus:outline-none"
+        className="flex items-center justify-center gap-2 px-4 md:h-12 h-10 bg-white rounded-full cursor-pointer transition-all hover:bg-gray-50 focus:outline-none"
         aria-label="Select language"
       >
-        <Globe className="w-5 h-5 text-gray-700" />
+        <Globe className="w-4 h-4 md:w-5 md:h-5 text-gray-700" />
         <span className="text-sm font-medium text-gray-700 uppercase">{currentLanguage.code}</span>
       </button>
 
