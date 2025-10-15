@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         "Découvrez nos services dans le secteur de la logistique : de la manutention au transport, nous plaçons les bons profils aux bons endroits.",
       ogDescription:
         "Explorez SKWD, votre partenaire belge pour le staffing logistique — manutention, transport, entrepôt et plus encore.",
+      url: 'https://skwd.be/fr/logistique',  
     },
     nl: {
       title: 'Logistieke Sector - SKWD',
@@ -17,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Ontdek onze logistieke diensten: van opbouw en afbouw tot transport, wij zorgen voor de juiste mensen op de juiste plaats.',
       ogDescription:
         'Verken SKWD, jouw Belgische partner voor logistiek personeel — opbouw, afbouw, magazijnwerk en meer.',
+      url: 'https://skwd.be/nl/logistiek',  
     },
     en: {
       title: 'Logistics Division - SKWD',
@@ -24,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Discover our logistics services: from setup and dismantling to warehouse support, we place the right people in the right place.',
       ogDescription:
         'Explore SKWD, your Belgian partner for logistics staffing — setup, warehouse operations, and event logistics.',
+      url: 'https://skwd.be/en/logistics',  
     },
   };
 

@@ -7,13 +7,16 @@ import ProjectsBento from '@/components/ProjectsBento';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
-
+import { useState } from 'react';
+import useHideDescription from '@/hooks/useHideDescription';
 
 export default function HomePage() {
   const { t } = useTranslation();
   const pathname = usePathname();
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
+  const [activeSector, setActiveSector] = useState('hospitality');
+  const hideDescription = useHideDescription();
 
 
   return (
@@ -60,32 +63,50 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-20 section-container grid grid-cols-1 md:grid-cols-2 gap-80 max-[1077px]:gap-40 max-[900px]:gap-20 max-[768px]:gap-0 items-center h-full text-white">
           {/* LEFT CARD – Work With Us (Clients) */}
-          <article className="flex flex-col items-center gap-4">
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full">
-              <Users className="text-white w-10 h-10" />
+          <article className="flex flex-col items-center gap-2 md:gap-4">
+            <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
+              <Users className="text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
-            <h2 className="text-3xl text-center font-semibold">{t('hero_clients_title')}</h2>
-            <p className="text-white/90 text-center font-light">{t('hero_clients_description')}</p>
+            <h2 className="text-2xl md:text-3xl text-center font-semibold">
+              {t('hero_clients_title')}
+            </h2>
+            {/* Conditionally hidden */}
+            <p
+              className={`text-white/90 text-sm md:text-base text-center font-light transition-opacity duration-200 ${
+                hideDescription ? 'hidden' : 'block'
+              }`}
+            >
+              {t('hero_clients_description')}
+            </p>
             <Link
               href={`/${locale}/${localizedRoutes.work[locale]}`}
-              className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block mt-2 md:mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
             >
               {t('hero_clients_cta')}
             </Link>
           </article>
 
           {/* RIGHT CARD – Work For Us (Students) */}
-          <article className="flex flex-col items-center gap-4">
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full">
-              <Building2 className="text-white w-10 h-10" />
+          <article className="flex flex-col items-center gap-2 md:gap-4">
+            <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
+              <Building2 className="text-white w-8 h-8 md:w-10 md:h-10" />
             </div>
-            <h2 className="text-3xl text-center font-semibold">{t('hero_students_title')}</h2>
-            <p className="text-white/90 text-center font-light">{t('hero_students_description')}</p>
+            <h2 className="text-2xl md:text-3xl text-center font-semibold">
+              {t('hero_students_title')}
+            </h2>
+            {/* Conditionally hidden */}
+            <p
+              className={`text-white/90 text-sm md:text-base text-center font-light transition-opacity duration-200 ${
+                hideDescription ? 'hidden' : 'block'
+              }`}
+            >
+              {t('hero_students_description')}
+            </p>
             <a
               href="https://jobs.skwd.be/studentenjob"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block mt-2 md:mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
             >
               {t('hero_students_cta')}
             </a>
@@ -107,13 +128,13 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="py-20 section-container">
-          <h2 id="projects-heading" className="text-3xl text-center font-semibold mb-4">
+        <div className="py-14 md:py-20 section-container">
+          <h2 id="projects-heading" className="text-2xl md:text-3xl text-center font-semibold mb-2 md:mb-4">
             <span className="text-white">{t('projects_title').split(' ').slice(0, -2).join(' ')}</span>
             {' '}
             <span className="text-skwd-text-highlight">{t('projects_title').split(' ').slice(-2).join(' ')}</span>
           </h2>
-          <p className="mb-10 text-white text-center font-light">{t('projects_description')}</p>
+          <p className="mb-6 md:mb-10 text-white text-center text-sm md:text-base font-light">{t('projects_description')}</p>
 
           <ProjectsBento />
         </div>
@@ -125,41 +146,41 @@ export default function HomePage() {
         className="bg-skwd-light-blue text-white"
         aria-labelledby="testimony-heading"
       >
-        <div className="relative py-20 section-container">
-          {/* Decorative big quote mark */}
+        <div className="relative py-14 md:py-20 section-container">
+          {/* Decorative big quote mark - hidden on mobile */}
           <h2
             id="testimony-heading"
-            className="absolute top-5 md:left-4 text-[250px] leading-none text-skwd-text-highlight font-medium select-none pointer-events-none"
+            className="hidden md:block absolute top-5 md:left-4 text-[250px] leading-none text-skwd-text-highlight font-medium select-none pointer-events-none"
           >
-            “
+            "
           </h2>
 
           {/* Flex container for text + image */}
           <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 mx-auto">
+            {/* CEO Image - shows first on mobile, larger size */}
+            <div className="relative w-64 h-64 md:w-72 md:h-72 md:order-2 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/ceo.jpeg"
+                alt={t('ceo_name')}
+                fill
+                sizes="(max-width: 768px) 256px, 288px"
+                className="object-cover object-bottom"
+                priority
+              />
+            </div>
+
             {/* Text content */}
-            <blockquote className="text-left max-w-xl mt-20">
+            <blockquote className="text-left max-w-xl md:mt-20">
               <p className="text-lg mb-6 font-light">{t('ceo_testimony')}</p>
               <footer className="relative pl-6">
                 {/* Rounded left border */}
                 <span className="absolute left-0 top-0 bottom-0 w-1 bg-skwd-text-highlight rounded-full" />
 
-                <p className="font-semibold">{t('ceo_name')}</p>
+                <p className="font-semibold text-sm md:text-base">{t('ceo_name')}</p>
                 <p className="text-sm opacity-80">{t('ceo_role')}</p>
                 <p className="text-sm opacity-60 font-light">{t('ceo_experience')}</p>
               </footer>
             </blockquote>
-
-            {/* CEO Image */}
-            <div className="relative w-48 h-48 md:w-72 md:h-72 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/ceo.jpeg"
-                alt={t('ceo_name')}
-                fill
-                sizes="(max-width: 768px) 192px, 288px"
-                className="object-cover object-bottom"
-                priority
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -178,21 +199,51 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="py-20 px-6 section-container">
-          <h2 id="sector-heading" className="text-3xl text-center font-semibold mb-4">
+        <div className="py-14 md:py-20 px-6 section-container">
+          <h2 id="sector-heading" className="text-2xl md:text-3xl text-center font-semibold mb-2 md:mb-4">
             <span className="text-white">{t('sector_title').split(' ').slice(0, -2).join(' ')}</span>
             {' '}
             <span className="text-skwd-text-highlight">{t('sector_title').split(' ').slice(-2).join(' ')}</span>
           </h2>
-          <p className="mb-10 text-center text-white/80 font-light">
+          <p className="mb-6 md:mb-10 text-center text-sm md:text-base text-white/80 font-light">
             {t('sector_description')}
           </p>
+
+          {/* Mobile Toggle Menu - Only visible below md */}
+          <div className="md:hidden flex justify-center mb-8">
+            <div className="inline-flex backdrop-blur-sm bg-white/10 rounded-full p-1 gap-1">
+              <button
+                onClick={() => setActiveSector('hospitality')}
+                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  activeSector === 'hospitality'
+                    ? 'bg-white text-black'
+                    : 'text-white'
+                }`}
+                aria-pressed={activeSector === 'hospitality'}
+              >
+                {t('sector_card1_title')}
+              </button>
+              <button
+                onClick={() => setActiveSector('logistics')}
+                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                  activeSector === 'logistics'
+                    ? 'bg-white text-black'
+                    : 'text-white'
+                }`}
+                aria-pressed={activeSector === 'logistics'}
+              >
+                {t('sector_card2_title')}
+              </button>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 max-[1000px]:gap-12">
             {/* Left Card — Hospitality */}
             <article
               aria-labelledby="sector-card1-title"
-              className="group relative rounded-2xl overflow-hidden shadow-lg aspect-square"
+              className={`group relative rounded-2xl overflow-hidden shadow-lg aspect-square ${
+                activeSector === 'hospitality' ? 'block' : 'hidden'
+              } md:block`}
             >
               {/* Background image (decorative) */}
               <Image
@@ -210,8 +261,8 @@ export default function HomePage() {
               {/* Content */}
               <div className="absolute inset-0 z-10 p-6 flex flex-col items-center justify-center text-center gap-4">
                 {/* Icon */}
-                <span className="bg-white/15 backdrop-blur-sm p-4 rounded-full">
-                  <UtensilsCrossed className="w-8 h-8 text-white" aria-hidden="true" />
+                <span className="bg-white/15 backdrop-blur-sm p-3 md:p-4 rounded-full">
+                  <UtensilsCrossed className="w-8 h-8 md:w-10 md:h-10 text-white" aria-hidden="true" />
                 </span>
 
                 {/* Title */}
@@ -220,7 +271,7 @@ export default function HomePage() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/90 font-light max-w-sm">
+                <p className="text-white/90 font-light text-sm md:text-base max-w-sm">
                   {t('sector_card1_description')}
                 </p>
 
@@ -238,7 +289,9 @@ export default function HomePage() {
             {/* Right Card — Logistics */}
             <article
               aria-labelledby="sector-card2-title"
-              className="group relative rounded-2xl overflow-hidden shadow-lg aspect-square"
+              className={`group relative rounded-2xl overflow-hidden shadow-lg aspect-square ${
+                activeSector === 'logistics' ? 'block' : 'hidden'
+              } md:block`}
             >
               {/* Background image (decorative) */}
               <Image
@@ -256,8 +309,8 @@ export default function HomePage() {
               {/* Content */}
               <div className="absolute inset-0 z-10 p-6 flex flex-col items-center justify-center text-center gap-4">
                 {/* Icon */}
-                <span className="bg-white/15 backdrop-blur-sm p-4 rounded-full">
-                  <Truck className="w-8 h-8 text-white" aria-hidden="true" />
+                <span className="bg-white/15 backdrop-blur-sm p-3 md:p-4 rounded-full">
+                  <Truck className="w-8 h-8 md:w-10 md:h-10 text-white" aria-hidden="true" />
                 </span>
 
                 {/* Title */}
@@ -266,7 +319,7 @@ export default function HomePage() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-white/90 font-light max-w-sm">
+                <p className="text-white/90 text-sm md:text-base font-light max-w-sm">
                   {t('sector_card2_description')}
                 </p>
 

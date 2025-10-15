@@ -5,6 +5,7 @@ import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
 
 export interface CarouselItem {
+  step?: string;
   title: string;
   description: string;
   id: number;
@@ -13,7 +14,7 @@ export interface CarouselItem {
 
 export interface CarouselProps {
   items?: CarouselItem[];
-  baseWidth?: number; // fallback if container not measured
+  baseWidth?: number;
   autoplay?: boolean;
   autoplayDelay?: number;
   pauseOnHover?: boolean;
@@ -24,30 +25,35 @@ export interface CarouselProps {
 // default items (can be overridden)
 const DEFAULT_ITEMS: CarouselItem[] = [
   {
+    step: 'Step 1',
     title: 'Text Animations',
     description: 'Cool text animations for your projects.',
     id: 1,
     icon: <FiFileText className="h-[26px] w-[26px] text-white" />,
   },
   {
+    step: 'Step 2',
     title: 'Animations',
     description: 'Smooth animations for your projects.',
     id: 2,
     icon: <FiCircle className="h-[26px] w-[26px] text-white" />,
   },
   {
+    step: 'Step 3',
     title: 'Components',
     description: 'Reusable components for your projects.',
     id: 3,
     icon: <FiLayers className="h-[26px] w-[26px] text-white" />,
   },
   {
+    step: 'Step 4',
     title: 'Backgrounds',
     description: 'Beautiful backgrounds and patterns for your projects.',
     id: 4,
     icon: <FiLayout className="h-[26px] w-[26px] text-white" />,
   },
   {
+    step: 'Step 5',
     title: 'Common UI',
     description: 'Common UI components are coming soon!',
     id: 5,
@@ -223,6 +229,7 @@ export default function Carousel({
               <div className="absolute inset-0 bg-skwd-blue/60" />
 
               <div className="relative z-10 p-6 flex flex-col gap-4">
+                <h3 className="font-light">{item.step}</h3>
                 <div className="inline-block bg-white/20 backdrop-blur-md rounded-full p-5 flex items-center justify-center w-fit">
                   {item.icon}
                 </div>

@@ -57,39 +57,46 @@ const SquareMasonry: React.FC<SquareMasonryProps> = ({
 
   // --- animation on scroll ---
   useLayoutEffect(() => {
-    if (!loaded || !containerRef.current) return;
+  if (!loaded || !containerRef.current) return;
 
-    const elements = gsap.utils.toArray<HTMLElement>(
-      containerRef.current.querySelectorAll('.square-img')
-    );
+  const elements = gsap.utils.toArray<HTMLElement>(
+    containerRef.current.querySelectorAll('.square-img')
+  );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            gsap.fromTo(
-              el,
-              { opacity: 0, y: 100, filter: 'blur(6px)' },
-              {
-                opacity: 1,
-                y: 0,
-                filter: 'blur(0px)',
-                duration,
-                ease: 'power3.out',
-                stagger,
-              }
-            );
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [loaded, duration, stagger]);
+          // Add a small randomized delay between 0 and 0.4 seconds
+          const randomDelay = Math.random() * 0.8;
+          const randomDuration = duration * (0.8 + Math.random() * 0.8); // between 0.8x and 1.2x duration
+
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 100, filter: 'blur(6px)' },
+            {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              duration: randomDuration,
+              delay: randomDelay,
+              ease: 'power3.out',
+            }
+          );
+
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+  return () => observer.disconnect();
+}, [loaded, duration, stagger]);
+
 
   // --- hover effect ---
   const handleEnter = (id: number) =>

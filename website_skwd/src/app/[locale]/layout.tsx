@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         "Découvrez SKWD, l'agence belge qui relie étudiants motivés et entreprises pour des événements réussis en Belgique.",
       ogDescription:
         "Découvrez SKWD, votre partenaire pour des événements réussis en Belgique. Une agence spécialisée dans le staffing événementiel étudiant.",
+      url: 'https://skwd.be/fr',
     },
     nl: {
       title: 'Startpagina - SKWD',
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Ontdek SKWD, het Belgische bureau dat studenten en bedrijven verbindt voor succesvolle evenementen in België.',
       ogDescription:
         'Ontdek SKWD, jouw partner voor geslaagde evenementen in België. Gespecialiseerd in studentenevenementen en staffing.',
+      url: 'https://skwd.be/nl',  
     },
     en: {
       title: 'Home - SKWD',
@@ -30,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.',
       ogDescription:
         'SKWD is your partner for successful events in Belgium — connecting students and companies through reliable event staffing.',
+      url: 'https://skwd.be/en',
     },
   };
 

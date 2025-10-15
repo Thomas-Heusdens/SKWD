@@ -22,7 +22,7 @@ export default function InfoCard({
   return (
     <article className={`relative p-6 rounded-xl bg-${color} text-white overflow-hidden`}>
       <div className="relative z-10 rounded-full p-3 w-fit bg-skwd-light-blue mb-4">
-        <Icon className="w-10 h-10 text-white" />
+        <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </div>
       
       {patternOverlaySrc && (
@@ -37,10 +37,10 @@ export default function InfoCard({
       )}
       
       <div className="relative z-10">
-        <h3 className="text-xl mb-2">
+        <h3 className="text-lg md:text-xl mb-2">
           {t(`${cardTitle}`)}
         </h3>
-        <p className="text-sm font-light opacity-90">
+        <p className="text-sm md:text-base font-light opacity-90">
           {t(`${cardDescription}`)}
         </p>
       </div>

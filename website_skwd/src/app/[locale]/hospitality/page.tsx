@@ -11,6 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         "Découvrez nos services dans le secteur de l'hospitality : du catering aux activations de marque, nous plaçons les bons profils aux bons endroits.",
       ogDescription:
         "Explorez SKWD, votre partenaire belge pour le staffing hospitality — catering, accueil, service, et plus encore.",
+      url: 'https://skwd.be/fr/hospitalite',  
     },
     nl: {
       title: 'Hospitality Sector - SKWD',
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Ontdek onze hospitalitydiensten: van catering tot brand activaties, wij zorgen voor de juiste mensen op de juiste plaats.',
       ogDescription:
         'Verken SKWD, jouw Belgische partner voor hospitality staffing — catering, ontvangst, service en meer.',
+      url: 'https://skwd.be/nl/hospitality',  
     },
     en: {
       title: 'Hospitality Division - SKWD',
@@ -25,6 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Discover our hospitality services: from catering to brand activations, we place the right people in the right place.',
       ogDescription:
         'Explore SKWD, your Belgian partner for hospitality staffing — catering, brand activation, and premium event service.',
+      url: 'https://skwd.be/en/hospitality',  
     },
   };
 

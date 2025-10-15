@@ -3,19 +3,68 @@ import FaqClient from './FaqClient';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
+  const content = {
+    nl: {
+      title: 'Veelgestelde vragen - SKWD',
+      description:
+        'Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!',
+      ogDescription:
+        'Ontdek antwoorden op veelgestelde vragen over SKWD, student jobs, sollicitatie en werkplanning.',
+      url: 'https://skwd.be/nl/veelgestelde-vragen',
+    },
+    fr: {
+      title: 'Questions fréquentes - SKWD',
+      description:
+        'Trouvez rapidement les réponses à vos questions sur le travail chez SKWD. Une question manquante? Contactez-nous!',
+      ogDescription:
+        'Découvrez les réponses aux questions fréquentes sur SKWD, les jobs étudiants et le processus de recrutement.',
+      url: 'https://skwd.be/fr/faq',
+    },
+    en: {
+      title: 'Frequently Asked Questions - SKWD',
+      description:
+        'Find quick answers about working at SKWD. Don’t see your question? Feel free to contact us!',
+      ogDescription:
+        'Learn everything about SKWD student jobs, application process, and work planning.',
+      url: 'https://skwd.be/en/faq',
+    },
+  };
+
+  const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
+
+  const ogImage = {
+    url: '/images/og-faq.jpg',
+    width: 1200,
+    height: 630,
+    alt: 'FAQ SKWD Preview Image',
+  };
+
   return {
-    title:
-      locale === 'fr'
-        ? 'Foire aux questions'
-        : locale === 'nl'
-        ? 'Veelgestelde vragen'
-        : 'Frequently Asked Questions',
-    description:
-      locale === 'fr'
-        ? "Des questions? Consultez la FAQ de SKWD pour trouver des réponses aux questions courantes."
-        : locale === 'nl'
-        ? "Vragen? Bekijk de FAQ van SKWD voor antwoorden op veelgestelde vragen."
-        : "Questions? Check out SKWD's FAQ for answers to common questions.",
+    title: t.title,
+    description: t.description,
+    openGraph: {
+      title: t.title,
+      description: t.ogDescription,
+      url: t.url,
+      siteName: 'SKWD',
+      images: [ogImage],
+      locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.title,
+      description: t.ogDescription,
+      images: [ogImage.url],
+    },
+    alternates: {
+      canonical: t.url,
+      languages: {
+        en: 'https://skwd.be/en/faq',
+        fr: 'https://skwd.be/fr/faq',
+        nl: 'https://skwd.be/nl/veelgestelde-vragen',
+      },
+    },
   };
 }
 

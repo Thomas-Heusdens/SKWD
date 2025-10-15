@@ -1,11 +1,12 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Barlow } from "next/font/google";
+import OrientationWarning from '@/components/OrientationWarning';
 import "./globals.css";
 
 const barlow = Barlow({
   subsets: ["latin"],
-  weight: ["300", "500", "600", "800"], // Light, Medium, SemiBold, ExtraBold
+  weight: ["300", "500", "600", "800"],
   variable: "--font-barlow",
 });
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header>
             <Navbar />
           </header>
+          <OrientationWarning />
           {children}
           <Footer />
         </main>

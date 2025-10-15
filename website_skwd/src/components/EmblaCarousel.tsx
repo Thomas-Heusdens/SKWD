@@ -84,7 +84,7 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                       {slide.title}
                     </h3>
                     {slide.description && (
-                      <p className="text-white/90 text-sm font-light md:text-base">
+                      <p className="text-white/90 text-base font-light md:text-base">
                         {slide.description}
                       </p>
                     )}

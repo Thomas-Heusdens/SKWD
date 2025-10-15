@@ -12,6 +12,7 @@ import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
 import Carousel from '@/components/Carousel';
 import useIsMobile from '@/hooks/useIsMobile';
+import { useEffect, useState } from 'react';
 
 export default function LogisticsClient() {
   const isMobile = useIsMobile(776);
@@ -20,6 +21,18 @@ export default function LogisticsClient() {
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' =
     ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsSmallScreen(window.innerWidth <= 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const src = isSmallScreen
+    ? '/images/Logistiek-hero2.jpeg'
+    : '/images/logistiek3.jpeg';
 
   const carouselSlides = [
     {
@@ -79,7 +92,7 @@ export default function LogisticsClient() {
         className="relative w-full h-screen overflow-hidden flex items-center justify-center text-white"
       >
         <Image
-          src="/images/logistiek3.jpeg"
+          src={src}
           alt="Logistics services hero background"
           fill
           className="object-cover"
@@ -88,7 +101,7 @@ export default function LogisticsClient() {
         <div className="absolute inset-0 bg-skwd-dark-blue/70" />
 
         <div className="relative z-10 text-center max-w-3xl px-6">
-          <h1 className="text-5xl md:text-6xl font-semibold mb-4 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4 text-center">
             {(() => {
               const words = t('logistics_title').split(' ');
               return (
@@ -99,7 +112,7 @@ export default function LogisticsClient() {
               );
             })()}
           </h1>
-          <p className="font-light mb-8">{t('logistics_description')}</p>
+          <p className="font-light mb-8 text-sm md:text-base">{t('logistics_description')}</p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Link
               href="https://jobs.skwd.be/logistics"
@@ -118,12 +131,12 @@ export default function LogisticsClient() {
       </section>
 
       {/* ===== JOB TYPES ===== */}
-      <section id="job-types" aria-labelledby="job-types-heading" className="relative py-20 px-6 text-white">
+      <section id="job-types" aria-labelledby="job-types-heading" className="relative py-14 md:py-20 px-6 text-white">
         <div className="absolute inset-0 opacity-5">
           <Image src="/images/pattern-bg.png" alt="Pattern background" fill className="object-cover" />
         </div>
         <div className="section-container text-center">
-          <h2 id="job-types-heading" className="text-4xl font-semibold mb-4 text-center">
+          <h2 id="job-types-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
             {(() => {
               const words = t('logistics_jobs_title').split(' ');
               return (
@@ -134,7 +147,7 @@ export default function LogisticsClient() {
               );
             })()}
           </h2>
-          <p className="max-w-2xl font-light text-sm mx-auto text-white/90 mb-10">
+          <p className="max-w-2xl font-light text-sm md:text-base mx-auto text-white/90 mb-6 md:mb-10">
             {t('logistics_jobs_description')}
           </p>
 
@@ -147,10 +160,10 @@ export default function LogisticsClient() {
       </section>
 
       {/* ===== EVENT EXPERIENCE ===== */}
-      <section id="event-experience" aria-labelledby="event-experience-heading" className="py-20 bg-skwd-blue text-white">
+      <section id="event-experience" aria-labelledby="event-experience-heading" className="py-14 md:py-20 bg-skwd-blue text-white">
         <div className="section-container">
-          <header className="text-center mb-12">
-            <h2 id="event-experience-heading" className="text-3xl font-semibold mb-3 text-center">
+          <header className="text-center mb-6 md:mb-10">
+            <h2 id="event-experience-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
               {(() => {
                 const words = t('logistics_event_title').split(' ');
                 return (
@@ -161,7 +174,7 @@ export default function LogisticsClient() {
                 );
               })()}
             </h2>
-            <p className="text-white/90 font-light text-sm max-w-xl mx-auto">{t('logistics_event_description')}</p>
+            <p className="text-white/90 font-light text-sm md:text-base max-w-xl mx-auto">{t('logistics_event_description')}</p>
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -173,10 +186,10 @@ export default function LogisticsClient() {
       </section>
 
       {/* ===== APPLY EASILY ===== */}
-      <section id="apply-easy" aria-labelledby="apply-easy-heading" className="py-20 px-6">
+      <section id="apply-easy" aria-labelledby="apply-easy-heading" className="py-14 md:py-20 px-6">
         <div className="section-container grid grid-cols-1 max-[1188px]:grid-cols-1 min-[1188px]:grid-cols-2 gap-10 items-center">
           <div className="flex flex-col min-[1188px]:items-start min-[1188px]:text-left items-center text-center justify-center min-[1188px]:justify-start transition-all duration-300">
-            <h2 id="apply-easy-heading" className="text-4xl font-semibold mb-12 text-white min-[1188px]:max-w-none max-[1188px]:mb-4">
+            <h2 id="apply-easy-heading" className="text-3xl md:text-4xl font-semibold mb-12 text-white min-[1188px]:max-w-none max-[1188px]:mb-4">
               {(() => {
                 const words = t('logistics_easy_apply_title').split(' ');
                 const middleStart = Math.floor(words.length / 2) - 1;
@@ -209,7 +222,7 @@ export default function LogisticsClient() {
                       <Vote className="w-10 h-10 text-white" />
                     </div>
                     <h2 className="text-2xl ml-4 mt-6">{t('logistics_step_1_title')}</h2>
-                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm">{t('logistics_step_1_description')}</p>
+                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm md:text-base">{t('logistics_step_1_description')}</p>
                   </div>
                 </Card>
 
@@ -223,7 +236,7 @@ export default function LogisticsClient() {
                       <MousePointer className="w-10 h-10 text-white" />
                     </div>
                     <h2 className="text-2xl ml-4 mt-6">{t('logistics_step_2_title')}</h2>
-                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm">{t('logistics_step_2_description')}</p>
+                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm md:text-base">{t('logistics_step_2_description')}</p>
                   </div>
                 </Card>
 
@@ -237,7 +250,7 @@ export default function LogisticsClient() {
                       <BookA className="w-10 h-10 text-white" />
                     </div>
                     <h2 className="text-2xl ml-4 mt-6">{t('logistics_step_3_title')}</h2>
-                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm">{t('logistics_step_3_description')}</p>
+                    <p className="ml-4 mt-2 max-w-[75%] font-light text-sm md:text-base">{t('logistics_step_3_description')}</p>
                   </div>
                 </Card>
               </CardSwap>

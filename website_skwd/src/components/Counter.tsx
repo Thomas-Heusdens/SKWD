@@ -5,16 +5,15 @@ interface NumberProps {
   mv: MotionValue<number>;
   number: number;
   height: number;
+  textColor?: string;
 }
 
-function Number({ mv, number, height }: NumberProps) {
-  let y = useTransform(mv, latest => {
-    let placeValue = latest % 10;
-    let offset = (10 + number - placeValue) % 10;
+function Number({ mv, number, height, textColor = 'currentColor' }: NumberProps) {
+  const y = useTransform(mv, latest => {
+    const placeValue = latest % 10;
+    const offset = (10 + number - placeValue) % 10;
     let memo = offset * height;
-    if (offset > 5) {
-      memo -= 10 * height;
-    }
+    if (offset > 5) memo -= 10 * height;
     return memo;
   });
 
@@ -26,7 +25,8 @@ function Number({ mv, number, height }: NumberProps) {
     left: 0,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: textColor, // ✅ Apply color dynamically
   };
 
   return <motion.span style={{ ...style, y }}>{number}</motion.span>;
@@ -36,12 +36,13 @@ interface DigitProps {
   place: number;
   value: number;
   height: number;
+  textColor?: string;
   digitStyle?: React.CSSProperties;
 }
 
-function Digit({ place, value, height, digitStyle }: DigitProps) {
-  let valueRoundedToPlace = Math.floor(value / place);
-  let animatedValue = useSpring(valueRoundedToPlace);
+function Digit({ place, value, height, textColor, digitStyle }: DigitProps) {
+  const valueRoundedToPlace = Math.floor(value / place);
+  const animatedValue = useSpring(valueRoundedToPlace);
 
   useEffect(() => {
     animatedValue.set(valueRoundedToPlace);
@@ -51,13 +52,13 @@ function Digit({ place, value, height, digitStyle }: DigitProps) {
     height,
     position: 'relative',
     width: '1ch',
-    fontVariantNumeric: 'tabular-nums'
+    fontVariantNumeric: 'tabular-nums',
   };
 
   return (
     <div style={{ ...defaultStyle, ...digitStyle }}>
       {Array.from({ length: 10 }, (_, i) => (
-        <Number key={i} mv={animatedValue} number={i} height={height} />
+        <Number key={i} mv={animatedValue} number={i} height={height} textColor={textColor} />
       ))}
     </div>
   );
@@ -65,60 +66,50 @@ function Digit({ place, value, height, digitStyle }: DigitProps) {
 
 interface CounterProps {
   value: number;
-  fontSize?: number;
-  padding?: number;
   places?: number[];
   gap?: number;
-  borderRadius?: number;
-  horizontalPadding?: number;
   textColor?: string;
   fontWeight?: React.CSSProperties['fontWeight'];
-  containerStyle?: React.CSSProperties;
-  counterStyle?: React.CSSProperties;
+  className?: string;
   digitStyle?: React.CSSProperties;
+  height?: number;
 }
 
+/**
+ * Tailwind-based responsive counter with dynamic textColor
+ * Example usage:
+ * <Counter
+ *   value={250}
+ *   textColor={isMobile ? 'black' : 'white'}
+ *   className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-extrabold"
+ * />
+ */
 export default function Counter({
   value,
-  fontSize = 50,
-  padding = 0,
   places = [100, 10, 1],
   gap = 2,
-  borderRadius = 4,
-  horizontalPadding = 2,
-  textColor = 'white',
+  textColor = 'currentColor',
   fontWeight = 'bold',
-  containerStyle,
-  counterStyle,
+  className = '',
   digitStyle,
+  height = 60,
 }: CounterProps) {
-  const height = fontSize + padding;
-
-  const defaultContainerStyle: React.CSSProperties = {
-    position: 'relative',
-    display: 'inline-block'
-  };
-
-  const defaultCounterStyle: React.CSSProperties = {
-    fontSize,
-    display: 'flex',
-    gap: gap,
-    overflow: 'hidden',
-    borderRadius: borderRadius,
-    paddingLeft: horizontalPadding,
-    paddingRight: horizontalPadding,
-    lineHeight: 1,
-    color: textColor,
-    fontWeight: fontWeight
-  };
 
   return (
-    <div style={{ ...defaultContainerStyle, ...containerStyle }}>
-      <div style={{ ...defaultCounterStyle, ...counterStyle }}>
-        {places.map(place => (
-          <Digit key={place} place={place} value={value} height={height} digitStyle={digitStyle} />
-        ))}
-      </div>
+    <div
+      className={`inline-flex items-center justify-center gap-[${gap}px] overflow-hidden leading-none font-${fontWeight} ${className}`}
+      style={{ color: textColor }} // ✅ Sets color context for all digits
+    >
+      {places.map(place => (
+        <Digit
+          key={place}
+          place={place}
+          value={value}
+          height={height}
+          textColor={textColor}
+          digitStyle={digitStyle}
+        />
+      ))}
     </div>
   );
 }

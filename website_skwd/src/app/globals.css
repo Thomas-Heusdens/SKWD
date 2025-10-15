@@ -32,6 +32,10 @@
 
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   --background: #030326;
   --foreground: #E6E6EB;

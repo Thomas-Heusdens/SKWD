@@ -10,6 +10,7 @@ import InfoCard from '@/components/InfoCard';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
+import { useEffect, useState } from 'react';
 
 
 export default function AboutClient() {
@@ -17,6 +18,27 @@ export default function AboutClient() {
   const pathname = usePathname();
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
+  const [cardDimensions, setCardDimensions] = useState({ width: 540, height: 360 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 330) {
+        setCardDimensions({ width: 220, height: 140 });
+      } else if (window.innerWidth < 480) {
+        setCardDimensions({ width: 260, height: 170 });
+      } else if (window.innerWidth < 768) {
+        setCardDimensions({ width: 340, height: 220 });
+      } else if (window.innerWidth < 1024) {
+        setCardDimensions({ width: 440, height: 300 });
+      } else {
+        setCardDimensions({ width: 540, height: 360 });
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const images = [
     { id: 1, img: "/images/planner-2.jpg" },
@@ -31,10 +53,10 @@ export default function AboutClient() {
       <section
         id="about-hero"
         aria-label="About SKWD hero section"
-        className="relative w-full h-screen overflow-hidden flex items-center justify-center"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center text-center"
       >
         {/* ===== Background pattern ===== */}
-        <div className="absolute inset-0 -z-20 opacity-10">
+        <div className="absolute inset-0 -z-10 opacity-10">
           <Image
             src="/images/pattern-bg.png"
             alt="Pattern background"
@@ -44,48 +66,36 @@ export default function AboutClient() {
           />
         </div>
 
-        {/* ===== Section content container ===== */}
-        <div className="section-container relative z-10 flex flex-col items-center justify-center text-center">
-          {/* Centered team image with dark overlay */}
-          <div className="absolute inset-0 flex items-center justify-center z-10 group transition-all duration-300">
-            <div className="relative">
-              {/* Stack replaces the single team image */}
-              <Stack
-                sendToBackOnClick={true}
-                cardDimensions={{ width: 540, height: 360 }}
-                cardsData={images}
-              />
-            </div>
-          </div>
-
-          {/* Text overlay container */}
-          <div className="relative w-full flex items-center justify-center">
-            {/* Outlined foreground text */}
-            <h1 className="absolute hover:z-40 -z-10 inset-0 flex flex-col items-center justify-center select-none leading-[0.9] text-center cursor-pointer">
-              <span className="block font-extrabold text-white text-[clamp(3rem,10vw,12rem)]">
-                YOUR STAFFING
-              </span>
-              <span className="block font-extrabold text-skwd-text-highlight text-[clamp(3rem,10vw,12rem)]">
-                AGENCY
-              </span>
-            </h1>
+        {/* ===== Content ===== */}
+        <div className="section-container relative z-10 flex flex-col items-center justify-center">
+          {/* Title */}
+          <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
+            Your staffing <span className="text-skwd-text-highlight">agency</span>
+          </h1>
+          <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
+          {/* Stack images */}
+          <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">
+            <Stack
+              sendToBackOnClick={true}
+              cardDimensions={cardDimensions}
+              cardsData={images}
+            />
           </div>
         </div>
       </section>
 
-      {/* ===== AGENCY NUMBERS SECTION ===== */}
+      {/* AGENCY NUMBERS SECTION */}
       <section
         id="agency-numbers"
         aria-labelledby="agency-numbers-heading"
         className="py-8 bg-skwd-dark-blue text-white"
       >
         <div className="section-container">
-          <div className="flex justify-between items-center">
-            {/* Left border line */}
-            <div className="h-16 w-px bg-white rounded-full"></div>
+          <div className="flex flex-wrap justify-between items-center gap-3 md:gap-0">
+            {/* Optional: hide divider lines on mobile */}
+            <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
-            {/* Example number card */}
-            <article className="flex-1 text-center">
+            <article className="flex-1 text-center min-w-[120px]">
               <RollingCounter
                 finalValue={2024}
                 label={t('about_numbers_established')}
@@ -93,10 +103,9 @@ export default function AboutClient() {
               />
             </article>
 
-            {/* Divider line */}
-            <div className="h-16 w-px bg-white rounded-full"></div>
+            <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
-            <article className="flex-1 text-center">
+            <article className="flex-1 text-center min-w-[120px]">
               <RollingCounter
                 finalValue={250}
                 label={t('about_numbers_students')}
@@ -105,10 +114,9 @@ export default function AboutClient() {
               />
             </article>
 
-            {/* Divider line */}
-            <div className="h-16 w-px bg-white rounded-full"></div>
+            <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
-            <article className="flex-1 text-center">
+            <article className="flex-1 text-center min-w-[120px]">
               <RollingCounter
                 finalValue={80}
                 label={t('about_numbers_clients')}
@@ -117,10 +125,9 @@ export default function AboutClient() {
               />
             </article>
 
-            {/* Divider line */}
-            <div className="h-16 w-px bg-white rounded-full"></div>
+            <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
-            <article className="flex-1 text-center">
+            <article className="flex-1 text-center min-w-[120px]">
               <RollingCounter
                 finalValue={98}
                 label={t('about_numbers_fill_rate')}
@@ -129,8 +136,7 @@ export default function AboutClient() {
               />
             </article>
 
-            {/* Right border line */}
-            <div className="h-16 w-px bg-white rounded-full"></div>
+            <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
           </div>
         </div>
       </section>
@@ -143,7 +149,7 @@ export default function AboutClient() {
       >
         <div className="section-container">
           <header className="mb-12 text-center mx-auto">
-            <h2 id="team-heading" className="text-4xl mb-4 font-medium text-center">
+            <h2 id="team-heading" className="text-3xl md:text-4xl mb-4 font-medium text-center">
               {(() => {
                 const words = t('about_team_intro_headline').split(' ');
                 const lastTwoStart = words.length - 2;
@@ -163,7 +169,7 @@ export default function AboutClient() {
                 );
               })()}
             </h2>
-            <p className='font-light text-sm'>{t('about_team_intro_text')}</p>
+            <p className='font-light text-sm md:text-base'>{t('about_team_intro_text')}</p>
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -216,10 +222,10 @@ export default function AboutClient() {
       <section
         id="quote"
         aria-label="Agency motto section"
-        className="relative bg-skwd-blue py-20 text-center text-white"
+        className="relative bg-skwd-blue py-14 md:py-20 text-center text-white"
       >
         <div className="absolute inset-0 opacity-10">
-          <Image
+          <Image  
             src="/images/pattern-bg.png"
             alt="Partern background"
             fill
@@ -227,7 +233,7 @@ export default function AboutClient() {
           />
         </div>
         <div className="section-container">
-          <h2 className="text-4xl text-center font-semibold">
+          <h2 className="text-3xl md:text-4xl text-center font-semibold">
             {(() => {
               const words = t('about_quote').split(' ');
               const middleStart = Math.floor(words.length / 2) - 1;
@@ -259,11 +265,11 @@ export default function AboutClient() {
       <section
         id="why-us"
         aria-labelledby="why-us-heading"
-        className="py-20 bg-skwd-dark-blue"
+        className="py-14 md:py-20 bg-skwd-dark-blue"
       >
         <div className="section-container">
-          <header className="text-center mb-12">
-            <h2 id="why-us-heading" className="text-3xl mb-3 text-center font-semibold">
+          <header className="text-center mb-8 md:mb-10">
+            <h2 id="why-us-heading" className="text-3xl md:text-4xl mb-3 text-center font-semibold">
               <span className="text-white">
                 {t('about_why_title').split(' ').slice(0, -2).join(' ')}
               </span>{' '}
@@ -271,7 +277,7 @@ export default function AboutClient() {
                 {t('about_why_title').split(' ').slice(-2).join(' ')}
               </span>
             </h2>
-            <p className='font-light text-sm w-[80%] mx-auto'>{t('about_why_description')}</p>
+            <p className='font-light text-sm md:text-base w-[80%] mx-auto'>{t('about_why_description')}</p>
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -311,7 +317,7 @@ export default function AboutClient() {
       <section
         id="contact-cta"
         aria-labelledby="contact-cta-heading"
-        className="relative bg-skwd-light-blue py-20 text-white"
+        className="relative bg-skwd-light-blue py-14 md:py-20 text-white"
       >
         {/* Pattern background full opacity */}
         <div className="absolute inset-0">
@@ -329,7 +335,7 @@ export default function AboutClient() {
               <div className='bg-white/15 mb-4 inline-block backdrop-blur rounded-full p-4'>
                 <CircleQuestionMark className="w-10 h-10 text-white mx-auto" />
               </div>
-              <h2 id="contact-cta-heading" className="text-3xl mb-2 text-center font-semibold">
+              <h2 id="contact-cta-heading" className="text-2xl md:text-3xl mb-2 text-center font-semibold">
                 <span className="text-white">
                   {t('about_contact_title').split(' ').slice(0, -2).join(' ')}
                 </span>{' '}
@@ -337,7 +343,7 @@ export default function AboutClient() {
                   {t('about_contact_title').split(' ').slice(-2).join(' ')}
                 </span>
               </h2>
-              <p className='font-light text-sm'>{t('about_contact_description')}</p>
+              <p className='font-light text-sm md:text-base'>{t('about_contact_description')}</p>
             </header>
 
             <div className="flex justify-center gap-4 flex-wrap">
