@@ -18,14 +18,12 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Detect current locale and path segment
   const segments = pathname.split('/');
   const currentLocale = (segments[1] as 'en' | 'fr' | 'nl') || 'en';
   const currentPath = segments[2] || '';
 
   const currentLanguage = languages.find((lng) => lng.code === currentLocale) || languages[0];
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -43,7 +41,6 @@ export default function LanguageSwitcher() {
 
     let newPath = `/${newLocale}`;
 
-    // Try to find the matching localized route key for the current path
     for (const key in localizedRoutes) {
       const routeKey = key as keyof typeof localizedRoutes;
       const translations = localizedRoutes[routeKey];

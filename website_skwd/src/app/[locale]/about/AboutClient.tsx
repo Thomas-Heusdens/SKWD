@@ -55,7 +55,6 @@ export default function AboutClient() {
         aria-label="About SKWD hero section"
         className="relative w-full min-h-screen flex flex-col items-center justify-center text-center"
       >
-        {/* ===== Background pattern ===== */}
         <div className="absolute inset-0 -z-10 opacity-10">
           <Image
             src="/images/pattern-bg.png"
@@ -66,14 +65,11 @@ export default function AboutClient() {
           />
         </div>
 
-        {/* ===== Content ===== */}
         <div className="section-container relative z-10 flex flex-col items-center justify-center">
-          {/* Title */}
           <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
             Your staffing <span className="text-skwd-text-highlight">agency</span>
           </h1>
           <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
-          {/* Stack images */}
           <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">
             <Stack
               sendToBackOnClick={true}
@@ -92,7 +88,6 @@ export default function AboutClient() {
       >
         <div className="section-container">
           <div className="flex flex-wrap justify-between items-center gap-3 md:gap-0">
-            {/* Optional: hide divider lines on mobile */}
             <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
             <article className="flex-1 text-center min-w-[120px]">
@@ -238,7 +233,7 @@ export default function AboutClient() {
               const words = t('about_quote').split(' ');
               const middleStart = Math.floor(words.length / 2) - 1;
               const middleEnd = middleStart + 2;
-              const endStart = words.length - 3; // three last words
+              const endStart = words.length - 3;
 
               return (
                 <>
@@ -319,7 +314,6 @@ export default function AboutClient() {
         aria-labelledby="contact-cta-heading"
         className="relative bg-skwd-light-blue py-14 md:py-20 text-white"
       >
-        {/* Pattern background full opacity */}
         <div className="absolute inset-0">
           <Image
             src="/images/pattern-bg.png"
@@ -347,7 +341,6 @@ export default function AboutClient() {
             </header>
 
             <div className="flex justify-center gap-4 flex-wrap">
-              {/* FAQ button (internal link) */}
               <Link
                 href={`/${locale}/${localizedRoutes.faq[locale]}`}
                 className="px-5 py-2 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
@@ -355,7 +348,6 @@ export default function AboutClient() {
                 {t('about_faq_cta')}
               </Link>
 
-              {/* Contact button (internal link) */}
               <Link
                 href={`/${locale}/${localizedRoutes.contact[locale]}`}
                 className="px-5 py-2 bg-white text-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"

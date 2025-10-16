@@ -26,7 +26,7 @@ function Number({ mv, number, height, textColor = 'currentColor' }: NumberProps)
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: textColor, // ✅ Apply color dynamically
+    color: textColor, 
   };
 
   return <motion.span style={{ ...style, y }}>{number}</motion.span>;
@@ -75,15 +75,6 @@ interface CounterProps {
   height?: number;
 }
 
-/**
- * Tailwind-based responsive counter with dynamic textColor
- * Example usage:
- * <Counter
- *   value={250}
- *   textColor={isMobile ? 'black' : 'white'}
- *   className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-extrabold"
- * />
- */
 export default function Counter({
   value,
   places = [100, 10, 1],
@@ -98,7 +89,7 @@ export default function Counter({
   return (
     <div
       className={`inline-flex items-center justify-center gap-[${gap}px] overflow-hidden leading-none font-${fontWeight} ${className}`}
-      style={{ color: textColor }} // ✅ Sets color context for all digits
+      style={{ color: textColor }}
     >
       {places.map(place => (
         <Digit

@@ -27,7 +27,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ===== NAVBAR ===== */}
       <nav
         className="
           fixed top-4 left-1/2 transform -translate-x-1/2
@@ -56,7 +55,6 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* DESKTOP NAV LINKS - Show ABOVE 945px */}
         <div className="hidden min-[945px]:flex items-center gap-6">
           {navLinks.map((link) => {
             const routeKey = link.key as LocalizedRouteKey;
@@ -79,18 +77,14 @@ export default function Navbar() {
             );
           })}
 
-          {/* Language switcher */}
           <div className="ml-4">
             <LanguageSwitcher />
           </div>
         </div>
 
-        {/* MOBILE NAV - Show BELOW 945px */}
         <div className="flex min-[945px]:hidden items-center gap-3">
-          {/* Language Switcher */}
           <LanguageSwitcher />
           
-          {/* Toggle Icon */}
           <button
             aria-label="Toggle menu"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -105,7 +99,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ===== MOBILE MENU ===== */}
       <div
         className={`
           fixed left-1/2 transform -translate-x-1/2 top-[80px]

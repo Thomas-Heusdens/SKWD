@@ -27,9 +27,7 @@ export default function HomePage() {
         aria-label="Main choices for visitors"
         className="relative w-full h-screen overflow-hidden"
       >
-        {/* Background split (responsive) */}
         <div className="absolute inset-0 flex flex-col md:flex-row">
-          {/* LEFT image → becomes TOP image on small screens */}
           <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
             <Image
               src="/images/hero-left.JPG"
@@ -40,11 +38,9 @@ export default function HomePage() {
               priority
               quality={90}
             />
-            {/* Dark overlay */}
             <div className="absolute inset-0 bg-skwd-dark-blue/75 z-10" />
           </div>
 
-          {/* RIGHT image → becomes BOTTOM image on small screens */}
           <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
             <Image
               src="/images/hero-right.jpeg"
@@ -55,14 +51,12 @@ export default function HomePage() {
               priority
               quality={90}
             />
-            {/* Dark overlay */}
             <div className="absolute inset-0 bg-skwd-blue/75 z-10" />
           </div>
         </div>
 
         {/* Content */}
         <div className="relative z-20 section-container grid grid-cols-1 md:grid-cols-2 gap-80 max-[1077px]:gap-40 max-[900px]:gap-20 max-[768px]:gap-0 items-center h-full text-white">
-          {/* LEFT CARD – Work With Us (Clients) */}
           <article className="flex flex-col items-center gap-2 md:gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
               <Building2 className="text-white w-8 h-8 md:w-10 md:h-10" />
@@ -70,7 +64,6 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl text-center font-semibold">
               {t('hero_clients_title')}
             </h2>
-            {/* Conditionally hidden */}
             <p
               className={`text-white/90 text-sm md:text-base text-center font-light transition-opacity duration-200 ${
                 hideDescription ? 'hidden' : 'block'
@@ -86,7 +79,6 @@ export default function HomePage() {
             </Link>
           </article>
 
-          {/* RIGHT CARD – Work For Us (Students) */}
           <article className="flex flex-col items-center gap-2 md:gap-4">
             <div className="bg-white/10 backdrop-blur-sm p-3 md:p-4 rounded-full">
               <GraduationCap className="text-white w-8 h-8 md:w-10 md:h-10" />
@@ -94,7 +86,6 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl text-center font-semibold">
               {t('hero_students_title')}
             </h2>
-            {/* Conditionally hidden */}
             <p
               className={`text-white/90 text-sm md:text-base text-center font-light transition-opacity duration-200 ${
                 hideDescription ? 'hidden' : 'block'
@@ -147,7 +138,6 @@ export default function HomePage() {
         aria-labelledby="testimony-heading"
       >
         <div className="relative py-14 md:py-20 section-container">
-          {/* Decorative big quote mark - hidden on mobile */}
           <h2
             id="testimony-heading"
             className="hidden md:block absolute top-5 md:left-4 text-[250px] leading-none text-skwd-text-highlight font-medium select-none pointer-events-none"
@@ -155,9 +145,7 @@ export default function HomePage() {
             "
           </h2>
 
-          {/* Flex container for text + image */}
           <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 mx-auto">
-            {/* CEO Image - shows first on mobile, larger size */}
             <div className="relative w-64 h-64 md:w-72 md:h-72 md:order-2 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/ceo.jpeg"
@@ -169,11 +157,9 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Text content */}
             <blockquote className="text-left max-w-xl md:mt-20">
               <p className="text-lg mb-6 font-light">{t('ceo_testimony')}</p>
               <footer className="relative pl-6">
-                {/* Rounded left border */}
                 <span className="absolute left-0 top-0 bottom-0 w-1 bg-skwd-text-highlight rounded-full" />
 
                 <p className="font-semibold text-sm md:text-base">{t('ceo_name')}</p>
@@ -209,7 +195,6 @@ export default function HomePage() {
             {t('sector_description')}
           </p>
 
-          {/* Mobile Toggle Menu - Only visible below md */}
           <div className="md:hidden flex justify-center mb-8">
             <div className="inline-flex backdrop-blur-sm bg-white/10 rounded-full p-1 gap-1">
               <button
@@ -245,7 +230,6 @@ export default function HomePage() {
                 activeSector === 'hospitality' ? 'block' : 'hidden'
               } md:block`}
             >
-              {/* Background image (decorative) */}
               <Image
                 src="/images/hospitality.jpeg"            
                 alt=""                                    
@@ -255,27 +239,21 @@ export default function HomePage() {
                 priority={false}
               />
 
-              {/* Readability overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
 
-              {/* Content */}
               <div className="absolute inset-0 z-10 p-6 flex flex-col items-center justify-center text-center gap-4">
-                {/* Icon */}
                 <span className="bg-white/15 backdrop-blur-sm p-3 md:p-4 rounded-full">
                   <UtensilsCrossed className="w-8 h-8 md:w-10 md:h-10 text-white" aria-hidden="true" />
                 </span>
 
-                {/* Title */}
                 <h3 id="sector-card1-title" className="text-2xl font-semibold text-white">
                   {t('sector_card1_title')}
                 </h3>
 
-                {/* Description */}
                 <p className="text-white/90 font-light text-sm md:text-base max-w-sm">
                   {t('sector_card1_description')}
                 </p>
 
-                {/* CTA */}
                 <Link
                   href={`/${locale}/${localizedRoutes.hospitality[locale]}`}
                   className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
@@ -293,7 +271,6 @@ export default function HomePage() {
                 activeSector === 'logistics' ? 'block' : 'hidden'
               } md:block`}
             >
-              {/* Background image (decorative) */}
               <Image
                 src="/images/Logistiek.jpg"              
                 alt=""                                   
@@ -303,27 +280,21 @@ export default function HomePage() {
                 priority={false}
               />
 
-              {/* Readability overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
 
-              {/* Content */}
               <div className="absolute inset-0 z-10 p-6 flex flex-col items-center justify-center text-center gap-4">
-                {/* Icon */}
                 <span className="bg-white/15 backdrop-blur-sm p-3 md:p-4 rounded-full">
                   <Truck className="w-8 h-8 md:w-10 md:h-10 text-white" aria-hidden="true" />
                 </span>
 
-                {/* Title */}
                 <h3 id="sector-card2-title" className="text-2xl font-semibold text-white">
                   {t('sector_card2_title')}
                 </h3>
 
-                {/* Description */}
                 <p className="text-white/90 text-sm md:text-base font-light max-w-sm">
                   {t('sector_card2_description')}
                 </p>
 
-                {/* CTA */}
                 <Link
                   href={`/${locale}/${localizedRoutes.logistics[locale]}`}
                   className="inline-block mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"

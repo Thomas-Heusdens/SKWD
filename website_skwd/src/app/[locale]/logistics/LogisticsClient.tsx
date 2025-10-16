@@ -41,22 +41,22 @@ export default function LogisticsClient() {
       description: t('logistics_carousel_1_description'),
     },
     {
-      image: '/images/Logistiek.jpeg',
+      image: '/images/parking.jpeg',
       title: t('logistics_carousel_2_title'),
       description: t('logistics_carousel_2_description'),
     },
     {
-      image: '/images/Logistiek.jpeg',
+      image: '/images/orderpicker.jpeg',
       title: t('logistics_carousel_3_title'),
       description: t('logistics_carousel_3_description'),
     },
     {
-      image: '/images/Logistiek.jpeg',
+      image: '/images/driver.jpg',
       title: t('logistics_carousel_4_title'),
       description: t('logistics_carousel_4_description'),
     },
     {
-      image: '/images/Logistiek.jpeg',
+      image: '/images/débarras.jpg',
       title: t('logistics_carousel_5_title'),
       description: t('logistics_carousel_5_description'),
     },
@@ -259,7 +259,7 @@ export default function LogisticsClient() {
               </CardSwap>
             ) : (
               <div className="w-full flex justify-center">
-                <Carousel items={carouselItems} baseWidth={300} autoplay autoplayDelay={3000} pauseOnHover loop />
+                <Carousel items={carouselItems} baseWidth={300} loop />
               </div>
             )}
           </div>
@@ -269,7 +269,20 @@ export default function LogisticsClient() {
       {/* ===== GALLERY ===== */}
       <section id="logistics-gallery" aria-labelledby="logistics-gallery-heading" className="bg-skwd-dark-blue text-white">
         <SquareMasonry
-          images={Array(18).fill('/images/thomas.jpg')}
+          images={[
+            '/images/parking.jpeg',
+            '/images/steward2.jpg',
+            '/images/Logistiek-hero2.jpeg',
+            '/images/Logistiek.jpg',
+            '/images/logistiek3.jpeg',
+            '/images/steward.jpg',
+            '/images/afbraak.jpeg',
+            '/images/construction.jpeg',
+            '/images/park.jpeg',
+            '/images/débarras.jpg',
+            '/images/steward3.jpg',
+            '/images/image.jpeg',
+          ]}
         />
       </section>
     </main>

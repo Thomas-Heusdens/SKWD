@@ -9,8 +9,6 @@ export default function OrientationWarning() {
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      // Show warning when device is in landscape AND small
-      // Small device = when in portrait mode, width would be <= 650
       const isSmallDevice = Math.min(width, height) <= 600;
       const isCurrentlyLandscape = width > height;
       

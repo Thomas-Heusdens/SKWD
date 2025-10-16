@@ -26,6 +26,7 @@ export default function Footer() {
       privacy_policy: 'Privacy Policy & General Terms',
       made_by: 'Made by',
       work: "Work with us",
+      address: "Rue Picard 7/ 204, 1000 Brussels",
     },
     fr: {
       recognition_label: 'Reconnaissance agence intérimaire:',
@@ -42,6 +43,7 @@ export default function Footer() {
       privacy_policy: 'Politique de Confidentialité & Conditions Générales',
       made_by: 'Créé par',
       work: "Collaborer avec nous",
+      address: "Rue Picard 7/ 204, 1000 Bruxelles",
     },
     nl: {
       recognition_label: 'Erkenning uitzendbureau:',
@@ -58,6 +60,7 @@ export default function Footer() {
       privacy_policy: 'Privacy Policy & Algemene voorwaarden',
       made_by: 'Gemaakt door',
       work: "Werk met ons",
+      address: "Picardstraat 7/ 204, 1000 Brussels",
     },
   };
 
@@ -186,7 +189,7 @@ export default function Footer() {
             <ul className="space-y-3 text-white/80 text-sm">
               <li className="flex items-center gap-2">
                 <MapPin className="text-skwd-button mt-1 w-5 h-5"/>
-                <a href='https://www.google.com/maps/place/SKWD/@50.8642498,4.3414631,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3c3e813e7b6a5:0xa201303064b9d786!8m2!3d50.8642464!4d4.344038!16s%2Fg%2F11x2x9sxz2?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D' target='_blank' className="hover:text-white transition-colors font-light">Picardstraat 11, 1000 Brussel</a>
+                <a href='https://www.google.com/maps/place/SKWD/@50.8642498,4.3414631,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3c3e813e7b6a5:0xa201303064b9d786!8m2!3d50.8642464!4d4.344038!16s%2Fg%2F11x2x9sxz2?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D' target='_blank' className="hover:text-white transition-colors font-light">{t.address}</a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="text-skwd-button mt-1 w-5 h-5"/>

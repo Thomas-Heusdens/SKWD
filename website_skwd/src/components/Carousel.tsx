@@ -22,7 +22,6 @@ export interface CarouselProps {
   round?: boolean;
 }
 
-// default items (can be overridden)
 const DEFAULT_ITEMS: CarouselItem[] = [
   {
     step: 'Step 1',
@@ -79,12 +78,11 @@ export default function Carousel({
   const [containerWidth, setContainerWidth] = useState<number>(baseWidth);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 🧠 Resize listener → makes carousel width responsive to its container
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current?.parentElement) {
         const parentWidth = containerRef.current.parentElement.clientWidth;
-        setContainerWidth(parentWidth - 32); // small padding
+        setContainerWidth(parentWidth - 32); 
       }
     };
     updateWidth();
@@ -101,7 +99,6 @@ export default function Carousel({
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isResetting, setIsResetting] = useState<boolean>(false);
 
-  // pause on hover
   useEffect(() => {
     if (pauseOnHover && containerRef.current) {
       const container = containerRef.current;
@@ -116,7 +113,6 @@ export default function Carousel({
     }
   }, [pauseOnHover]);
 
-  // autoplay
   useEffect(() => {
     if (autoplay && (!pauseOnHover || !isHovered)) {
       const timer = setInterval(() => {
@@ -162,7 +158,6 @@ export default function Carousel({
         },
       };
 
-  // 🌀 Pattern variations
   const tilePatterns = [
     '/images/Tile1.png',
     '/images/Tile2.png',
@@ -206,7 +201,6 @@ export default function Carousel({
           const outputRange = [90, 0, -90];
           const rotateY = useTransform(x, range, outputRange, { clamp: false });
 
-          // Pick tile based on index
           const pattern = tilePatterns[index % tilePatterns.length];
 
           return (

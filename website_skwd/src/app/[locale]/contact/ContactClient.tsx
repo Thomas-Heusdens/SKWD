@@ -43,7 +43,6 @@ export default function ContactClient() {
         aria-label={t('contact_hero_aria')}
         className="relative w-full min-h-screen flex items-center py-12 sm:py-16 lg:py-20"
       >
-        {/* Background Pattern */}
         <div className="absolute inset-0 -z-10 opacity-5">
           <img
             src="/images/pattern-bg.png"
@@ -58,7 +57,6 @@ export default function ContactClient() {
             
             {/* LEFT: Title + Description + Contact Info + Map */}
             <div className="flex flex-col gap-6 lg:gap-8">
-              {/* Title */}
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight">
                   {(() => {
@@ -74,7 +72,6 @@ export default function ContactClient() {
                 <div className="h-1 w-20 bg-skwd-button rounded-full" />
               </div>
 
-              {/* Description */}
               <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-xl">
                 {t('contact_description')}
               </p>
@@ -128,7 +125,7 @@ export default function ContactClient() {
                 </div>
               </div>
 
-              {/* Google Maps Embed - Hidden on mobile, visible on lg+ */}
+              {/* Google Maps Embed */}
               <div className="hidden lg:block rounded-2xl overflow-hidden border border-white/10 shadow-2xl mt-2">
                 <iframe
                   title="SKWD Brussels location"
@@ -257,7 +254,6 @@ export default function ContactClient() {
 
                         {/* Button */}
                         <Listbox.Button className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200">
-                          {/* Show selected label or default */}
                           {formData.sector
                             ? {
                                 hospitality: t('contact_sector_hospitality'),
@@ -268,7 +264,6 @@ export default function ContactClient() {
                           <ChevronDown className="w-5 h-5 text-white/60" />
                         </Listbox.Button>
 
-                        {/* Dropdown options */}
                         <Transition
                           as={Fragment}
                           leave="transition ease-in duration-100"

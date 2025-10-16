@@ -74,7 +74,6 @@ export default function RollingCounter({
 
   return (
     <>
-      {/* Counter Card */}
       <div
         ref={ref}
         className={`
@@ -103,7 +102,6 @@ export default function RollingCounter({
           )}
         </div>
 
-        {/* Label (always visible only on desktop) */}
         {label && (
           <p className="hidden md:block text-xs sm:text-sm md:text-base tracking-wide font-light mt-1">
             {label}
@@ -111,7 +109,6 @@ export default function RollingCounter({
         )}
       </div>
 
-      {/* Popup Overlay (mobile only) */}
       {showPopup && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4"

@@ -28,19 +28,16 @@ export default function Stack({
         ]
   );
 
-  // Store rotation offsets (generated only on client)
   const [rotationOffsets, setRotationOffsets] = useState<Record<number, number>>({});
 
   useEffect(() => {
-    // Run only on client after hydration
     const offsets: Record<number, number> = {};
     cards.forEach(card => {
-      offsets[card.id] = Math.random() * 8 - 4; // random between -4° and +4°
+      offsets[card.id] = Math.random() * 8 - 4; 
     });
     setRotationOffsets(offsets);
   }, [cards]);
 
-  // Moves clicked card to the *beginning* (visually behind others)
   const sendToBack = (id: number) => {
     setCards(prev => {
       const newCards = [...prev];
@@ -51,7 +48,6 @@ export default function Stack({
     });
   };
 
-  // Wait until offsets are generated before rendering
   if (Object.keys(rotationOffsets).length === 0) return null;
 
   return (
@@ -66,7 +62,6 @@ export default function Stack({
       {cards.map((card, index) => {
         const totalCards = cards.length;
 
-        // Combine stable offset + index-based angle for spacing
         const baseRotation = ((index / (totalCards - 1)) * 12 - 6);
         const rotateZ = baseRotation + (rotationOffsets[card.id] || 0);
 
@@ -78,7 +73,6 @@ export default function Stack({
             className="absolute top-0 left-0 rounded-2xl overflow-hidden border-4 border-white cursor-pointer shadow-lg"
             onClick={() => {
               if (!sendToBackOnClick) return;
-              // Small delay before moving to back
               setTimeout(() => sendToBack(card.id), 150);
             }}
             whileTap={{ scale: 0.95 }}

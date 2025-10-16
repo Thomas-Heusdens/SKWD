@@ -1,13 +1,12 @@
 'use client';
 
 import { useTranslation } from '@/lib/i18n';
-import MagicBento from '@/components/MagicBento'; // path where you placed the Bento file
+import MagicBento from '@/components/MagicBento';
 import { useMemo } from 'react';
 
 export default function ProjectsBento() {
   const { t } = useTranslation();
 
-  // Prepare 6 cards using translation keys from common.json
   const localizedCards = useMemo(
     () => [
       {

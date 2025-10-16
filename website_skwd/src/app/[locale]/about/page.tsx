@@ -4,7 +4,6 @@ import AboutClient from './AboutClient';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
-  // --- Localized text content ---
   const content = {
     fr: {
       title: 'À propos de nous - SKWD',

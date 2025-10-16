@@ -25,7 +25,6 @@ export default function TeamMemberCard({
       className="flex flex-col"
     >
       <figure className="flex flex-col">
-        {/* Image with only top rounded corners */}
         <div className="relative w-full aspect-square overflow-hidden rounded-t-lg">
           <Image
             src={imageUrl}
@@ -35,7 +34,6 @@ export default function TeamMemberCard({
           />
         </div>
 
-        {/* Caption with only bottom rounded corners */}
         <figcaption className="bg-skwd-blue rounded-b-lg p-4 text-left">
           <p className="text-lg font-medium text-white">{name}</p>
           <p className="text-sm font-light text-skwd-text-highlight">

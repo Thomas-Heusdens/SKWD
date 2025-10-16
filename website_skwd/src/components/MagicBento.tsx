@@ -689,7 +689,6 @@ const MagicBento: React.FC<BentoProps & { customCards?: BentoCardProps[] }> = ({
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
                 >
-                    {/* Background image (always behind everything) */}
                     <Image
                         src={card.image ?? "/logo-skwd.png"}
                         alt="Project Image"
@@ -698,15 +697,12 @@ const MagicBento: React.FC<BentoProps & { customCards?: BentoCardProps[] }> = ({
                         draggable="false"
                     />
 
-                    {/* Overlay for readability */}
                     <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-                    {/* HEADER - Title now replaces the number */}
                     <div className="card__header flex justify-between gap-3 relative text-white mb-2 z-[2]">
                       <h3 className="card__title font-semibold text-lg">{card.title}</h3>
                     </div>
 
-                    {/* TAG / DESCRIPTION */}
                     <div className="card__content flex flex-col relative text-white z-[2]">
                         {card.description && (
                             <span
@@ -841,7 +837,6 @@ const MagicBento: React.FC<BentoProps & { customCards?: BentoCardProps[] }> = ({
                   el.addEventListener('click', handleClick);
                 }}
               >
-                {/* Background image (always behind everything) */}
                 <Image
                     src={card.image ?? "/logo-skwd.png"}
                     alt="Project Image"
@@ -850,16 +845,12 @@ const MagicBento: React.FC<BentoProps & { customCards?: BentoCardProps[] }> = ({
                     draggable="false"
                 />
 
-
-                {/* Overlay for readability */}
                 <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-                {/* HEADER - Title now replaces the number */}
                 <div className="card__header flex justify-between gap-3 relative text-white mb-2 z-[2]">
                   <h3 className="card__title font-semibold text-lg">{card.title}</h3>
                 </div>
 
-                {/* TAG / DESCRIPTION */}
                 <div className="card__content flex flex-col relative text-white z-[2]">
                     {card.description && (
                         <span

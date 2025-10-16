@@ -88,7 +88,6 @@ export default function HospitalityClient() {
         aria-label="Hospitality hero section"
         className="relative w-full h-screen overflow-hidden flex items-center justify-center text-white"
       >
-        {/* Background image */}
         <Image
           src="/images/hospitality-hero.jpg"
           alt="Hospitality services hero background"
@@ -98,7 +97,6 @@ export default function HospitalityClient() {
         />
         <div className="absolute inset-0 bg-skwd-dark-blue/70" />
 
-        {/* Content overlay */}
         <div className="relative z-10 text-center max-w-3xl px-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-2 md:mb-4 text-center">
             {(() => {
@@ -113,14 +111,12 @@ export default function HospitalityClient() {
           </h1>
           <p className="font-light text-sm md:text-base mb-8">{t('hospitality_description')}</p>
           <div className="flex justify-center gap-4 flex-wrap">
-            {/* Apply button */}
             <Link
               href="https://jobs.skwd.be/hospitality"
               className="px-6 py-3 bg-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
             >
               {t('hospitality_cta_apply')}
             </Link>
-            {/* Contact button */}
             <Link
               href={`/${locale}/${localizedRoutes.contact[locale]}`}
               className="px-6 py-3 bg-white text-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
@@ -161,7 +157,6 @@ export default function HospitalityClient() {
             {t('hospitality_jobs_description')}
           </p>
 
-          {/* Carousel placeholder */}
           <div
             id="job-carousel"
             className="relative w-full overflow-hidden"
@@ -198,7 +193,6 @@ export default function HospitalityClient() {
             </p>
           </header>
 
-          {/* InfoCards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <InfoCard cardTitle='hospitality_event_card_title_1' cardDescription='hospitality_event_card_description_1' icon={Clock8} patternOverlaySrc="/images/Tile2.png" color='skwd-dark-blue' />
             <InfoCard cardTitle='hospitality_event_card_title_2' cardDescription='hospitality_event_card_description_2' icon={ChefHat} patternOverlaySrc="/images/Tile3.png" color='skwd-dark-blue' />
@@ -266,7 +260,6 @@ export default function HospitalityClient() {
                 delay={4000}
                 pauseOnHover={false}
               >
-                {/* CARD 1 */}
                 <Card>
                   <div className="absolute inset-0 z-0 opacity-10">
                     <img
@@ -287,7 +280,6 @@ export default function HospitalityClient() {
                   </div>
                 </Card>
 
-                {/* CARD 2 */}
                 <Card>
                   <div className="absolute inset-0 z-0 opacity-10">
                     <img
@@ -308,7 +300,6 @@ export default function HospitalityClient() {
                   </div>
                 </Card>
 
-                {/* CARD 3 */}
                 <Card>
                   <div className="absolute inset-0 z-0 opacity-10">
                     <img
@@ -329,7 +320,6 @@ export default function HospitalityClient() {
                   </div>
                 </Card>
 
-                {/* CARD 4 */}
                 <Card>
                   <div className="absolute inset-0 z-0 opacity-10">
                     <img
@@ -355,9 +345,6 @@ export default function HospitalityClient() {
                 <Carousel
                   items={carouselItems}
                   baseWidth={300}
-                  autoplay
-                  autoplayDelay={3000}
-                  pauseOnHover
                   loop
                 />
               </div>
@@ -375,24 +362,24 @@ export default function HospitalityClient() {
       >
         <SquareMasonry
           images={[
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
-            '/images/thomas.jpg',
+            '/images/image1.jpg',
+            '/images/image2.jpg',
+            '/images/image3.jpg',
+            '/images/image4.jpg',
+            '/images/image5.jpg',
+            '/images/image6.jpg',
+            '/images/image7.jpg',
+            '/images/image8.jpeg',
+            '/images/image9.jpg',
+            '/images/image10.jpeg',
+            '/images/image11.jpeg',
+            '/images/image12.jpeg',
+            '/images/image13.jpeg',
+            '/images/image14.jpeg',
+            '/images/image15.jpeg',
+            '/images/image16.jpg',
+            '/images/image17.jpeg',
+            '/images/image18.jpg',
           ]}
         />
       </section>
