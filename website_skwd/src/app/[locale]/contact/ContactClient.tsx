@@ -103,7 +103,7 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold text-white mb-1">{t('contact_phone')}</h3>
-                      <p className="text-sm text-white/70">+32 2 123 45 67</p>
+                      <p className="text-sm text-white/70">+32 476 02 64 39</p>
                     </div>
                   </div>
                 </div>

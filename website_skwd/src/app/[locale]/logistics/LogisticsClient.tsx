@@ -182,7 +182,7 @@ export default function LogisticsClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <InfoCard cardTitle='logistics_event_card_title_1' cardDescription='logistics_event_card_description_1' icon={Clock8} patternOverlaySrc="/images/Tile2.png" color='skwd-dark-blue' />
-            <InfoCard cardTitle='logistics_event_card_title_2' cardDescription='logistics_event_card_description_2' icon={ChefHat} patternOverlaySrc="/images/Tile3.png" color='skwd-dark-blue' />
+            <InfoCard cardTitle='logistics_event_card_title_2' cardDescription='logistics_event_card_description_2' icon={BicepsFlexed} patternOverlaySrc="/images/Tile3.png" color='skwd-dark-blue' />
             <InfoCard cardTitle='logistics_event_card_title_3' cardDescription='logistics_event_card_description_3' icon={BadgeCheck} patternOverlaySrc="/images/Tile4.png" color='skwd-dark-blue' />
           </div>
         </div>
@@ -280,8 +280,8 @@ export default function LogisticsClient() {
             '/images/construction.jpeg',
             '/images/park.jpeg',
             '/images/débarras.jpg',
-            '/images/steward3.jpg',
-            '/images/image.jpeg',
+            '/images/mise-en-place.jpg',
+            '/images/debas.jpg',
           ]}
         />
       </section>
