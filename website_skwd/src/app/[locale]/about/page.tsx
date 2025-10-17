@@ -1,9 +1,14 @@
-import { url } from 'inspector';
+import { languages } from '@/i18n/settings';
 import AboutClient from './AboutClient';
+
+export async function generateStaticParams() {
+  return languages.map((lng: any) => ({ locale: lng }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
+  // --- Localized metadata content ---
   const content = {
     fr: {
       title: 'À propos de nous - SKWD',
@@ -11,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique.",
       ogDescription:
         "Découvrez SKWD : une agence belge spécialisée dans le staffing événementiel et la mise en relation entre étudiants et entreprises.",
-      url: 'https://skwd.be/fr/a-propos',  
+      url: 'https://skwd.be/fr/a-propos',
     },
     nl: {
       title: 'Over ons - SKWD',
@@ -32,9 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
+  const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: '/images/og-about.jpg',
+    url: `${siteUrl}/images/og-about.jpg`,
     width: 1200,
     height: 630,
     alt: 'SKWD About Us preview image',
@@ -46,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t.title,
       description: t.ogDescription,
-      url: `https://skwd.be/${locale}/about`,
+      url: t.url,
       siteName: 'SKWD',
       images: [ogImage],
       locale,
@@ -59,13 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [ogImage.url],
     },
     alternates: {
-      canonical: `https://skwd.be/${
-        locale === 'fr'
-          ? 'fr/a-propos'
-          : locale === 'nl'
-          ? 'nl/over-ons'
-          : 'en/about-us'
-      }`,
+      canonical: t.url,
       languages: {
         en: 'https://skwd.be/en/about-us',
         fr: 'https://skwd.be/fr/a-propos',

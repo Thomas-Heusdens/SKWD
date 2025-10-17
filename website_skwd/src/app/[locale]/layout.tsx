@@ -37,9 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
+  const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: '/images/og-home.jpg',
+    url: `${siteUrl}/images/og-home.jpg`,
     width: 1200,
     height: 630,
     alt: 'SKWD homepage preview image',
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: t.title,
       description: t.ogDescription,
-      url: `https://skwd.be/${locale}`,
+      url: `${siteUrl}/${locale}`,
       siteName: 'SKWD',
       images: [ogImage],
       locale,
@@ -64,11 +65,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [ogImage.url],
     },
     alternates: {
-      canonical: `https://skwd.be/${locale}`,
+      canonical: `${siteUrl}/${locale}`,
       languages: {
-        en: 'https://skwd.be/en',
-        fr: 'https://skwd.be/fr',
-        nl: 'https://skwd.be/nl',
+        en: `${siteUrl}/en`,
+        fr: `${siteUrl}/fr`,
+        nl: `${siteUrl}/nl`,
       },
     },
   };

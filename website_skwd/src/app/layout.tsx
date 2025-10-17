@@ -16,7 +16,9 @@ export const metadata = {
   icons: {
     icon: '/logo-skwd.png'
   },
+  metadataBase: new URL('https://skwd.be'),
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

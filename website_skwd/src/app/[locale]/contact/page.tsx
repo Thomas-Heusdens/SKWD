@@ -1,17 +1,15 @@
+import { languages } from '@/i18n/settings';
 import ContactClient from './ContactClient';
+
+export async function generateStaticParams() {
+  return languages.map((lng: any) => ({ locale: lng }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
+  // --- Localized metadata content ---
   const content = {
-    nl: {
-      title: 'Contactformulier - SKWD',
-      description:
-        'Heeft u binnenkort een feest, receptie of evenement en zoekt u enthousiaste studenten? Neem via deze pagina contact op met ons team.',
-      ogDescription:
-        'Neem contact op met SKWD — wij helpen u met gemotiveerde studenten voor horeca, logistiek en evenementen.',
-      url: 'https://skwd.be/nl/contacteer-ons',
-    },
     fr: {
       title: 'Formulaire de contact - SKWD',
       description:
@@ -19,6 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ogDescription:
         "Contactez SKWD — votre partenaire pour le personnel étudiant en logistique, horeca et événements.",
       url: 'https://skwd.be/fr/contactez-nous',
+    },
+    nl: {
+      title: 'Contactformulier - SKWD',
+      description:
+        'Heeft u binnenkort een feest, receptie of evenement en zoekt u enthousiaste studenten? Neem via deze pagina contact op met ons team.',
+      ogDescription:
+        'Neem contact op met SKWD — wij helpen u met gemotiveerde studenten voor horeca, logistiek en evenementen.',
+      url: 'https://skwd.be/nl/contacteer-ons',
     },
     en: {
       title: 'Contact Form - SKWD',
@@ -31,9 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
+  const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: '/images/og-contact.jpg',
+    url: `${siteUrl}/images/og-contact.jpg`,
     width: 1200,
     height: 630,
     alt: 'SKWD contact form preview',

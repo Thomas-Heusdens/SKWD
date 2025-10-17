@@ -1,17 +1,15 @@
+import { languages } from '@/i18n/settings';
 import FaqClient from './FaqClient';
+
+export async function generateStaticParams() {
+  return languages.map((lng: any) => ({ locale: lng }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
+  // --- Localized metadata content ---
   const content = {
-    nl: {
-      title: 'Veelgestelde vragen - SKWD',
-      description:
-        'Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!',
-      ogDescription:
-        'Ontdek antwoorden op veelgestelde vragen over SKWD, student jobs, sollicitatie en werkplanning.',
-      url: 'https://skwd.be/nl/veelgestelde-vragen',
-    },
     fr: {
       title: 'Questions fréquentes - SKWD',
       description:
@@ -19,6 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ogDescription:
         'Découvrez les réponses aux questions fréquentes sur SKWD, les jobs étudiants et le processus de recrutement.',
       url: 'https://skwd.be/fr/faq',
+    },
+    nl: {
+      title: 'Veelgestelde vragen - SKWD',
+      description:
+        'Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!',
+      ogDescription:
+        'Ontdek antwoorden op veelgestelde vragen over SKWD, student jobs, sollicitatie en werkplanning.',
+      url: 'https://skwd.be/nl/veelgestelde-vragen',
     },
     en: {
       title: 'Frequently Asked Questions - SKWD',
@@ -31,12 +37,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
+  const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: '/images/og-faq.jpg',
+    url: `${siteUrl}/images/og-faq.jpg`,
     width: 1200,
     height: 630,
-    alt: 'FAQ SKWD Preview Image',
+    alt: 'FAQ SKWD preview image',
   };
 
   return {
