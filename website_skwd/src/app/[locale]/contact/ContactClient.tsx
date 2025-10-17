@@ -274,7 +274,7 @@ export default function ContactClient() {
                     {/* Company */}
                     <div className="form-group">
                       <label htmlFor="company" className="block text-sm font-medium text-white/90 mb-2">
-                        {t('contact_company')}
+                        {t('contact_company')} <span className="text-red-400">*</span>
                       </label>
                       <input
                         id="company"
@@ -282,6 +282,7 @@ export default function ContactClient() {
                         type="text"
                         value={formData.company}
                         onChange={handleChange}
+                        required
                         className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
                         placeholder={t('contact_placeholder_company')}
                       />
@@ -293,7 +294,7 @@ export default function ContactClient() {
                       <Listbox value={formData.inquiryType} onChange={(value) => setFormData({...formData, inquiryType: value})}>
                         <div className="relative">
                           <label htmlFor="sector" className="block text-sm font-medium text-white/90 mb-2">
-                            {t('contact_sector')}
+                            {t('contact_inquiry')} <span className="text-red-400">*</span>
                           </label>
                           <Listbox.Button className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400">
                             {inquiryOptions.find(o => o.value === formData.inquiryType)?.label || t('contact_select')}
@@ -335,7 +336,7 @@ export default function ContactClient() {
                             htmlFor="sector"
                             className="block text-sm font-medium text-white/90 mb-2"
                           >
-                            {t('contact_sector')}
+                            {t('contact_sector')} <span className="text-red-400">*</span>
                           </label>
 
                           {/* Button */}

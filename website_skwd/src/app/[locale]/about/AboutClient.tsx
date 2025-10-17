@@ -94,6 +94,12 @@ export default function AboutClient() {
     '@type': 'AboutPage',
     '@id': `${pageUrl}#aboutpage`,
     url: pageUrl,
+    headline:
+      locale === 'fr'
+        ? 'À propos de nous'
+        : locale === 'nl'
+        ? 'Over ons'
+        : 'About Us',
     name:
       locale === 'fr' ? 'À propos de nous - SKWD'
       : locale === 'nl' ? 'Over ons - SKWD'
@@ -136,7 +142,7 @@ export default function AboutClient() {
 
           <div className="section-container relative z-10 flex flex-col items-center justify-center">
             <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
-              Your staffing <span className="text-skwd-text-highlight">agency</span>
+              YOUR STAFFING <span className="text-skwd-text-highlight">AGENCY</span>
             </h1>
             <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
             <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">

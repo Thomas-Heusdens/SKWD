@@ -64,11 +64,11 @@ export default function HomePage() {
     '@id': `${pageUrl}#webpage`,
     url: pageUrl,
     headline:
-    locale === 'fr'
-      ? 'Accueil'
-      : locale === 'nl'
-      ? 'Startpagina'
-      : 'Home',
+      locale === 'fr'
+        ? 'Accueil'
+        : locale === 'nl'
+        ? 'Startpagina'
+        : 'Home',
     name:
       locale === 'fr' ? 'Accueil - SKWD'
       : locale === 'nl' ? 'Startpagina - SKWD'
@@ -80,7 +80,7 @@ export default function HomePage() {
       locale === 'fr'
         ? "Découvrez SKWD, l'agence belge qui relie étudiants motivés et entreprises pour des événements réussis en Belgique."
         : locale === 'nl'
-        ? 'Ontdek SKWD, het Belgische bureau dat studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        ? 'Ontdek SKWD, het Belgische agency dat studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.'
   };
 

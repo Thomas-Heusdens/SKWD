@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: `${siteUrl}/images/og-logistics.jpg`,
+    url: `${siteUrl}/images/og-logistics.png`,
     width: 1200,
     height: 630,
     alt: 'SKWD logistics division preview image',

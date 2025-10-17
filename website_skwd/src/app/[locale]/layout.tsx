@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     nl: {
       title: 'Startpagina - SKWD',
       description:
-        'Ontdek SKWD, het Belgische bureau dat studenten en bedrijven verbindt voor succesvolle evenementen in België.',
+        'Ontdek SKWD, het Belgische agency dat studenten en bedrijven verbindt voor succesvolle evenementen in België.',
       ogDescription:
         'Ontdek SKWD, jouw partner voor geslaagde evenementen in België. Gespecialiseerd in studentenevenementen en staffing.',
       url: 'https://skwd.be/nl',  

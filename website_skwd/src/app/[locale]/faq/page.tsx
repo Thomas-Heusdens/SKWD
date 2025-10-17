@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const siteUrl = 'https://skwd.be';
 
   const ogImage = {
-    url: `${siteUrl}/images/og-faq.jpg`,
+    url: `${siteUrl}/images/og-faq.png`,
     width: 1200,
     height: 630,
     alt: 'FAQ SKWD preview image',
