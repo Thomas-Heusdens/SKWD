@@ -69,21 +69,25 @@ export default function HospitalityClient() {
     '@type': 'WebPage',
     '@id': `${pageUrl}#hospitalitypage`,
     url: pageUrl,
+
     headline:
       locale === 'fr'
-        ? 'Secteur Hospitalité'
+        ? "Secteur de l'hospitalité"
         : locale === 'nl'
-        ? 'Hospitality Sector'
-        : 'Hospitality Division',
+        ? 'Sector hospitality'
+        : 'Hospitality sector',
+
     name:
       locale === 'fr'
         ? 'Secteur Hospitalité - SKWD'
         : locale === 'nl'
-        ? 'Hospitality Sector - SKWD'
-        : 'Hospitality Division - SKWD',
+        ? 'Sector Hospitality - SKWD'
+        : 'Hospitality sector - SKWD',
+
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+
     description:
       locale === 'fr'
         ? "Découvrez nos services dans le secteur de l'hospitalité : du catering aux activations de marque, nous plaçons les bons profils aux bons endroits."
@@ -161,7 +165,7 @@ export default function HospitalityClient() {
       />
       <main id="main-content">
         {/* ===== HERO SECTION ===== */}
-        <section
+        <header
           id="hospitality-hero"
           aria-label="Hospitality hero section"
           className="relative w-full h-screen overflow-hidden flex items-center justify-center text-white"
@@ -203,7 +207,7 @@ export default function HospitalityClient() {
               </Link>
             </div>
           </div>
-        </section>
+        </header>
 
         {/* ===== JOB TYPES SECTION ===== */}
         <section
@@ -342,7 +346,7 @@ export default function HospitalityClient() {
                     <div className="absolute inset-0 z-0 opacity-10">
                       <img
                         src="/images/Tile1.png"
-                        alt=""
+                        alt="pattern"
                         className="w-full h-full object-cover rounded-xl"
                       />
                     </div>
@@ -362,7 +366,7 @@ export default function HospitalityClient() {
                     <div className="absolute inset-0 z-0 opacity-10">
                       <img
                         src="/images/Tile6.png"
-                        alt=""
+                        alt="pattern"
                         className="w-full h-full object-cover rounded-xl"
                       />
                     </div>
@@ -382,7 +386,7 @@ export default function HospitalityClient() {
                     <div className="absolute inset-0 z-0 opacity-10">
                       <img
                         src="/images/Tile3.png"
-                        alt=""
+                        alt="pattern"
                         className="w-full h-full object-cover rounded-xl"
                       />
                     </div>
@@ -402,7 +406,7 @@ export default function HospitalityClient() {
                     <div className="absolute inset-0 z-0 opacity-10">
                       <img
                         src="/images/Tile2.png"
-                        alt=""
+                        alt="pattern"
                         className="w-full h-full object-cover rounded-xl"
                       />
                     </div>

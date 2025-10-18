@@ -57,31 +57,36 @@ export default function HomePage() {
     publisher: { '@id': `${siteUrl}/#organization` }
   };
 
-  // --- WebPage ---
   const webPage = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${pageUrl}#webpage`,
     url: pageUrl,
+
     headline:
       locale === 'fr'
-        ? 'Accueil'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'Startpagina'
-        : 'Home',
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+
     name:
-      locale === 'fr' ? 'Accueil - SKWD'
-      : locale === 'nl' ? 'Startpagina - SKWD'
-      : 'Home - SKWD',
-    isPartOf: { '@id': `${siteUrl}/#website` },
-    mainEntity: { '@id': `${siteUrl}/#organization` },
-    inLanguage: locale,
+      locale === 'fr'
+        ? 'Accueil - SKWD'
+        : locale === 'nl'
+        ? 'Startpagina - SKWD'
+        : 'Home - SKWD',
+
     description:
       locale === 'fr'
         ? "Découvrez SKWD, l'agence belge qui relie étudiants motivés et entreprises pour des événements réussis en Belgique."
         : locale === 'nl'
         ? 'Ontdek SKWD, het Belgische agency dat studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.'
+        : 'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.',
+
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: { '@id': `${siteUrl}/#organization` },
+    inLanguage: locale,
   };
 
   return (
@@ -95,11 +100,14 @@ export default function HomePage() {
       />
       <main>
         {/* ===== HERO SECTION (Main CTA area) ===== */}
-        <section
+        <header
           id="hero"
           aria-label="Main choices for visitors"
           className="relative w-full h-screen overflow-hidden"
         >
+          <h1 className="sr-only">
+            {t('home_main_title')}
+          </h1>
           <div className="absolute inset-0 flex flex-col md:flex-row">
             <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
               <Image
@@ -174,7 +182,7 @@ export default function HomePage() {
               </a>
             </article>
           </div>
-        </section>
+        </header>
 
         {/* ===== PROJECT GALLERY / IMPACT SECTION ===== */}
         <section
@@ -303,7 +311,7 @@ export default function HomePage() {
               >
                 <Image
                   src="/images/hospitality.jpeg"            
-                  alt=""                                    
+                  alt="Hospitality image"                                    
                   fill
                   sizes="(max-width:768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -344,7 +352,7 @@ export default function HomePage() {
               >
                 <Image
                   src="/images/Logistiek.jpg"              
-                  alt=""                                   
+                  alt="Logistics image"                                   
                   fill
                   sizes="(max-width:768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

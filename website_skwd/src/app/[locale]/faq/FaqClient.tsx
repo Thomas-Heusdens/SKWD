@@ -73,13 +73,13 @@ export default function FaqClient() {
         ? 'Questions fréquentes'
         : locale === 'nl'
         ? 'Veelgestelde vragen'
-        : 'Frequently Asked Questions',
+        : 'Frequently asked questions',
     name:
       locale === 'fr'
         ? 'Questions fréquentes - SKWD'
         : locale === 'nl'
         ? 'Veelgestelde vragen - SKWD'
-        : 'Frequently Asked Questions - SKWD',
+        : 'Frequently asked questions - SKWD',
     description:
       locale === 'fr'
         ? 'Trouvez rapidement les réponses à vos questions sur le travail chez SKWD. Une question manquante? Contactez-nous!'
@@ -214,7 +214,7 @@ export default function FaqClient() {
         }}
       />
       <main id="main-content">
-        <section
+        <header
           id="faq-hero"
           aria-label="Veelgestelde vragen hero"
           className="relative w-full min-h-[60vh] flex flex-col justify-center items-center text-center text-white py-16"
@@ -241,7 +241,7 @@ export default function FaqClient() {
           <p className="max-w-xl text-white/90 font-light text-sm md:text-base">
             {t('faq_description')}
           </p>
-        </section>
+        </header>
 
         {/* ===== FAQ SECTION ===== */}
         <section

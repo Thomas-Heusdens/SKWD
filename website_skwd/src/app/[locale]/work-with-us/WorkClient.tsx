@@ -72,21 +72,25 @@ export default function WorkWithUsClient() {
     '@type': 'WebPage',
     '@id': `${pageUrl}#workwithuspage`,
     url: pageUrl,
+
     headline:
       locale === 'fr'
-        ? 'Travailler avec nous'
+        ? 'La bonne personne au bon endroit, au bon moment.'
         : locale === 'nl'
-        ? 'Werk met ons'
-        : 'Work with us',
+        ? 'De juiste persoon op de juiste plaats, op het juiste moment.'
+        : 'The right person in the right place, at the right time.',
+
     name:
       locale === 'fr'
         ? 'Travailler avec nous - SKWD'
         : locale === 'nl'
         ? 'Werk met ons - SKWD'
         : 'Work with us - SKWD',
+
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+
     description:
       locale === 'fr'
         ? "Découvrez comment collaborer avec SKWD pour vos événements. Nous mettons en relation entreprises et étudiants motivés pour des missions de qualité."
@@ -136,7 +140,7 @@ export default function WorkWithUsClient() {
       />
       <main id="main-content">
         {/* ===== HERO SECTION ===== */}
-        <section
+        <header
           id="work-hero"
           aria-label="Work with us hero section"
           className="relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center text-center lg:text-left overflow-hidden"
@@ -215,7 +219,7 @@ export default function WorkWithUsClient() {
             />
             <div className="absolute inset-0 bg-skwd-dark-blue/70 pointer-events-none" />
           </div>
-        </section>
+        </header>
 
         {/* ===== PARTNERS LOGO SCROLL SECTION ===== */}
         <section
@@ -270,7 +274,7 @@ export default function WorkWithUsClient() {
                 <CardSwap cardDistance={60} verticalDistance={70} delay={4000} pauseOnHover={false}>
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile2.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                      <img src="/images/Tile2.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_1')}</h3>
@@ -286,7 +290,7 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile4.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                      <img src="/images/Tile4.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_2')}</h3>
@@ -302,7 +306,7 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile6.png" alt="" className="w-full h-full object-cover rounded-xl" />
+                      <img src="/images/Tile6.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_3')}</h3>
@@ -412,7 +416,7 @@ export default function WorkWithUsClient() {
               >
                 <Image
                   src="/images/hospitality.jpeg"            
-                  alt=""                                    
+                  alt="Hospitality image"                                    
                   fill
                   sizes="(max-width:768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -445,7 +449,7 @@ export default function WorkWithUsClient() {
               >
                 <Image
                   src="/images/Logistiek.jpg"              
-                  alt=""                                   
+                  alt="logistics image"                                   
                   fill
                   sizes="(max-width:768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -78,21 +78,27 @@ export default function LogisticsClient() {
     '@type': 'WebPage',
     '@id': `${pageUrl}#logisticspage`,
     url: pageUrl,
+
+    // Match visible H1
     headline:
       locale === 'fr'
-        ? 'Secteur Logistique'
+        ? 'Secteur de la logistique'
         : locale === 'nl'
-        ? 'Logistieke Sector'
-        : 'Logistics Division',
+        ? 'Sector logistiek'
+        : 'Logistics sector',
+
+    // Match browser tab title
     name:
       locale === 'fr'
         ? 'Secteur Logistique - SKWD'
         : locale === 'nl'
-        ? 'Logistieke Sector - SKWD'
-        : 'Logistics Division - SKWD',
+        ? 'Sector Logistiek - SKWD'
+        : 'Logistics sector - SKWD',
+
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+
     description:
       locale === 'fr'
         ? "Découvrez nos services dans le secteur de la logistique : de la manutention au transport, nous plaçons les bons profils aux bons endroits."
@@ -167,7 +173,7 @@ export default function LogisticsClient() {
       />
       <main id="main-content">
         {/* ===== HERO SECTION ===== */}
-        <section
+        <header
           id="logistics-hero"
           aria-label="Logistics hero section"
           className="relative w-full h-screen overflow-hidden flex items-center justify-center text-white"
@@ -209,7 +215,7 @@ export default function LogisticsClient() {
               </Link>
             </div>
           </div>
-        </section>
+        </header>
 
         {/* ===== JOB TYPES ===== */}
         <section id="job-types" aria-labelledby="job-types-heading" className="relative py-14 md:py-20 px-6 text-white">

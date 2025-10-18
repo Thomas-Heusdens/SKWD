@@ -9,7 +9,7 @@ export default function OrientationWarning() {
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      const isSmallDevice = Math.min(width, height) <= 600;
+      const isSmallDevice = Math.min(width, height) <= 480;
       const isCurrentlyLandscape = width > height;
       
       setIsLandscape(isSmallDevice && isCurrentlyLandscape);

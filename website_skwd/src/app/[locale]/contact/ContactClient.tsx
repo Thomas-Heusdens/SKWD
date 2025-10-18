@@ -65,24 +65,30 @@ export default function ContactClient() {
     '@type': 'ContactPage',
     '@id': `${pageUrl}#contactpage`,
     url: pageUrl,
+
+    // Visible <h1> text (matches page headline)
     headline:
       locale === 'fr'
-        ? 'Contactez-nous'
+        ? 'Formulaire de contact'
         : locale === 'nl'
-        ? 'Contacteer ons'
-        : 'Contact us',
+        ? 'Contact formulier'
+        : 'Contact form',
+
+    // Document title (window/tab)
     name:
       locale === 'fr'
-        ? 'Formulaire de contact - SKWD'
+        ? 'Contactez-nous - SKWD'
         : locale === 'nl'
-        ? 'Contactformulier - SKWD'
-        : 'Contact Form - SKWD',
+        ? 'Contacteer ons - SKWD'
+        : 'Contact us - SKWD',
+
     description:
       locale === 'fr'
         ? "Vous organisez un événement et recherchez des étudiants motivés ? Contactez notre équipe via cette page."
         : locale === 'nl'
         ? 'Heeft u binnenkort een feest, receptie of evenement en zoekt u enthousiaste studenten? Neem via deze pagina contact op met ons team.'
         : 'Organizing an event or reception? Contact SKWD to find enthusiastic students for your team.',
+
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
@@ -124,7 +130,7 @@ export default function ContactClient() {
       />
       <main>
         {/* ===== HERO SECTION ===== */}
-        <section
+        <header
           id="contact-hero"
           aria-label={t('contact_hero_aria')}
           className="relative w-full min-h-screen flex items-center py-12 sm:py-16 lg:py-20"
@@ -132,7 +138,7 @@ export default function ContactClient() {
           <div className="absolute inset-0 -z-10 opacity-5">
             <img
               src="/images/pattern-bg.png"
-              alt=""
+              alt="pattern"
               className="w-full h-full object-cover"
               aria-hidden="true"
             />
@@ -442,7 +448,7 @@ export default function ContactClient() {
               </div>
             </div>
           </div>
-        </section>
+        </header>
       </main>
     </>
   );

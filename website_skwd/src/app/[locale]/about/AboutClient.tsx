@@ -94,16 +94,14 @@ export default function AboutClient() {
     '@type': 'AboutPage',
     '@id': `${pageUrl}#aboutpage`,
     url: pageUrl,
-    headline:
-      locale === 'fr'
-        ? 'À propos de nous'
-        : locale === 'nl'
-        ? 'Over ons'
-        : 'About Us',
+    headline: 'YOUR STAFFING AGENCY',
     name:
-      locale === 'fr' ? 'À propos de nous - SKWD'
-      : locale === 'nl' ? 'Over ons - SKWD'
-      : 'About Us - SKWD',
+      locale === 'fr'
+        ? 'À propos de nous - SKWD'
+        : locale === 'nl'
+        ? 'Over ons - SKWD'
+        : 'About Us - SKWD',
+
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
@@ -112,7 +110,7 @@ export default function AboutClient() {
         ? "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique."
         : locale === 'nl'
         ? 'Kom meer te weten over ons en hoe het SKWD-team studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.'
+        : 'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.',
   };
 
   return (
@@ -125,7 +123,7 @@ export default function AboutClient() {
       />
       <main id="main-content">
         {/* ===== HERO SECTION ===== */}
-        <section
+        <header
           id="about-hero"
           aria-label="About SKWD hero section"
           className="relative w-full min-h-screen flex flex-col items-center justify-center text-center"
@@ -153,7 +151,7 @@ export default function AboutClient() {
               />
             </div>
           </div>
-        </section>
+        </header>
 
         {/* AGENCY NUMBERS SECTION */}
         <section

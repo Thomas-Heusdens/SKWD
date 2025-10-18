@@ -5,39 +5,49 @@ export async function generateStaticParams() {
   return languages.map((lng: any) => ({ locale: lng }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
     fr: {
       title: 'À propos de nous - SKWD',
+      seoTitle: 'À propos',
+      ogTitle: 'À propos - Découvrez notre équipe et la force qui fait le succès de SKWD',
       description:
         "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique.",
       ogDescription:
-        "Découvrez SKWD : une agence belge spécialisée dans le staffing événementiel et la mise en relation entre étudiants et entreprises.",
-      url: 'https://skwd.be/fr/a-propos',
+        "Plongez dans les coulisses de SKWD : une équipe passionnée qui fait le lien entre étudiants motivés et entreprises ambitieuses pour des événements inoubliables.",
+      url: `${siteUrl}/fr/a-propos`,
     },
     nl: {
       title: 'Over ons - SKWD',
+      seoTitle: 'Over ons',
+      ogTitle: 'Over ons - Ontmoet ons team en ontdek waarom elk lid onmisbaar is voor SKWD',
       description:
         'Kom meer te weten over ons en hoe het SKWD-team studenten en bedrijven verbindt voor succesvolle evenementen in België.',
       ogDescription:
-        'Ontdek SKWD: een Belgisch bureau dat zich richt op event staffing en het verbinden van studenten en bedrijven.',
-      url: 'https://skwd.be/nl/over-ons',
+        'Maak kennis met het SKWD-team – de drijvende kracht achter het verbinden van gemotiveerde studenten en bedrijven voor geslaagde evenementen.',
+      url: `${siteUrl}/nl/over-ons`,
     },
     en: {
       title: 'About Us - SKWD',
+      seoTitle: 'About us',
+      ogTitle: 'About us - Meet our team and discover the people driving SKWD’s success',
       description:
         'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.',
       ogDescription:
-        'Discover SKWD: a Belgian event staffing agency connecting students and businesses for unforgettable experiences.',
-      url: 'https://skwd.be/en/about-us',
+        'Get to know the SKWD team — the passionate individuals connecting students and companies to create unforgettable event experiences.',
+      url: `${siteUrl}/en/about-us`,
     },
   };
 
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
-  const siteUrl = 'https://skwd.be';
 
   const ogImage = {
     url: `${siteUrl}/images/og-about.png`,
@@ -50,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t.title,
     description: t.description,
     openGraph: {
-      title: t.title,
+      title: t.ogTitle,
       description: t.ogDescription,
       url: t.url,
       siteName: 'SKWD',
@@ -60,16 +70,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: 'summary_large_image',
-      title: t.title,
+      title: t.ogTitle,
       description: t.ogDescription,
       images: [ogImage.url],
     },
     alternates: {
       canonical: t.url,
       languages: {
-        en: 'https://skwd.be/en/about-us',
-        fr: 'https://skwd.be/fr/a-propos',
-        nl: 'https://skwd.be/nl/over-ons',
+        en: `${siteUrl}/en/about-us`,
+        fr: `${siteUrl}/fr/a-propos`,
+        nl: `${siteUrl}/nl/over-ons`,
       },
     },
   };
