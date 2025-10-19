@@ -16,15 +16,17 @@ interface AnimatedContentProps {
   scale?: number;
   threshold?: number;
   delay?: number;
+  style?: React.CSSProperties;
+  className?: string;
   onComplete?: () => void;
 }
 
 const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
-  distance = 100,
+  distance = 50,
   direction = 'vertical',
   reverse = false,
-  duration = 0.8,
+  duration = 1.5,
   ease = 'power3.out',
   initialOpacity = 0,
   animateOpacity = true,

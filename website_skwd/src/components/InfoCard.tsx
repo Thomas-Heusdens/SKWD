@@ -20,7 +20,7 @@ export default function InfoCard({
   const { t } = useTranslation();
   
   return (
-    <article className={`relative p-6 rounded-xl bg-${color} text-white overflow-hidden`}>
+    <article className={`relative p-6 rounded-xl h-full bg-${color} text-white overflow-hidden`}>
       <div className="relative z-10 rounded-full p-3 w-fit bg-skwd-light-blue mb-4">
         <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
       </div>

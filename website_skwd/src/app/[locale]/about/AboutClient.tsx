@@ -11,7 +11,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { useEffect, useState } from 'react';
-
+import AnimatedContent from '@/components/AnimatedContent';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function AboutClient() {
   const { t } = useTranslation();
@@ -139,17 +140,23 @@ export default function AboutClient() {
           </div>
 
           <div className="section-container relative z-10 flex flex-col items-center justify-center">
-            <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
-              YOUR STAFFING <span className="text-skwd-text-highlight">AGENCY</span>
-            </h1>
-            <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
-            <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">
-              <Stack
-                sendToBackOnClick={true}
-                cardDimensions={cardDimensions}
-                cardsData={images}
-              />
-            </div>
+            <AnimatedContent distance={40} duration={1.2}>
+              <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
+                YOUR STAFFING <span className="text-skwd-text-highlight">AGENCY</span>
+              </h1>
+            </AnimatedContent>
+            <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+              <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
+            </AnimatedContent>
+            <AnimatedContent distance={40} duration={1.2} delay={0.5}>
+              <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">
+                <Stack
+                  sendToBackOnClick={true}
+                  cardDimensions={cardDimensions}
+                  cardsData={images}
+                />
+              </div>
+            </AnimatedContent>
           </div>
         </header>
 
@@ -217,71 +224,87 @@ export default function AboutClient() {
         >
           <div className="section-container">
             <header className="mb-12 text-center mx-auto">
-              <h2 id="team-heading" className="text-3xl md:text-4xl mb-4 font-medium text-center">
-                {(() => {
-                  const words = t('about_team_intro_headline').split(' ');
-                  const lastTwoStart = words.length - 2;
-                  return (
-                    <>
-                      <span className="text-white">{words.slice(0, 3).join(' ')}</span>{' '}
-                      <span className="text-skwd-text-highlight">
-                        {words.slice(3, 5).join(' ')}
-                      </span>{' '}
-                      <span className="text-white">
-                        {words.slice(5, lastTwoStart).join(' ')}
-                      </span>{' '}
-                      <span className="text-skwd-text-highlight">
-                        {words.slice(lastTwoStart).join(' ')}
-                      </span>
-                    </>
-                  );
-                })()}
-              </h2>
-              <p className='font-light text-sm md:text-base'>{t('about_team_intro_text')}</p>
+              <AnimatedContent distance={40} duration={1.2} delay={0.1}>
+                <h2 id="team-heading" className="text-3xl md:text-4xl mb-4 font-medium text-center">
+                  {(() => {
+                    const words = t('about_team_intro_headline').split(' ');
+                    const lastTwoStart = words.length - 2;
+                    return (
+                      <>
+                        <span className="text-white">{words.slice(0, 3).join(' ')}</span>{' '}
+                        <span className="text-skwd-text-highlight">
+                          {words.slice(3, 5).join(' ')}
+                        </span>{' '}
+                        <span className="text-white">
+                          {words.slice(5, lastTwoStart).join(' ')}
+                        </span>{' '}
+                        <span className="text-skwd-text-highlight">
+                          {words.slice(lastTwoStart).join(' ')}
+                        </span>
+                      </>
+                    );
+                  })()}
+                </h2>
+              </AnimatedContent>
+              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+                <p className='font-light text-sm md:text-base'>{t('about_team_intro_text')}</p>
+              </AnimatedContent>
             </header>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              <TeamMemberCard
-                memberNumber={1}
-                imageUrl="/images/ceo.jpeg"
-                name="Tommy Ulens"
-                linkedinUrl="https://www.linkedin.com/in/tommy-ulens-017747225/"
-              />
+              <AnimatedContent distance={40} duration={1.2}>
+                <TeamMemberCard
+                  memberNumber={1}
+                  imageUrl="/images/ceo.jpeg"
+                  name="Tommy Ulens"
+                  linkedinUrl="https://www.linkedin.com/in/tommy-ulens-017747225/"
+                />
+              </AnimatedContent>
               
-              <TeamMemberCard
-                memberNumber={2}
-                imageUrl="/images/benjamin.jpeg"
-                name="Benjamin Fontenai"
-                linkedinUrl="https://www.linkedin.com/in/benjamin-fontenai-a04794236/"
-              />
-
-              <TeamMemberCard
-                memberNumber={3}
-                imageUrl="/images/antoine.jpeg"
-                name="Antoine Collin"
-                linkedinUrl="https://www.linkedin.com/in/antoine-collin-3937292a5/"
-              />
-
-              <TeamMemberCard
-                memberNumber={4}
-                imageUrl="/images/cintia.jpeg"
-                name="Cintia Saliba"
-                linkedinUrl="https://www.linkedin.com/in/cintia-saliba/"
-              />
-
-              <TeamMemberCard
-                memberNumber={5}
-                imageUrl="/images/adam.jpg"
-                name="Adam Sakhraoui"
-                linkedinUrl="https://www.linkedin.com/in/adam-sakhraoui-672281353/"
-              />
-
-              <TeamMemberCard
-                memberNumber={6}
-                imageUrl="/images/thomas.jpg"
-                name="Thomas Heusdens"
-                linkedinUrl="https://www.linkedin.com/in/thomas-heusdens-0bba19258/"
-              />
+              <AnimatedContent distance={40} duration={1.2} delay={0.1}>
+                <TeamMemberCard
+                  memberNumber={2}
+                  imageUrl="/images/benjamin.jpeg"
+                  name="Benjamin Fontenai"
+                  linkedinUrl="https://www.linkedin.com/in/benjamin-fontenai-a04794236/"
+                />
+              </AnimatedContent>
+              
+              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                <TeamMemberCard
+                  memberNumber={3}
+                  imageUrl="/images/antoine.jpeg"
+                  name="Antoine Collin"
+                  linkedinUrl="https://www.linkedin.com/in/antoine-collin-3937292a5/"
+                />
+              </AnimatedContent>
+              
+              <AnimatedContent distance={40} duration={1.2}>
+                <TeamMemberCard
+                  memberNumber={4}
+                  imageUrl="/images/cintia.jpeg"
+                  name="Cintia Saliba"
+                  linkedinUrl="https://www.linkedin.com/in/cintia-saliba/"
+                />
+              </AnimatedContent>    
+              
+              <AnimatedContent distance={40} duration={1.2} delay={0.1}>
+                <TeamMemberCard
+                  memberNumber={5}
+                  imageUrl="/images/adam.jpg"
+                  name="Adam Sakhraoui"
+                  linkedinUrl="https://www.linkedin.com/in/adam-sakhraoui-672281353/"
+                />
+              </AnimatedContent>    
+              
+              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                <TeamMemberCard
+                  memberNumber={6}
+                  imageUrl="/images/thomas.jpg"
+                  name="Thomas Heusdens"
+                  linkedinUrl="https://www.linkedin.com/in/thomas-heusdens-0bba19258/"
+                />
+              </AnimatedContent>
             </div>
           </div>
         </section>
@@ -290,9 +313,9 @@ export default function AboutClient() {
         <section
           id="quote"
           aria-label="Agency motto section"
-          className="relative bg-skwd-blue py-14 md:py-20 text-center text-white"
+          className="relative bg-skwd-blue py-14 md:py-20 text-center text-white overflow-hidden"
         >
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 z-0 opacity-10">
             <Image  
               src="/images/pattern-bg.png"
               alt="Partern background"
@@ -300,32 +323,34 @@ export default function AboutClient() {
               className="object-cover"
             />
           </div>
-          <div className="section-container">
-            <h2 className="text-3xl md:text-4xl text-center font-semibold">
-              {(() => {
-                const words = t('about_quote').split(' ');
-                const middleStart = Math.floor(words.length / 2) - 1;
-                const middleEnd = middleStart + 2;
-                const endStart = words.length - 3;
+          <div className="relative section-container z-10">
+            <AnimatedContent distance={40} duration={1.2}>
+              <h2 className="text-3xl md:text-4xl text-center font-semibold">
+                {(() => {
+                  const words = t('about_quote').split(' ');
+                  const middleStart = Math.floor(words.length / 2) - 1;
+                  const middleEnd = middleStart + 2;
+                  const endStart = words.length - 3;
 
-                return (
-                  <>
-                    <span className="text-white">
-                      {words.slice(0, middleStart).join(' ')}
-                    </span>{' '}
-                    <span className="text-skwd-text-highlight">
-                      {words.slice(middleStart, middleEnd).join(' ')}
-                    </span>{' '}
-                    <span className="text-white">
-                      {words.slice(middleEnd, endStart).join(' ')}
-                    </span>{' '}
-                    <span className="text-skwd-text-highlight">
-                      {words.slice(endStart).join(' ')}
-                    </span>
-                  </>
-                );
-              })()}
-            </h2>
+                  return (
+                    <>
+                      <span className="text-white">
+                        {words.slice(0, middleStart).join(' ')}
+                      </span>{' '}
+                      <span className="text-skwd-text-highlight">
+                        {words.slice(middleStart, middleEnd).join(' ')}
+                      </span>{' '}
+                      <span className="text-white">
+                        {words.slice(middleEnd, endStart).join(' ')}
+                      </span>{' '}
+                      <span className="text-skwd-text-highlight">
+                        {words.slice(endStart).join(' ')}
+                      </span>
+                    </>
+                  );
+                })()}
+              </h2>
+            </AnimatedContent>
           </div>
         </section>
 
@@ -337,46 +362,58 @@ export default function AboutClient() {
         >
           <div className="section-container">
             <header className="text-center mb-8 md:mb-10">
-              <h2 id="why-us-heading" className="text-3xl md:text-4xl mb-3 text-center font-semibold">
-                <span className="text-white">
-                  {t('about_why_title').split(' ').slice(0, -2).join(' ')}
-                </span>{' '}
-                <span className="text-skwd-text-highlight">
-                  {t('about_why_title').split(' ').slice(-2).join(' ')}
-                </span>
-              </h2>
-              <p className='font-light text-sm md:text-base w-[80%] mx-auto'>{t('about_why_description')}</p>
+              <AnimatedContent distance={40} duration={1.2}>
+                <h2 id="why-us-heading" className="text-3xl md:text-4xl mb-3 text-center font-semibold">
+                  <span className="text-white">
+                    {t('about_why_title').split(' ').slice(0, -2).join(' ')}
+                  </span>{' '}
+                  <span className="text-skwd-text-highlight">
+                    {t('about_why_title').split(' ').slice(-2).join(' ')}
+                  </span>
+                </h2>
+              </AnimatedContent>
+              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+                <p className='font-light text-sm md:text-base w-[80%] mx-auto'>{t('about_why_description')}</p>
+              </AnimatedContent>
             </header>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <InfoCard 
-                cardTitle='about_why_card1_title'
-                cardDescription='about_why_card1_description'
-                icon={Users} 
-                patternOverlaySrc='/images/Tile2.png'
-                color='skwd-blue'
-              />
-              <InfoCard 
-                cardTitle='about_why_card2_title'
-                cardDescription='about_why_card2_description'
-                icon={TrendingUp} 
-                patternOverlaySrc='/images/Tile4.png'
-                color='skwd-blue'
-              />
-              <InfoCard 
+              <AnimatedContent distance={40} duration={1.2} delay={0.4}>
+                <InfoCard 
+                  cardTitle='about_why_card1_title'
+                  cardDescription='about_why_card1_description'
+                  icon={Users} 
+                  patternOverlaySrc='/images/Tile2.png'
+                  color='skwd-blue'
+                />
+              </AnimatedContent>
+              <AnimatedContent distance={40} duration={1.2} delay={0.5}>
+                <InfoCard 
+                  cardTitle='about_why_card2_title'
+                  cardDescription='about_why_card2_description'
+                  icon={TrendingUp} 
+                  patternOverlaySrc='/images/Tile4.png'
+                  color='skwd-blue'
+                />
+              </AnimatedContent>
+              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                <InfoCard 
                 cardTitle='about_why_card3_title'
                 cardDescription='about_why_card3_description'
                 icon={HandCoins} 
                 patternOverlaySrc='/images/Tile3.png'
                 color='skwd-blue'
               />
-              <InfoCard 
-                cardTitle='about_why_card4_title'
-                cardDescription='about_why_card4_description'
-                icon={HeartHandshake} 
-                patternOverlaySrc='/images/Tile5.png'
-                color='skwd-blue'
-              />
+              </AnimatedContent>
+              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                <InfoCard 
+                  cardTitle='about_why_card4_title'
+                  cardDescription='about_why_card4_description'
+                  icon={HeartHandshake} 
+                  patternOverlaySrc='/images/Tile5.png'
+                  color='skwd-blue'
+                />
+              </AnimatedContent>
             </div>
           </div>
         </section>
@@ -397,38 +434,40 @@ export default function AboutClient() {
           </div>
 
           <div className="relative section-container flex justify-center z-10">
-            <div className="bg-skwd-blue p-10 rounded-2xl max-w-xl text-center">
-              <header className="mb-6">
-                <div className='bg-white/15 mb-4 inline-block backdrop-blur rounded-full p-4'>
-                  <CircleQuestionMark className="w-10 h-10 text-white mx-auto" />
+            <AnimatedContent distance={40} duration={1.2}>
+              <div className="bg-skwd-blue p-10 rounded-2xl max-w-xl text-center">
+                <header className="mb-6">
+                  <div className='bg-white/15 mb-4 inline-block backdrop-blur rounded-full p-4'>
+                    <CircleQuestionMark className="w-10 h-10 text-white mx-auto" />
+                  </div>
+                  <h2 id="contact-cta-heading" className="text-2xl md:text-3xl mb-2 text-center font-semibold">
+                    <span className="text-white">
+                      {t('about_contact_title').split(' ').slice(0, -2).join(' ')}
+                    </span>{' '}
+                    <span className="text-skwd-text-highlight">
+                      {t('about_contact_title').split(' ').slice(-2).join(' ')}
+                    </span>
+                  </h2>
+                  <p className='font-light text-sm md:text-base'>{t('about_contact_description')}</p>
+                </header>
+
+                <div className="flex justify-center gap-4 flex-wrap">
+                  <Link
+                    href={`/${locale}/${localizedRoutes.faq[locale]}`}
+                    className="px-5 py-2 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  >
+                    {t('about_faq_cta')}
+                  </Link>
+
+                  <Link
+                    href={`/${locale}/${localizedRoutes.contact[locale]}`}
+                    className="px-5 py-2 bg-white text-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  >
+                    {t('about_contact_cta')}
+                  </Link>
                 </div>
-                <h2 id="contact-cta-heading" className="text-2xl md:text-3xl mb-2 text-center font-semibold">
-                  <span className="text-white">
-                    {t('about_contact_title').split(' ').slice(0, -2).join(' ')}
-                  </span>{' '}
-                  <span className="text-skwd-text-highlight">
-                    {t('about_contact_title').split(' ').slice(-2).join(' ')}
-                  </span>
-                </h2>
-                <p className='font-light text-sm md:text-base'>{t('about_contact_description')}</p>
-              </header>
-
-              <div className="flex justify-center gap-4 flex-wrap">
-                <Link
-                  href={`/${locale}/${localizedRoutes.faq[locale]}`}
-                  className="px-5 py-2 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
-                >
-                  {t('about_faq_cta')}
-                </Link>
-
-                <Link
-                  href={`/${locale}/${localizedRoutes.contact[locale]}`}
-                  className="px-5 py-2 bg-white text-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
-                >
-                  {t('about_contact_cta')}
-                </Link>
               </div>
-            </div>
+            </AnimatedContent>
           </div>
         </section>
       </main>

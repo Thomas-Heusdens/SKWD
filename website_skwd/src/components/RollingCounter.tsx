@@ -80,7 +80,7 @@ export default function RollingCounter({
           text-center transition-all duration-300 rounded-xl
           p-2 sm:p-3 md:p-0
           cursor-pointer md:cursor-default
-          bg-white text-black md:bg-transparent md:text-white
+          bg-skwd-button text-black md:bg-transparent md:text-white
           shadow-sm md:shadow-none
         `}
         onClick={() => {
@@ -91,12 +91,12 @@ export default function RollingCounter({
           <Counter
             value={value}
             places={places}
-            textColor={isMobile ? 'black' : 'white'}
+            textColor={'white'}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-[60px] font-extrabold"
             height={height}
           />
           {suffix && (
-            <span className="text-base sm:text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-none text-black md:text-white">
+            <span className="text-base sm:text-2xl md:text-3xl lg:text-[40px] font-extrabold leading-none text-white">
               {suffix}
             </span>
           )}
@@ -111,20 +111,37 @@ export default function RollingCounter({
 
       {showPopup && (
         <div
-          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
           onClick={() => setShowPopup(false)}
         >
           <div
-            className="bg-white rounded-2xl shadow-xl p-6 text-center max-w-[90%] sm:max-w-sm"
+            className="relative w-[90%] sm:w-[80%] max-w-lg bg-skwd-blue rounded-2xl border border-white/10 shadow-[0_0_25px_rgba(255,255,255,0.1)] p-8 text-center transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl text-black font-extrabold mb-2">{finalValue}{suffix}</h3>
-            {label && (
-              <p className="text-gray-700 text-base font-medium">{label}</p>
-            )}
+            {/* Close button (top right) */}
             <button
               onClick={() => setShowPopup(false)}
-              className="mt-4 w-full bg-black text-white font-semibold py-2 rounded-lg hover:bg-gray-800 transition-colors"
+              aria-label="Close popup"
+              className="absolute top-4 right-4 text-white/70 transition-colors"
+            >
+              ✕
+            </button>
+
+            {/* Content */}
+            <h3 className="text-4xl font-extrabold text-white mb-2">
+              {finalValue}
+              <span className="text-skwd-text-highlight">{suffix}</span>
+            </h3>
+
+            {label && (
+              <p className="text-white/80 text-base font-light mb-6">
+                {label}
+              </p>
+            )}
+
+            <button
+              onClick={() => setShowPopup(false)}
+              className="w-full bg-skwd-button text-white font-medium py-2.5 rounded-xl hover:opacity-90 transition-all duration-200"
             >
               Close
             </button>

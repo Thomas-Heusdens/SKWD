@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from '@/lib/i18n';
 import { ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import AnimatedContent from '@/components/AnimatedContent';
 
 interface Question {
   question: string;
@@ -226,21 +227,24 @@ export default function FaqClient() {
               className="w-full h-full object-cover"
             />
           </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center">
-            {(() => {
-              const words = t('faq_title').split(' ');
-              return (
-                <>
-                  <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                  <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                </>
-              );
-            })()}
-          </h1>
-          <p className="max-w-xl text-white/90 font-light text-sm md:text-base">
-            {t('faq_description')}
-          </p>
+          <AnimatedContent distance={40} duration={1.2}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center">
+              {(() => {
+                const words = t('faq_title').split(' ');
+                return (
+                  <>
+                    <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
+                    <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
+                  </>
+                );
+              })()}
+            </h1>
+          </AnimatedContent>
+          <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+            <p className="max-w-xl text-white/90 font-light text-sm md:text-base">
+              {t('faq_description')}
+            </p>
+          </AnimatedContent>
         </header>
 
         {/* ===== FAQ SECTION ===== */}
@@ -252,20 +256,22 @@ export default function FaqClient() {
           <div className="section-container max-w-3xl mx-auto">
             {categories.map((category) => (
               <div key={category} className="mb-12">
-                <h2
-                  id={`faq-${category}`}
-                  className="text-2xl md:text-3xl font-semibold mb-4"
-                >
-                  {(() => {
-                    const words = category.split(' ');
-                    return (
-                      <>
-                        <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                        <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                      </>
-                    );
-                  })()}
-                </h2>
+                <AnimatedContent distance={30} duration={1.2} direction='horizontal'>
+                  <h2
+                    id={`faq-${category}`}
+                    className="text-2xl md:text-3xl font-semibold mb-4"
+                  >
+                    {(() => {
+                      const words = category.split(' ');
+                      return (
+                        <>
+                          <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
+                          <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
+                        </>
+                      );
+                    })()}
+                  </h2>
+                </AnimatedContent>
                 <div className="border-t border-skwd-text-highlight/50 mb-6" />
 
                 <div role="list">
@@ -285,14 +291,18 @@ export default function FaqClient() {
                               setOpenQuestion(isOpen ? null : question)
                             }
                           >
-                            <h3 className="text-base sm:text-lg font-medium">
-                              {question}
-                            </h3>
-                            <ChevronDown
-                              className={`w-5 h-5 transition-transform ${
-                                isOpen ? 'rotate-180 text-skwd-text-highlight' : ''
-                              }`}
-                            />
+                            <AnimatedContent distance={40} duration={1.2} delay={0.1} direction='horizontal'>
+                              <h3 className="text-base sm:text-lg font-medium">
+                                {question}
+                              </h3>
+                            </AnimatedContent>
+                            <AnimatedContent distance={10} duration={1.2} delay={0.1} reverse>
+                              <ChevronDown
+                                className={`w-5 h-5 transition-transform ${
+                                  isOpen ? 'rotate-180 text-skwd-text-highlight' : ''
+                                }`}
+                              />
+                            </AnimatedContent>
                           </header>
                           {isOpen && (
                             <p className="pb-4 text-sm md:text-base text-white/80 font-light leading-relaxed">

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
+import AnimatedContent from '@/components/AnimatedContent';
 
 export interface BentoCardProps {
   color?: string;
