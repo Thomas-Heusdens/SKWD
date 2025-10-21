@@ -164,11 +164,11 @@ export default function Carousel({
     '/images/Tile4.png',
   ];
 
-  const rotateYTransforms = carouselItems.map((_, index) => {
+  const getRotateY = (index: number) => {
     const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
     const outputRange = [90, 0, -90];
     return useTransform(x, range, outputRange, { clamp: false });
-  });
+  };
 
   return (
     <div
@@ -202,7 +202,7 @@ export default function Carousel({
         onAnimationComplete={handleAnimationComplete}
       >
         {carouselItems.map((item, index) => {
-          const rotateY = rotateYTransforms[index];
+          const rotateY = getRotateY(index);
           const pattern = tilePatterns[index % tilePatterns.length];
 
           return (
