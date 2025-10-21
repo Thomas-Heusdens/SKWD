@@ -6,7 +6,7 @@ import Link from 'next/link';
 import InfoCard from '@/components/InfoCard';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
-import { BadgeCheck, Clock8, ChefHat, Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
+import { BadgeCheck, Clock8, Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
 import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
@@ -343,7 +343,7 @@ export default function LogisticsClient() {
                 <CardSwap cardDistance={60} verticalDistance={70} delay={4000} pauseOnHover={false}>
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile1.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile1.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('logistics_step_1')}</h3>
@@ -357,7 +357,7 @@ export default function LogisticsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile6.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile6.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('logistics_step_2')}</h3>
@@ -371,7 +371,7 @@ export default function LogisticsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile3.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile3.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('logistics_step_3')}</h3>

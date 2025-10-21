@@ -1,6 +1,6 @@
 'use client';
 
-import { SetStateAction, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from '@/lib/i18n';
 import { Listbox, Transition } from '@headlessui/react';
@@ -9,6 +9,7 @@ import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 import ReCAPTCHA from "react-google-recaptcha";
+import Image from 'next/image';
 
 export default function ContactClient() {
   const { t } = useTranslation();
@@ -150,7 +151,6 @@ export default function ContactClient() {
       setSuccess(null);
       return;
     }
-    /*
     if (!captchaValue) {
       setValidationError(
         locale === 'fr'
@@ -163,7 +163,6 @@ export default function ContactClient() {
       setSuccess(null);
       return;
     }
-      */
     setValidationError(null);
     setSending(true);
     setSuccess(null);
@@ -225,11 +224,13 @@ export default function ContactClient() {
           className="relative w-full min-h-screen flex items-center py-12 sm:py-16 lg:py-20"
         >
           <div className="absolute inset-0 -z-10 opacity-5">
-            <img
+            <Image
               src="/images/pattern-bg.png"
-              alt="pattern"
-              className="w-full h-full object-cover"
-              aria-hidden="true"
+              alt="Pattern background"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
             />
           </div>
           
