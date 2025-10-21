@@ -10,10 +10,10 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { useState } from 'react';
 import { ReceiptText, Users, Mail, Clock8, Zap, Truck, UtensilsCrossed, BrainCog, HeartHandshake } from 'lucide-react';
-import Carousel from '@/components/Carousel';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import AnimatedContent from '@/components/AnimatedContent';
+import InfoCardStep from '@/components/InfoCardStep';
 
 export default function WorkWithUsClient() {
   const { t } = useTranslation();
@@ -268,15 +268,23 @@ export default function WorkWithUsClient() {
           className="py-14 md:py-20 text-white"
         >
           <div className="section-container grid grid-cols-1 xl:grid-cols-2 gap-10 items-center">
+            {/* LEFT SIDE: TITLE + TEXT */}
             <div className="flex flex-col items-center xl:items-start text-center xl:text-left justify-center">
               <AnimatedContent distance={40} duration={1.2}>
-                <h2 id="how-it-works-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
+                <h2
+                  id="how-it-works-heading"
+                  className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center"
+                >
                   {(() => {
                     const words = t('work_steps_title').split(' ');
                     return (
                       <>
-                        <span className="text-white">{words.slice(0, -2).join(' ')}</span>{' '}
-                        <span className="text-skwd-text-highlight">{words.slice(-2).join(' ')}</span>
+                        <span className="text-white">
+                          {words.slice(0, -2).join(' ')}
+                        </span>{' '}
+                        <span className="text-skwd-text-highlight">
+                          {words.slice(-2).join(' ')}
+                        </span>
                       </>
                     );
                   })()}
@@ -289,14 +297,34 @@ export default function WorkWithUsClient() {
               </AnimatedContent>
             </div>
 
+            {/* RIGHT SIDE: CARDS */}
             <div
-              className={`relative bg-skwd-light-blue rounded-xl flex items-center justify-center overflow-hidden transition-all duration-300 ${isMobile ? 'w-full h-auto py-4' : 'h-[490px] w-full'} max-[1188px]:w-[520px] max-[1188px]:mx-auto max-[776px]:w-full`}
+              className={`
+                relative rounded-xl 
+                flex items-center justify-center overflow-hidden
+                transition-all duration-300
+                ${isMobile ? 'bg-transparent w-full h-auto py-4' : 'bg-skwd-light-blue h-[490px] w-full'}
+                max-[1188px]:w-[520px] max-[1188px]:mx-auto
+                max-[776px]:w-full
+              `}
             >
               {!isMobile ? (
-                <CardSwap cardDistance={60} verticalDistance={70} delay={4000} pauseOnHover={false}>
+                <CardSwap
+                  cardDistance={60}
+                  verticalDistance={70}
+                  delay={4000}
+                  pauseOnHover={false}
+                >
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <Image src="/images/Tile2.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
+                      <Image
+                        src="/images/Tile2.png"
+                        fill
+                        alt="pattern"
+                        className="w-full h-full object-cover rounded-xl"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={false}
+                      />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_1')}</h3>
@@ -312,7 +340,14 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <Image src="/images/Tile4.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
+                      <Image
+                        src="/images/Tile4.png"
+                        fill
+                        alt="pattern"
+                        className="w-full h-full object-cover rounded-xl"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={false}
+                      />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_2')}</h3>
@@ -328,7 +363,14 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <Image src="/images/Tile6.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
+                      <Image
+                        src="/images/Tile6.png"
+                        fill
+                        alt="pattern"
+                        className="w-full h-full object-cover rounded-xl"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={false}
+                      />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_3')}</h3>
@@ -343,8 +385,39 @@ export default function WorkWithUsClient() {
                   </Card>
                 </CardSwap>
               ) : (
-                <div className="w-full flex justify-center">
-                  <Carousel items={carouselItems} baseWidth={300} loop />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                  <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                    <InfoCardStep
+                      stepLabel="work_step_1"
+                      cardTitle="work_steps_1_title"
+                      cardDescription="work_steps_1_description"
+                      icon={Mail}
+                      patternOverlaySrc="/images/Tile2.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+                    <InfoCardStep
+                      stepLabel="work_step_2"
+                      cardTitle="work_steps_2_title"
+                      cardDescription="work_steps_2_description"
+                      icon={ReceiptText}
+                      patternOverlaySrc="/images/Tile4.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.4}>
+                    <InfoCardStep
+                      stepLabel="work_step_3"
+                      cardTitle="work_steps_3_title"
+                      cardDescription="work_steps_3_description"
+                      icon={Users}
+                      patternOverlaySrc="/images/Tile6.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
                 </div>
               )}
             </div>

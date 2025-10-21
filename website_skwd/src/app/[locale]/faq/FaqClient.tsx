@@ -258,7 +258,7 @@ export default function FaqClient() {
             </h1>
           </AnimatedContent>
           <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-            <p className="max-w-xl text-white/90 font-light text-sm md:text-base">
+            <p className="md:max-w-xl max-w-xs text-white/90 font-light text-sm md:text-base">
               {t('faq_description')}
             </p>
           </AnimatedContent>
