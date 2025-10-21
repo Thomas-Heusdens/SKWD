@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
+import { motion, PanInfo, useMotionValue, MotionValue } from "motion/react";
 import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
 
@@ -48,9 +48,9 @@ export default function Carousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
-  const x = useMotionValue(0);
+  const x: MotionValue<number> = useMotionValue(0);
 
-  // resize
+  // Handle resize
   useEffect(() => {
     const updateWidth = () => {
       const parent = containerRef.current?.parentElement;
@@ -65,7 +65,7 @@ export default function Carousel({
   const trackItemOffset = itemWidth + GAP;
   const carouselItems = loop ? [...items, items[0]] : items;
 
-  // pause on hover
+  // Hover pause
   useEffect(() => {
     if (!pauseOnHover || !containerRef.current) return;
     const el = containerRef.current;
@@ -79,17 +79,17 @@ export default function Carousel({
     };
   }, [pauseOnHover]);
 
-  // autoplay
+  // Autoplay
   useEffect(() => {
     if (!autoplay || (pauseOnHover && isHovered)) return;
-    const t = setInterval(() => {
+    const timer = setInterval(() => {
       setCurrentIndex(prev => {
         if (loop && prev === items.length - 1) return prev + 1;
         if (prev === carouselItems.length - 1) return loop ? 0 : prev;
         return prev + 1;
       });
     }, autoplayDelay);
-    return () => clearInterval(t);
+    return () => clearInterval(timer);
   }, [autoplay, autoplayDelay, isHovered, loop, items.length, carouselItems.length, pauseOnHover]);
 
   const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
@@ -147,15 +147,18 @@ export default function Carousel({
             -(index - 1) * trackItemOffset,
           ];
           const outputRange = [90, 0, -90];
+          type MotionValueWithTo = ReturnType<typeof useMotionValue> & {
+            to: (transformer: (v: number) => number) => any;
+          };
 
-          const rotateY = useTransform(x, (v: number) => {
+          const x = useMotionValue(0) as MotionValueWithTo;
+
+          const rotateY = x.to((v: number) => {
             if (v <= range[0]) return outputRange[0];
             if (v >= range[2]) return outputRange[2];
-
             const progress = (v - range[0]) / (range[2] - range[0]);
             return outputRange[0] + progress * (outputRange[2] - outputRange[0]);
           });
-
 
           const pattern = tilePatterns[index % tilePatterns.length];
 
@@ -189,7 +192,7 @@ export default function Carousel({
         })}
       </motion.div>
 
-      {/* dots */}
+      {/* Dots */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
         {items.map((_, i) => (
           <motion.div
