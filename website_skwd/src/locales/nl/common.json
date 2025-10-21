@@ -170,6 +170,8 @@
   "contact_sector_logistics": "Logistiek",
   "contact_sector_both": "Beide",
   "contact_send": "Verzenden",
+  "contact_success_message": "Uw bericht is succesvol verzonden!",
+  "contact_error_message": "Er is iets misgegaan. Probeer het later opnieuw.",
   "faq_title": "Veelgestelde vragen",
   "faq_description": "Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!",
   "faq_category_general": "Algemene vragen",

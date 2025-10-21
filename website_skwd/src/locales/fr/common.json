@@ -170,6 +170,8 @@
   "contact_sector_logistics": "Logistique",
   "contact_sector_both": "Les deux",
   "contact_send": "Envoyer",
+  "contact_success_message": "Votre message a été envoyé avec succès !",
+  "contact_error_message": "Une erreur est survenue. Veuillez réessayer plus tard.",
   "faq_title": "Questions fréquentes",
   "faq_description": "Trouvez rapidement des réponses à vos questions sur le travail chez SKWD. Vous ne trouvez pas votre question ? N’hésitez pas à nous contacter !",
   "faq_category_general": "Questions générales",

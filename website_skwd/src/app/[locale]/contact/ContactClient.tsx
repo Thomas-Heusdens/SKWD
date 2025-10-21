@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { SetStateAction, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { useTranslation } from '@/lib/i18n';
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDown } from 'lucide-react';
 import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactClient() {
   const { t } = useTranslation();
@@ -32,10 +34,23 @@ export default function ContactClient() {
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
     url: siteUrl,
+    foundingDate: '2024',
+    founder: {
+      '@type': 'Person',
+      name: 'Tommy Ulens'
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Rue Picard 7/ 204',
+      addressLocality: 'Brussels',
+      postalCode: '1000',
+      addressCountry: 'BE'
+    },
     logo: `${siteUrl}/images/logo-dark.png`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
+      'https://www.facebook.com/people/SKWD/61562389827787/',
     ],
     contactPoint: [
       {
@@ -103,6 +118,89 @@ export default function ContactClient() {
     sector: '',
     message: '',
   });
+  const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState<boolean | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+  const captchaRef = useRef<ReCAPTCHA>(null);
+  if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+    console.warn('Missing reCAPTCHA site key in environment variables.');
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    if (sending) return;
+    e.preventDefault();
+
+    // --- Frontend validation ---
+    if (!formData.inquiryType || !formData.sector) {
+      setValidationError(
+        locale === 'fr'
+          ? 'Veuillez sélectionner le type de demande et le secteur.'
+          : locale === 'nl'
+          ? 'Selecteer het type aanvraag en de sector.'
+          : 'Please select both inquiry type and sector.'
+      );
+
+      setTimeout(() => setValidationError(null), 5000);
+
+      setSuccess(null);
+      return;
+    }
+    /*
+    if (!captchaValue) {
+      setValidationError(
+        locale === 'fr'
+          ? 'Veuillez confirmer que vous n’êtes pas un robot.'
+          : locale === 'nl'
+          ? 'Bevestig dat je geen robot bent.'
+          : 'Please confirm that you are not a robot.'
+      );
+      setTimeout(() => setValidationError(null), 5000);
+      setSuccess(null);
+      return;
+    }
+      */
+    setValidationError(null);
+    setSending(true);
+    setSuccess(null);
+
+    const templateParams = {
+      fullName: formData.fullName,
+      email: formData.email,
+      company: formData.company,
+      inquiryType: formData.inquiryType,
+      sector: formData.sector,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      setSuccess(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        company: '',
+        inquiryType: '',
+        sector: '',
+        message: '',
+      });
+      captchaRef.current?.reset();
+    } catch (err) {
+      console.error('EmailJS Error:', err);
+      setSuccess(false);
+    } finally {
+      setSending(false);
+    }
+  };
 
   const inquiryOptions = [
     { value: '', label: t('contact_select') },
@@ -110,16 +208,6 @@ export default function ContactClient() {
     { value: 'question', label: t('contact_option_question') },
     { value: 'student_request', label: t('contact_option_student_request') },
   ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
-    // later: send via API (Resend, Formspree, or custom backend)
-  };
 
   return (
     <>
@@ -313,7 +401,10 @@ export default function ContactClient() {
                             <label htmlFor="sector" className="block text-sm font-medium text-white/90 mb-2">
                               {t('contact_inquiry')} <span className="text-red-400">*</span>
                             </label>
-                            <Listbox.Button className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <Listbox.Button
+                              className={`w-full bg-white/5 border rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 
+                                ${!formData.inquiryType ? 'border-red-500/50' : 'border-white/20'}`}
+                            >
                               {inquiryOptions.find(o => o.value === formData.inquiryType)?.label || t('contact_select')}
                               <ChevronDown className="w-5 h-5 text-white/60" />
                             </Listbox.Button>
@@ -357,7 +448,10 @@ export default function ContactClient() {
                             </label>
 
                             {/* Button */}
-                            <Listbox.Button className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200">
+                            <Listbox.Button
+                              className={`w-full bg-white/5 border rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 
+                                ${!formData.sector ? 'border-red-500/50' : 'border-white/20'}`}
+                            >
                               {formData.sector
                                 ? {
                                     hospitality: t('contact_sector_hospitality'),
@@ -433,13 +527,71 @@ export default function ContactClient() {
                         />
                       </div>
 
+                      {/* Captcha */}
+                      <ReCAPTCHA
+                        ref={captchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        onChange={(value) => setCaptchaValue(value)}
+                        theme="dark"
+                        className="mx-auto"
+                      />
+
                       {/* Submit Button */}
                       <button
                         type="submit"
-                        className="w-full px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity cursor-pointer"
+                        disabled={sending}
+                        className={`w-full px-5 py-2 flex items-center justify-center gap-2 
+                          bg-skwd-button text-white font-medium rounded-lg 
+                          hover:opacity-90 transition-all duration-200 
+                          disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
-                        {t('contact_send')}
+                        {sending ? (
+                          <>
+                            <svg
+                              className="w-5 h-5 animate-spin text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                              ></path>
+                            </svg>
+                          </>
+                        ) : (
+                          <span>{t('contact_send') || 'Send'}</span>
+                        )}
                       </button>
+                      {validationError && (
+                        <div
+                          className="px-5 py-2 rounded-lg border text-center transition-all duration-300 bg-yellow-500/10 border-yellow-500 text-yellow-300"
+                        >
+                          {validationError}
+                        </div>
+                      )}
+                      {success !== null && (
+                        <div
+                          className={`px-5 py-2 rounded-lg border text-center transition-all duration-300 ${
+                            success
+                              ? 'bg-green-500/10 border-green-500 text-green-300'
+                              : 'bg-red-500/10 border-red-500 text-red-300'
+                          }`}
+                        >
+                          {success
+                            ? t('contact_success_message')
+                            : t('contact_error_message')}
+                        </div>
+                      )}
                     </form>
                   </div>
 

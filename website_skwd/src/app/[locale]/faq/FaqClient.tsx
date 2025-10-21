@@ -36,10 +36,23 @@ export default function FaqClient() {
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
     url: siteUrl,
+    foundingDate: '2024',
+    founder: {
+      '@type': 'Person',
+      name: 'Tommy Ulens'
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Rue Picard 7/ 204',
+      addressLocality: 'Brussels',
+      postalCode: '1000',
+      addressCountry: 'BE'
+    },
     logo: `${siteUrl}/images/logo-dark.png`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
+      'https://www.facebook.com/people/SKWD/61562389827787/',
     ],
     contactPoint: [
       {

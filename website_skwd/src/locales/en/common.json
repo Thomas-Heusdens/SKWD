@@ -170,6 +170,8 @@
   "contact_sector_logistics": "Logistics",
   "contact_sector_both": "Both",
   "contact_send": "Send",
+  "contact_success_message": "Your message has been sent successfully!",
+  "contact_error_message": "Something went wrong. Please try again later.",
   "faq_title": "Frequently asked questions",
   "faq_description": "Quickly find answers to your questions about working at SKWD. Didn’t find your question? Feel free to contact us!",
   "faq_category_general": "General Questions",
