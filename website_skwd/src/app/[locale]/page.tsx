@@ -257,7 +257,7 @@ export default function HomePage() {
                 id="testimony-heading"
                 className="hidden md:block absolute top-5 md:left-4 text-[250px] leading-none text-skwd-text-highlight font-medium select-none pointer-events-none"
               >
-                "
+                &quot;
               </h2>
 
               <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 mx-auto">

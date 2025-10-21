@@ -5,6 +5,7 @@ import { useTranslation } from '@/lib/i18n';
 import { ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
+import Image from 'next/image';
 
 interface Question {
   question: string;
@@ -234,10 +235,13 @@ export default function FaqClient() {
           className="relative w-full min-h-[60vh] flex flex-col justify-center items-center text-center text-white py-16"
         >
           <div className="absolute inset-0 -z-10 opacity-10">
-            <img
+            <Image
               src="/images/pattern-bg.png"
               alt="Pattern background"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
             />
           </div>
           <AnimatedContent distance={40} duration={1.2}>

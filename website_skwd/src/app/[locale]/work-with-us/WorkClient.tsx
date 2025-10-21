@@ -9,7 +9,7 @@ import useIsMobile from '@/hooks/useIsMobile';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { useState } from 'react';
-import { ReceiptText, Users, Mail, Clock8, HandCoins, Zap, Truck, UtensilsCrossed, BrainCog, HeartHandshake } from 'lucide-react';
+import { ReceiptText, Users, Mail, Clock8, Zap, Truck, UtensilsCrossed, BrainCog, HeartHandshake } from 'lucide-react';
 import Carousel from '@/components/Carousel';
 import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
@@ -296,7 +296,7 @@ export default function WorkWithUsClient() {
                 <CardSwap cardDistance={60} verticalDistance={70} delay={4000} pauseOnHover={false}>
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile2.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile2.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_1')}</h3>
@@ -312,7 +312,7 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile4.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile4.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_2')}</h3>
@@ -328,7 +328,7 @@ export default function WorkWithUsClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img src="/images/Tile6.png" alt="pattern" className="w-full h-full object-cover rounded-xl" />
+                      <Image src="/images/Tile6.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10 ml-4 mt-3">
                       <h3 className="font-light">{t('work_step_3')}</h3>

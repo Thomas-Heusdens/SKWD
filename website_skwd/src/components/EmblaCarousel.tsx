@@ -7,6 +7,7 @@ import {
   NextButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
+import Image from 'next/image';
 
 type SlideType = {
   image: string
@@ -66,10 +67,14 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                 className="embla__slide flex-[0_0_calc(100%-1rem)] min-[400px]:flex-[0_0_calc(100%-2rem)] min-[480px]:flex-[0_0_calc(100%/1.2-1rem)] min-[550px]:flex-[0_0_calc(100%/1.5-1rem)] md:flex-[0_0_calc(100%/2-1rem)] lg:flex-[0_0_calc(100%/2.5-1rem)] pl-4"
               >
                 <div className="embla__slide__card relative h-[200px] min-[550px]:h-full md:h-[250px] rounded-xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
-                    src={slide.image} 
+                  <Image 
+                    src={slide.image}
                     alt={slide.title}
+                    fill
                     className="absolute inset-0 w-full h-full object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index === 0}
+                    placeholder="empty"
                   />
                   
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
