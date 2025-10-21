@@ -1,6 +1,6 @@
 'use client';
-import { useEffect, useState, useRef, useMemo } from 'react';
-import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
+import { useEffect, useState, useRef } from 'react';
+import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
 import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
 
@@ -118,16 +118,6 @@ export default function Carousel({
 
   const tilePatterns = ['/images/Tile1.png', '/images/Tile2.png', '/images/Tile3.png', '/images/Tile4.png'];
 
-  // ✅ compute all transforms once, safely
-  const rotateYTransforms = useMemo(() => {
-    return carouselItems.map((_, index) => {
-      const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
-      const outputRange = [90, 0, -90];
-      return useTransform(x, range, outputRange, { clamp: false });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [carouselItems.length, trackItemOffset, x]);
-
   return (
     <div
       ref={containerRef}
@@ -151,14 +141,31 @@ export default function Carousel({
         onAnimationComplete={handleAnimationComplete}
       >
         {carouselItems.map((item, index) => {
-          const rotateY = rotateYTransforms[index];
+          const range = [
+            -(index + 1) * trackItemOffset,
+            -index * trackItemOffset,
+            -(index - 1) * trackItemOffset,
+          ];
+          const outputRange = [90, 0, -90];
+
+          const rotateY = useTransform(x, (v: number) => {
+            if (v <= range[0]) return outputRange[0];
+            if (v >= range[2]) return outputRange[2];
+
+            const progress = (v - range[0]) / (range[2] - range[0]);
+            return outputRange[0] + progress * (outputRange[2] - outputRange[0]);
+          });
+
+
           const pattern = tilePatterns[index % tilePatterns.length];
+
           return (
             <motion.div
               key={index}
               className="relative shrink-0 flex flex-col justify-between bg-skwd-blue border border-white/10 rounded-xl overflow-hidden cursor-grab active:cursor-grabbing"
               style={{
                 width: itemWidth,
+                height: '100%',
                 rotateY,
                 backgroundImage: `url('${pattern}')`,
                 backgroundSize: 'cover',
