@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
 import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
+import { useMemo } from 'react';
 
 export interface CarouselItem {
   step?: string;
@@ -164,6 +165,14 @@ export default function Carousel({
     '/images/Tile4.png',
   ];
 
+  const rotateYTransforms = useMemo(() => {
+    return carouselItems.map((_, index) => {
+      const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
+      const outputRange = [90, 0, -90];
+      return useTransform(x, range, outputRange, { clamp: false });
+    });
+  }, [carouselItems.length, trackItemOffset, x]);
+
   return (
     <div
       ref={containerRef}
@@ -196,10 +205,7 @@ export default function Carousel({
         onAnimationComplete={handleAnimationComplete}
       >
         {carouselItems.map((item, index) => {
-          const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
-          const outputRange = [90, 0, -90];
-          const rotateY = useTransform(x, range, outputRange, { clamp: false });
-
+          const rotateY = rotateYTransforms[index];
           const pattern = tilePatterns[index % tilePatterns.length];
 
           return (
