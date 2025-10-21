@@ -2,7 +2,7 @@ import { languages } from '@/i18n/settings';
 import HospitalityClient from './HospitalityClient';
 
 export async function generateStaticParams() {
-  return languages.map((lng: any) => ({ locale: lng }));
+  return languages.map((lng: (typeof languages)[number]) => ({ locale: lng }));
 }
 
 export async function generateMetadata({

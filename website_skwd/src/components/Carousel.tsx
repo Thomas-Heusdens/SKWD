@@ -72,7 +72,6 @@ export default function Carousel({
   autoplayDelay = 3000,
   pauseOnHover = false,
   loop = false,
-  round = false,
 }: CarouselProps): JSX.Element {
   const containerPadding = 16;
   const [containerWidth, setContainerWidth] = useState<number>(baseWidth);
@@ -149,6 +148,12 @@ export default function Carousel({
     }
   };
 
+  const getRotateY = (index: number) => {
+    const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
+    const outputRange = [90, 0, -90];
+    return useTransform(x, range, outputRange, { clamp: false });
+  };
+
   const dragProps = loop
     ? {}
     : {
@@ -197,10 +202,7 @@ export default function Carousel({
         onAnimationComplete={handleAnimationComplete}
       >
         {carouselItems.map((item, index) => {
-          const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
-          const outputRange = [90, 0, -90];
-          const rotateY = useTransform(x, range, outputRange, { clamp: false });
-
+          const rotateY = getRotateY(index);
           const pattern = tilePatterns[index % tilePatterns.length];
 
           return (

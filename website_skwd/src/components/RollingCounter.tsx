@@ -24,13 +24,11 @@ export default function RollingCounter({
   const [showPopup, setShowPopup] = useState(false);
   const { ref, inView } = useInView({ triggerOnce: true });
   const duration = 2500;
-  const [isMobile, setIsMobile] = useState(false);
   const [height, setHeight] = useState(60);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsMobile(width < 768);
 
       if (width < 640) setHeight(30);
       else if (width < 768) setHeight(40);

@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import i18n, { setLanguage } from '@/lib/i18n-config';
+import i18n from '@/lib/i18n-config';
 
 export default function I18nProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();

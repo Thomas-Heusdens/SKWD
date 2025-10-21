@@ -383,11 +383,7 @@ export default function HospitalityClient() {
                 >
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img
-                        src="/images/Tile1.png"
-                        alt="pattern"
-                        className="w-full h-full object-cover rounded-xl"
-                      />
+                      <Image src="/images/Tile1.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('hospitality_step_1')}</h3>
@@ -403,11 +399,7 @@ export default function HospitalityClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img
-                        src="/images/Tile6.png"
-                        alt="pattern"
-                        className="w-full h-full object-cover rounded-xl"
-                      />
+                      <Image src="/images/Tile6.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('hospitality_step_2')}</h3>
@@ -423,11 +415,7 @@ export default function HospitalityClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img
-                        src="/images/Tile3.png"
-                        alt="pattern"
-                        className="w-full h-full object-cover rounded-xl"
-                      />
+                      <Image src="/images/Tile3.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('hospitality_step_3')}</h3>
@@ -443,11 +431,7 @@ export default function HospitalityClient() {
 
                   <Card>
                     <div className="absolute inset-0 z-0 opacity-10">
-                      <img
-                        src="/images/Tile2.png"
-                        alt="pattern"
-                        className="w-full h-full object-cover rounded-xl"
-                      />
+                      <Image src="/images/Tile2.png" fill alt="pattern" className="w-full h-full object-cover rounded-xl" sizes="(max-width: 768px) 100vw, 50vw" priority={false} />
                     </div>
                     <div className="relative z-10">
                       <h3 className="ml-4 mt-3 font-light">{t('hospitality_step_4')}</h3>
