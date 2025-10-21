@@ -8,7 +8,6 @@ import { ChevronDown } from 'lucide-react';
 import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
-import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'next/image';
 
 export default function ContactClient() {
@@ -122,11 +121,6 @@ export default function ContactClient() {
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-  const captchaRef = useRef<ReCAPTCHA>(null);
-  if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
-    console.warn('Missing reCAPTCHA site key in environment variables.');
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -148,18 +142,6 @@ export default function ContactClient() {
 
       setTimeout(() => setValidationError(null), 5000);
 
-      setSuccess(null);
-      return;
-    }
-    if (!captchaValue) {
-      setValidationError(
-        locale === 'fr'
-          ? 'Veuillez confirmer que vous n’êtes pas un robot.'
-          : locale === 'nl'
-          ? 'Bevestig dat je geen robot bent.'
-          : 'Please confirm that you are not a robot.'
-      );
-      setTimeout(() => setValidationError(null), 5000);
       setSuccess(null);
       return;
     }
@@ -192,7 +174,6 @@ export default function ContactClient() {
         sector: '',
         message: '',
       });
-      captchaRef.current?.reset();
     } catch (err) {
       console.error('EmailJS Error:', err);
       setSuccess(false);
@@ -527,15 +508,6 @@ export default function ContactClient() {
                           placeholder={t('contact_placeholder_inquiry')}
                         />
                       </div>
-
-                      {/* Captcha */}
-                      <ReCAPTCHA
-                        ref={captchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-                        onChange={(value) => setCaptchaValue(value)}
-                        theme="dark"
-                        className="mx-auto"
-                      />
 
                       {/* Submit Button */}
                       <button

@@ -10,10 +10,10 @@ import { BadgeCheck, Clock8, Vote, MousePointer, BookA, BicepsFlexed } from 'luc
 import CardSwap, { Card } from '@/components/CardSwap';
 import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
-import Carousel from '@/components/Carousel';
 import useIsMobile from '@/hooks/useIsMobile';
 import { useEffect, useState } from 'react';
 import AnimatedContent from '@/components/AnimatedContent';
+import InfoCardStep from '@/components/InfoCardStep';
 
 export default function LogisticsClient() {
   const isMobile = useIsMobile(776);
@@ -338,7 +338,16 @@ export default function LogisticsClient() {
               </AnimatedContent>
             </div>
 
-            <div className={`relative bg-skwd-light-blue rounded-xl flex items-center justify-center overflow-hidden transition-all duration-300 ${isMobile ? 'w-full h-auto py-4' : 'h-[490px] w-full'} max-[1188px]:w-[520px] max-[1188px]:mx-auto max-[776px]:w-full`}>
+            <div
+              className={`
+                relative rounded-xl 
+                flex items-center justify-center overflow-hidden
+                transition-all duration-300
+                ${isMobile ? 'bg-transparent w-full h-auto py-4' : 'bg-skwd-light-blue h-[490px] w-full'}
+                max-[1188px]:w-[520px] max-[1188px]:mx-auto
+                max-[776px]:w-full
+              `}
+            >
               {!isMobile ? (
                 <CardSwap cardDistance={60} verticalDistance={70} delay={4000} pauseOnHover={false}>
                   <Card>
@@ -384,8 +393,39 @@ export default function LogisticsClient() {
                   </Card>
                 </CardSwap>
               ) : (
-                <div className="w-full flex justify-center">
-                  <Carousel items={carouselItems} baseWidth={300} loop />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                  <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                    <InfoCardStep
+                      stepLabel="logistics_step_1"
+                      cardTitle="logistics_step_1_title"
+                      cardDescription="logistics_step_1_description"
+                      icon={Vote}
+                      patternOverlaySrc="/images/Tile1.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+                    <InfoCardStep
+                      stepLabel="logistics_step_2"
+                      cardTitle="logistics_step_2_title"
+                      cardDescription="logistics_step_2_description"
+                      icon={MousePointer}
+                      patternOverlaySrc="/images/Tile6.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.4}>
+                    <InfoCardStep
+                      stepLabel="logistics_step_3"
+                      cardTitle="logistics_step_3_title"
+                      cardDescription="logistics_step_3_description"
+                      icon={BookA}
+                      patternOverlaySrc="/images/Tile3.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
                 </div>
               )}
             </div>

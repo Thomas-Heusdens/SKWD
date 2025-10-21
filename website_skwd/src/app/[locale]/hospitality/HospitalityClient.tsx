@@ -10,9 +10,9 @@ import { BadgeCheck, Clock8, ChefHat, Vote, MousePointer, BookA, BicepsFlexed } 
 import CardSwap, { Card } from '@/components/CardSwap';
 import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
-import Carousel from '@/components/Carousel';
 import useIsMobile from '@/hooks/useIsMobile';
 import AnimatedContent from '@/components/AnimatedContent';
+import InfoCardStep from '@/components/InfoCardStep';
 
 export default function HospitalityClient() {
   const isMobile = useIsMobile(776);
@@ -366,10 +366,10 @@ export default function HospitalityClient() {
             {/* RIGHT: ANIMATION / CAROUSEL */}
             <div
               className={`
-                relative bg-skwd-light-blue rounded-xl 
+                relative rounded-xl 
                 flex items-center justify-center overflow-hidden
                 transition-all duration-300
-                ${isMobile ? 'w-full h-auto py-4' : 'h-[490px] w-full'}
+                ${isMobile ? 'bg-transparent w-full h-auto py-4' : 'bg-skwd-light-blue h-[490px] w-full'}
                 max-[1188px]:w-[520px] max-[1188px]:mx-auto
                 max-[776px]:w-full
               `}
@@ -446,12 +446,50 @@ export default function HospitalityClient() {
                   </Card>
                 </CardSwap>
               ) : (
-                <div className="w-full flex justify-center">
-                  <Carousel
-                    items={carouselItems}
-                    baseWidth={300}
-                    loop
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                  <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+                    <InfoCardStep
+                      stepLabel="hospitality_step_1"
+                      cardTitle="hospitality_step_1_title"
+                      cardDescription="hospitality_step_1_description"
+                      icon={Vote}
+                      patternOverlaySrc="/images/Tile1.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.3}>
+                    <InfoCardStep
+                      stepLabel="hospitality_step_2"
+                      cardTitle="hospitality_step_2_title"
+                      cardDescription="hospitality_step_2_description"
+                      icon={MousePointer}
+                      patternOverlaySrc="/images/Tile6.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.4}>
+                    <InfoCardStep
+                      stepLabel="hospitality_step_3"
+                      cardTitle="hospitality_step_3_title"
+                      cardDescription="hospitality_step_3_description"
+                      icon={BookA}
+                      patternOverlaySrc="/images/Tile3.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
+
+                  <AnimatedContent distance={40} duration={1.2} delay={0.5}>
+                    <InfoCardStep
+                      stepLabel="hospitality_step_4"
+                      cardTitle="hospitality_step_4_title"
+                      cardDescription="hospitality_step_4_description"
+                      icon={BicepsFlexed}
+                      patternOverlaySrc="/images/Tile2.png"
+                      color="skwd-blue"
+                    />
+                  </AnimatedContent>
                 </div>
               )}
             </div>
@@ -468,12 +506,12 @@ export default function HospitalityClient() {
           <SquareMasonry
             images={[
               '/images/image1.jpg',
-              '/images/image2.jpg',
+              '/images/image2.JPG',
               '/images/image3.jpg',
               '/images/image4.jpg',
               '/images/image5.jpg',
               '/images/image6.jpg',
-              '/images/image7.jpg',
+              '/images/image7.JPG',
               '/images/image8.jpeg',
               '/images/image9.jpg',
               '/images/image10.jpeg',
