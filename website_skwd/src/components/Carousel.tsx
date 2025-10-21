@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
 import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
@@ -23,46 +23,16 @@ export interface CarouselProps {
 }
 
 const DEFAULT_ITEMS: CarouselItem[] = [
-  {
-    step: 'Step 1',
-    title: 'Text Animations',
-    description: 'Cool text animations for your projects.',
-    id: 1,
-    icon: <FiFileText className="h-[26px] w-[26px] text-white" />,
-  },
-  {
-    step: 'Step 2',
-    title: 'Animations',
-    description: 'Smooth animations for your projects.',
-    id: 2,
-    icon: <FiCircle className="h-[26px] w-[26px] text-white" />,
-  },
-  {
-    step: 'Step 3',
-    title: 'Components',
-    description: 'Reusable components for your projects.',
-    id: 3,
-    icon: <FiLayers className="h-[26px] w-[26px] text-white" />,
-  },
-  {
-    step: 'Step 4',
-    title: 'Backgrounds',
-    description: 'Beautiful backgrounds and patterns for your projects.',
-    id: 4,
-    icon: <FiLayout className="h-[26px] w-[26px] text-white" />,
-  },
-  {
-    step: 'Step 5',
-    title: 'Common UI',
-    description: 'Common UI components are coming soon!',
-    id: 5,
-    icon: <FiCode className="h-[26px] w-[26px] text-white" />,
-  },
+  { step: 'Step 1', title: 'Text Animations', description: 'Cool text animations.', id: 1, icon: <FiFileText className="h-[26px] w-[26px] text-white" /> },
+  { step: 'Step 2', title: 'Animations', description: 'Smooth animations.', id: 2, icon: <FiCircle className="h-[26px] w-[26px] text-white" /> },
+  { step: 'Step 3', title: 'Components', description: 'Reusable components.', id: 3, icon: <FiLayers className="h-[26px] w-[26px] text-white" /> },
+  { step: 'Step 4', title: 'Backgrounds', description: 'Beautiful patterns.', id: 4, icon: <FiLayout className="h-[26px] w-[26px] text-white" /> },
+  { step: 'Step 5', title: 'Common UI', description: 'More coming soon.', id: 5, icon: <FiCode className="h-[26px] w-[26px] text-white" /> },
 ];
 
+const GAP = 16;
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
-const GAP = 16;
 const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 } as const;
 
 export default function Carousel({
@@ -73,56 +43,53 @@ export default function Carousel({
   pauseOnHover = false,
   loop = false,
 }: CarouselProps): JSX.Element {
-  const containerPadding = 16;
-  const [containerWidth, setContainerWidth] = useState<number>(baseWidth);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(baseWidth);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
+  const x = useMotionValue(0);
 
+  // resize
   useEffect(() => {
     const updateWidth = () => {
-      if (containerRef.current?.parentElement) {
-        const parentWidth = containerRef.current.parentElement.clientWidth;
-        setContainerWidth(parentWidth - 32); 
-      }
+      const parent = containerRef.current?.parentElement;
+      if (parent) setContainerWidth(parent.clientWidth - 32);
     };
     updateWidth();
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
-  const itemWidth = containerWidth - containerPadding * 2;
+  const itemWidth = containerWidth - 32;
   const trackItemOffset = itemWidth + GAP;
   const carouselItems = loop ? [...items, items[0]] : items;
 
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const x = useMotionValue(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isResetting, setIsResetting] = useState<boolean>(false);
-
+  // pause on hover
   useEffect(() => {
-    if (pauseOnHover && containerRef.current) {
-      const container = containerRef.current;
-      const handleMouseEnter = () => setIsHovered(true);
-      const handleMouseLeave = () => setIsHovered(false);
-      container.addEventListener('mouseenter', handleMouseEnter);
-      container.addEventListener('mouseleave', handleMouseLeave);
-      return () => {
-        container.removeEventListener('mouseenter', handleMouseEnter);
-        container.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    }
+    if (!pauseOnHover || !containerRef.current) return;
+    const el = containerRef.current;
+    const onEnter = () => setIsHovered(true);
+    const onLeave = () => setIsHovered(false);
+    el.addEventListener('mouseenter', onEnter);
+    el.addEventListener('mouseleave', onLeave);
+    return () => {
+      el.removeEventListener('mouseenter', onEnter);
+      el.removeEventListener('mouseleave', onLeave);
+    };
   }, [pauseOnHover]);
 
+  // autoplay
   useEffect(() => {
-    if (autoplay && (!pauseOnHover || !isHovered)) {
-      const timer = setInterval(() => {
-        setCurrentIndex((prev) => {
-          if (prev === items.length - 1 && loop) return prev + 1;
-          if (prev === carouselItems.length - 1) return loop ? 0 : prev;
-          return prev + 1;
-        });
-      }, autoplayDelay);
-      return () => clearInterval(timer);
-    }
+    if (!autoplay || (pauseOnHover && isHovered)) return;
+    const t = setInterval(() => {
+      setCurrentIndex(prev => {
+        if (loop && prev === items.length - 1) return prev + 1;
+        if (prev === carouselItems.length - 1) return loop ? 0 : prev;
+        return prev + 1;
+      });
+    }, autoplayDelay);
+    return () => clearInterval(t);
   }, [autoplay, autoplayDelay, isHovered, loop, items.length, carouselItems.length, pauseOnHover]);
 
   const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
@@ -136,54 +103,36 @@ export default function Carousel({
     }
   };
 
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo): void => {
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
-    if (offset < -DRAG_BUFFER || velocity < -VELOCITY_THRESHOLD) {
-      if (loop && currentIndex === items.length - 1) setCurrentIndex(currentIndex + 1);
-      else setCurrentIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
-    } else if (offset > DRAG_BUFFER || velocity > VELOCITY_THRESHOLD) {
-      if (loop && currentIndex === 0) setCurrentIndex(items.length - 1);
-      else setCurrentIndex((prev) => Math.max(prev - 1, 0));
-    }
+    if (offset < -DRAG_BUFFER || velocity < -VELOCITY_THRESHOLD)
+      setCurrentIndex(p => Math.min(p + 1, carouselItems.length - 1));
+    else if (offset > DRAG_BUFFER || velocity > VELOCITY_THRESHOLD)
+      setCurrentIndex(p => Math.max(p - 1, 0));
   };
 
   const dragProps = loop
     ? {}
-    : {
-        dragConstraints: {
-          left: -trackItemOffset * (carouselItems.length - 1),
-          right: 0,
-        },
-      };
+    : { dragConstraints: { left: -trackItemOffset * (carouselItems.length - 1), right: 0 } };
 
-  const tilePatterns = [
-    '/images/Tile1.png',
-    '/images/Tile2.png',
-    '/images/Tile3.png',
-    '/images/Tile4.png',
-  ];
+  const tilePatterns = ['/images/Tile1.png', '/images/Tile2.png', '/images/Tile3.png', '/images/Tile4.png'];
 
-  const getRotateY = (index: number) => {
-    const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
-    const outputRange = [90, 0, -90];
-    return useTransform(x, range, outputRange, { clamp: false });
-  };
+  // ✅ compute all transforms once, safely
+  const rotateYTransforms = useMemo(() => {
+    return carouselItems.map((_, index) => {
+      const range = [-(index + 1) * trackItemOffset, -index * trackItemOffset, -(index - 1) * trackItemOffset];
+      const outputRange = [90, 0, -90];
+      return useTransform(x, range, outputRange, { clamp: false });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [carouselItems.length, trackItemOffset, x]);
 
   return (
     <div
       ref={containerRef}
-      className="
-        relative overflow-hidden p-4 bg-skwd-dark-blue rounded-xl
-        flex flex-col justify-between
-        transition-all duration-300
-      "
-      style={{
-        width: `${containerWidth}px`,
-        minHeight: '260px',
-        height: 'auto',
-        border: '1px solid rgba(255,255,255,0.1)',
-      }}
+      className="relative overflow-hidden p-4 bg-skwd-dark-blue rounded-xl flex flex-col justify-between transition-all duration-300"
+      style={{ width: `${containerWidth}px`, minHeight: '260px', border: '1px solid rgba(255,255,255,0.1)' }}
     >
       <motion.div
         className="flex"
@@ -202,20 +151,15 @@ export default function Carousel({
         onAnimationComplete={handleAnimationComplete}
       >
         {carouselItems.map((item, index) => {
-          const rotateY = getRotateY(index);
+          const rotateY = rotateYTransforms[index];
           const pattern = tilePatterns[index % tilePatterns.length];
-
           return (
             <motion.div
               key={index}
-              className="
-                relative shrink-0 flex flex-col justify-between 
-                bg-skwd-blue border border-white/10 rounded-xl overflow-hidden cursor-grab active:cursor-grabbing
-              "
+              className="relative shrink-0 flex flex-col justify-between bg-skwd-blue border border-white/10 rounded-xl overflow-hidden cursor-grab active:cursor-grabbing"
               style={{
                 width: itemWidth,
-                height: '100%',
-                rotateY: rotateY,
+                rotateY,
                 backgroundImage: `url('${pattern}')`,
                 backgroundSize: 'cover',
                 backgroundBlendMode: 'overlay',
@@ -223,7 +167,6 @@ export default function Carousel({
               transition={effectiveTransition}
             >
               <div className="absolute inset-0 bg-skwd-blue/60" />
-
               <div className="relative z-10 p-6 flex flex-col gap-4">
                 <h3 className="font-light">{item.step}</h3>
                 <div className="inline-block bg-white/20 backdrop-blur-md rounded-full p-5 flex items-center justify-center w-fit">
@@ -239,18 +182,16 @@ export default function Carousel({
         })}
       </motion.div>
 
-      {/* DOTS */}
+      {/* dots */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
-        {items.map((_, index) => (
+        {items.map((_, i) => (
           <motion.div
-            key={index}
+            key={i}
             className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${
-              currentIndex % items.length === index ? 'bg-skwd-text-highlight' : 'bg-white/30'
+              currentIndex % items.length === i ? 'bg-skwd-text-highlight' : 'bg-white/30'
             }`}
-            animate={{
-              scale: currentIndex % items.length === index ? 1.2 : 1,
-            }}
-            onClick={() => setCurrentIndex(index)}
+            animate={{ scale: currentIndex % items.length === i ? 1.2 : 1 }}
+            onClick={() => setCurrentIndex(i)}
             transition={{ duration: 0.15 }}
           />
         ))}
