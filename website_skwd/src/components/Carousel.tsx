@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { motion, PanInfo, useMotionValue, MotionValue } from "motion/react";
+import { motion, PanInfo, useMotionValue, MotionValue } from 'motion/react';
 import React, { JSX } from 'react';
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
 
@@ -35,6 +35,11 @@ const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 } as const;
 
+// Extend type once (not inside map)
+type MotionValueWithTo = MotionValue<number> & {
+  to: (transformer: (v: number) => number) => MotionValue<number>;
+};
+
 export default function Carousel({
   items = DEFAULT_ITEMS,
   baseWidth = 300,
@@ -48,9 +53,11 @@ export default function Carousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
-  const x: MotionValue<number> = useMotionValue(0);
 
-  // Handle resize
+  // ✅ define once, outside of map
+  const x = useMotionValue(0) as MotionValueWithTo;
+
+  // Resize listener
   useEffect(() => {
     const updateWidth = () => {
       const parent = containerRef.current?.parentElement;
@@ -147,11 +154,6 @@ export default function Carousel({
             -(index - 1) * trackItemOffset,
           ];
           const outputRange = [90, 0, -90];
-          type MotionValueWithTo = ReturnType<typeof useMotionValue> & {
-            to: (transformer: (v: number) => number) => any;
-          };
-
-          const x = useMotionValue(0) as MotionValueWithTo;
 
           const rotateY = x.to((v: number) => {
             if (v <= range[0]) return outputRange[0];
