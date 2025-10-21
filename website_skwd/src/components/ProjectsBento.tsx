@@ -58,7 +58,6 @@ export default function ProjectsBento() {
   return (
     <div className="relative w-full flex flex-col items-center justify-center">
       <MagicBento
-        textAutoHide={true}
         enableStars={true}
         enableSpotlight={true}
         enableBorderGlow={true}
