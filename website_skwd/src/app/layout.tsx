@@ -12,7 +12,7 @@ const barlow = Barlow({
 
 export const metadata = {
   title: 'SKWD',
-  description: 'SKWD – Connecting motivated students with professional events and businesses.',
+  description: 'Wij verbinden gemotiveerde studenten met bedrijven voor feilloze events in heel België. Event staffing voor hospitality en logistiek.',
   icons: {
     icon: '/logo-skwd.png'
   },

@@ -39,20 +39,63 @@ export default function WorkWithUsClient() {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
+    alternateName: 'SKWD Staffing',
     url: siteUrl,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Tommy Ulens'
+      name: 'Tommy Ulens',
     },
+    description:
+      locale === 'fr'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        : locale === 'nl'
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      minValue: 2,
+      maxValue: 10,
+    },
+    knowsAbout:
+      locale === 'fr'
+        ? [
+            "Événementiel",
+            "Logistique",
+            "Hospitalité",
+            "Jobs étudiants",
+            "Staffing d'événements",
+            "Service de catering",
+            "Travail étudiant en Belgique"
+          ]
+        : locale === 'nl'
+        ? [
+            "Evenementenwerk",
+            "Logistiek",
+            "Hospitality",
+            "Studentenjobs",
+            "Event staffing",
+            "Cateringdiensten",
+            "Studentenwerk in België"
+          ]
+        : [
+            "Event staffing",
+            "Logistics",
+            "Hospitality",
+            "Student jobs",
+            "Catering services",
+            "Student staffing in Belgium"
+          ],
+    areaServed: 'BE',
+    email: 'tommy@skwd.be',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rue Picard 7/ 204',
+      streetAddress: 'Rue Picard 7/204',
       addressLocality: 'Brussels',
       postalCode: '1000',
-      addressCountry: 'BE'
+      addressCountry: 'BE',
     },
-    logo: `${siteUrl}/images/logo-dark.png`,
+    logo: `${siteUrl}/Logo.jpg`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
@@ -104,6 +147,7 @@ export default function WorkWithUsClient() {
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+    mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
 
     description:
       locale === 'fr'
@@ -111,6 +155,39 @@ export default function WorkWithUsClient() {
         : locale === 'nl'
         ? 'Ontdek hoe uw bedrijf met SKWD kan samenwerken voor evenementen. Wij verbinden ondernemingen met gemotiveerde studenten.'
         : 'Discover how to collaborate with SKWD for your events. We connect motivated students with companies for efficient, high-quality staffing.',
+    about: {
+      '@type': 'Service',
+      name:
+        locale === 'fr'
+          ? 'Collaboration B2B avec SKWD'
+          : locale === 'nl'
+          ? 'B2B-samenwerking met SKWD'
+          : 'B2B collaboration with SKWD',
+      serviceType:
+        locale === 'fr'
+          ? "Mise à disposition d'étudiants pour événements et services logistiques"
+          : locale === 'nl'
+          ? 'Levering van studenten voor evenementen en logistieke ondersteuning'
+          : 'Providing student workers for events and logistics support',
+      provider: { '@id': `${siteUrl}/#organization` },
+      areaServed: 'BE',
+      availableLanguage: ['English', 'French', 'Dutch'],
+      offers: {
+        '@type': 'Offer',
+        url: pageUrl,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'EUR',
+        },
+        eligibleCustomerType: 'Business',
+        description:
+          locale === 'fr'
+            ? "Services de staffing étudiant pour les entreprises, agences et organisateurs d'événements."
+            : locale === 'nl'
+            ? 'Studentenuitzenddiensten voor bedrijven, agentschappen en evenementenorganisatoren.'
+            : 'Student staffing services for companies, agencies, and event organizers.',
+      },
+    },
   };
 
   const techLogos = [

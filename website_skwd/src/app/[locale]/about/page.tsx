@@ -30,9 +30,9 @@ export async function generateMetadata({
       seoTitle: 'Over ons',
       ogTitle: 'Over ons - Ontmoet ons team en ontdek waarom elk lid onmisbaar is voor SKWD',
       description:
-        'Kom meer te weten over ons en hoe het SKWD-team studenten en bedrijven verbindt voor succesvolle evenementen in België.',
+        'Leer SKWD kennen: Belgisch agency dat studenten en bedrijven samenbrengt voor event-, hospitality- en logistieke teams, van selectie tot briefing.',
       ogDescription:
-        'Maak kennis met het SKWD-team – de drijvende kracht achter het verbinden van gemotiveerde studenten en bedrijven voor geslaagde evenementen.',
+        'SKWD: Belgisch bureau voor event staffing — wij verbinden studenten en bedrijven.',
       url: `${siteUrl}/nl/over-ons`,
     },
     en: {
@@ -56,6 +56,13 @@ export async function generateMetadata({
     alt: 'SKWD About Us preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -74,6 +81,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

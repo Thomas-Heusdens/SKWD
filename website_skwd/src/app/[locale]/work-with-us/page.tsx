@@ -20,7 +20,6 @@ export async function generateMetadata({
       seoTitle: 'Travailler avec nous',
       ogTitle:
         "Travailler avec nous – Découvrez pourquoi collaborer avec les étudiants de SKWD est le bon choix pour vos événements",
-
       description:
         "Découvrez comment collaborer avec SKWD pour vos événements. Nous mettons en relation entreprises et étudiants motivés pour des missions de qualité.",
       ogDescription:
@@ -33,9 +32,9 @@ export async function generateMetadata({
       ogTitle:
         'Werk met ons – Ontdek waarom samenwerken met SKWD-studenten de juiste keuze is voor uw evenement',
       description:
-        'Ontdek hoe uw bedrijf met SKWD kan samenwerken voor evenementen. Wij verbinden ondernemingen met gemotiveerde studenten.',
+        'Samenwerken met SKWD? We bouwen flexibele studententeams voor uw event of onderneming — van selectie en briefing tot nacalculatie.',
       ogDescription:
-        'Werk samen met SKWD — uw Belgische partner voor event staffing en studentenjobs op maat van uw bedrijf.',
+        'Werk met SKWD — Belgische partner voor event staffing op maat.',
       url: `${siteUrl}/nl/werk-met-ons`,
     },
     en: {
@@ -60,6 +59,13 @@ export async function generateMetadata({
     alt: 'SKWD Work With Us preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -78,6 +84,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

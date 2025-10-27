@@ -62,32 +62,77 @@ export default function AboutClient() {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
+    alternateName: 'SKWD Staffing',
     url: siteUrl,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Tommy Ulens'
+      name: 'Tommy Ulens',
     },
+    description:
+      locale === 'fr'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        : locale === 'nl'
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      minValue: 2,
+      maxValue: 10,
+    },
+    knowsAbout:
+      locale === 'fr'
+        ? [
+            "Événementiel",
+            "Logistique",
+            "Hospitalité",
+            "Jobs étudiants",
+            "Staffing d'événements",
+            "Service de catering",
+            "Travail étudiant en Belgique"
+          ]
+        : locale === 'nl'
+        ? [
+            "Evenementenwerk",
+            "Logistiek",
+            "Hospitality",
+            "Studentenjobs",
+            "Event staffing",
+            "Cateringdiensten",
+            "Studentenwerk in België"
+          ]
+        : [
+            "Event staffing",
+            "Logistics",
+            "Hospitality",
+            "Student jobs",
+            "Catering services",
+            "Student staffing in Belgium"
+          ],
+    areaServed: 'BE',
+    email: 'tommy@skwd.be',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rue Picard 7/ 204',
+      streetAddress: 'Rue Picard 7/204',
       addressLocality: 'Brussels',
       postalCode: '1000',
-      addressCountry: 'BE'
+      addressCountry: 'BE',
     },
-    logo: `${siteUrl}/images/logo-dark.png`,
+    logo: `${siteUrl}/Logo.jpg`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
       'https://www.facebook.com/people/SKWD/61562389827787/',
     ],
-    contactPoint: [{
-      '@type': 'ContactPoint',
-      contactType: 'Customer Service',
-      telephone: '+32 476 02 64 39',
-      areaServed: 'BE',
-      availableLanguage: ['English', 'French', 'Dutch']
-    }]
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Service',
+        telephone: '+32 476 02 64 39',
+        areaServed: 'BE',
+        availableLanguage: ['English', 'French', 'Dutch'],
+      },
+    ],
   };
 
   // --- WebSite ---
@@ -116,14 +161,29 @@ export default function AboutClient() {
         : 'About Us - SKWD',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
-    mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+    mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
     description:
       locale === 'fr'
         ? "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique."
         : locale === 'nl'
         ? 'Kom meer te weten over ons en hoe het SKWD-team studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.',
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'SKWD',
+      founder: {
+        '@type': 'Person',
+        name: 'Tommy Ulens'
+      },
+      foundingDate: '2024',
+      sameAs: [
+        'https://www.linkedin.com/company/skwd-staffing/',
+        'https://www.instagram.com/skwd.be/?hl=en',
+        'https://www.facebook.com/people/SKWD/61562389827787/',
+      ]
+    },
   };
 
   return (

@@ -32,9 +32,9 @@ export async function generateMetadata({
       ogTitle:
         'Contacteer ons - Wacht niet langer en stuur ons uw aanvraag voor studenten op uw evenement',
       description:
-        'Heeft u binnenkort een feest, receptie of evenement en zoekt u enthousiaste studenten? Neem via deze pagina contact op met ons team.',
+        'Plant u een feest, receptie of event en zoekt u gemotiveerde studenten? Neem contact op met SKWD — wij helpen u snel verder.',
       ogDescription:
-        'SKWD – uw Belgische partner voor studentenkrachten in horeca, logistiek en evenementen.',
+        'Contacteer SKWD — studenten voor horeca, logistiek en events.',
       url: `${siteUrl}/nl/contacteer-ons`,
     },
     en: {
@@ -59,6 +59,13 @@ export async function generateMetadata({
     alt: 'SKWD contact form preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -77,6 +84,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

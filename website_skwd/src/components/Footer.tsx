@@ -26,7 +26,7 @@ export default function Footer() {
       privacy_policy: 'Privacy Policy & General Terms',
       made_by: 'Made by',
       work: "Work with us",
-      address: "Rue Picard 7/ 204, 1000 Brussels",
+      address: "Rue Picard 7/204, 1000 Brussels",
     },
     fr: {
       recognition_label: 'Reconnaissance agence intérimaire:',
@@ -43,7 +43,7 @@ export default function Footer() {
       privacy_policy: 'Politique de Confidentialité & Conditions Générales',
       made_by: 'Créé par',
       work: "Collaborer avec nous",
-      address: "Rue Picard 7/ 204, 1000 Bruxelles",
+      address: "Rue Picard 7/204, 1000 Bruxelles",
     },
     nl: {
       recognition_label: 'Erkenning uitzendbureau:',
@@ -60,7 +60,7 @@ export default function Footer() {
       privacy_policy: 'Privacy Policy & Algemene voorwaarden',
       made_by: 'Gemaakt door',
       work: "Werk met ons",
-      address: "Picardstraat 7/ 204, 1000 Brussels",
+      address: "Picardstraat 7/204, 1000 Brussels",
     },
   };
 

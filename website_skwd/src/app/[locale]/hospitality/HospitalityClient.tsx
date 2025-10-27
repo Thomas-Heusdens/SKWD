@@ -36,20 +36,63 @@ export default function HospitalityClient() {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
+    alternateName: 'SKWD Staffing',
     url: siteUrl,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Tommy Ulens'
+      name: 'Tommy Ulens',
     },
+    description:
+      locale === 'fr'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        : locale === 'nl'
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      minValue: 2,
+      maxValue: 10,
+    },
+    knowsAbout:
+      locale === 'fr'
+        ? [
+            "Événementiel",
+            "Logistique",
+            "Hospitalité",
+            "Jobs étudiants",
+            "Staffing d'événements",
+            "Service de catering",
+            "Travail étudiant en Belgique"
+          ]
+        : locale === 'nl'
+        ? [
+            "Evenementenwerk",
+            "Logistiek",
+            "Hospitality",
+            "Studentenjobs",
+            "Event staffing",
+            "Cateringdiensten",
+            "Studentenwerk in België"
+          ]
+        : [
+            "Event staffing",
+            "Logistics",
+            "Hospitality",
+            "Student jobs",
+            "Catering services",
+            "Student staffing in Belgium"
+          ],
+    areaServed: 'BE',
+    email: 'tommy@skwd.be',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rue Picard 7/ 204',
+      streetAddress: 'Rue Picard 7/204',
       addressLocality: 'Brussels',
       postalCode: '1000',
-      addressCountry: 'BE'
+      addressCountry: 'BE',
     },
-    logo: `${siteUrl}/images/logo-dark.png`,
+    logo: `${siteUrl}/Logo.jpg`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
@@ -99,7 +142,7 @@ export default function HospitalityClient() {
         : 'Hospitality sector - SKWD',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
-    mainEntity: { '@id': `${siteUrl}/#organization` },
+    mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
 
     description:
@@ -108,6 +151,37 @@ export default function HospitalityClient() {
         : locale === 'nl'
         ? 'Ontdek onze hospitalitydiensten: van catering tot brand activaties, wij zorgen voor de juiste mensen op de juiste plaats.'
         : 'Discover our hospitality services: from catering to brand activations, we place the right people in the right place.',
+
+    about: {
+      '@type': 'Service',
+      name: 'SKWD Hospitality',
+      serviceType: 'Student staffing for hospitality and events',
+      provider: { '@id': `${siteUrl}/#organization` },
+      areaServed: 'BE',
+      availableLanguage: ['English', 'French', 'Dutch'],
+      description:
+        locale === 'fr'
+          ? "Nous fournissons des étudiants qualifiés pour l'hospitalité, le catering et les activations de marque à travers la Belgique."
+          : locale === 'nl'
+          ? 'Wij voorzien gemotiveerde studenten voor hospitality, catering en brand activaties in heel België.'
+          : 'We provide skilled student workers for hospitality, catering, and brand activations across Belgium.',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name:
+          locale === 'fr'
+            ? "Services d'hospitalité"
+            : locale === 'nl'
+            ? 'Hospitalitydiensten'
+            : 'Hospitality services',
+        itemListElement: [
+          { '@type': 'Offer', name: t('hospitality_carousel_1_title') },
+          { '@type': 'Offer', name: t('hospitality_carousel_2_title') },
+          { '@type': 'Offer', name: t('hospitality_carousel_3_title') },
+          { '@type': 'Offer', name: t('hospitality_carousel_4_title') },
+          { '@type': 'Offer', name: t('hospitality_carousel_5_title') },
+        ],
+      },
+    },
   };
 
   const carouselSlides = [
@@ -213,7 +287,7 @@ export default function HospitalityClient() {
             <div className="flex justify-center gap-4 flex-wrap">
               <AnimatedContent distance={40} duration={1.2} delay={0.5}>
                 <Link
-                  href="https://jobs.skwd.be/hospitality"
+                  href="https://jobs.skwd.be/studentenjob"
                   className="px-6 py-3 bg-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   {t('hospitality_cta_apply')}
@@ -352,7 +426,7 @@ export default function HospitalityClient() {
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2}>
                 <Link
-                  href="https://jobs.skwd.be/hospitality"
+                  href="https://jobs.skwd.be/studentenjob"
                   className="
                     px-6 py-3 bg-skwd-button text-white rounded-lg font-medium 
                     hover:opacity-90 transition-opacity

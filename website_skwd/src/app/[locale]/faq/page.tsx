@@ -33,9 +33,9 @@ export async function generateMetadata({
       ogTitle:
         'Veelgestelde vragen – Ontdek de antwoorden op de vragen die studenten en bedrijven het vaakst stellen',
       description:
-        'Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!',
+        'Antwoorden op je vragen over werken bij SKWD: inschrijven, planning, verloning en support. Staat je vraag er niet bij? Neem gerust contact op.',
       ogDescription:
-        'Ontdek antwoorden op veelgestelde vragen over SKWD, student jobs, sollicitatie en werkplanning.',
+        'FAQ: alles over studentjobs bij SKWD — solliciteren, planning, werken.',
       url: `${siteUrl}/nl/veelgestelde-vragen`,
     },
     en: {
@@ -60,6 +60,13 @@ export async function generateMetadata({
     alt: 'FAQ SKWD preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -78,6 +85,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

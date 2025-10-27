@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from '@/lib/i18n';
 import { Listbox, Transition } from '@headlessui/react';
@@ -33,20 +33,63 @@ export default function ContactClient() {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
+    alternateName: 'SKWD Staffing',
     url: siteUrl,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Tommy Ulens'
+      name: 'Tommy Ulens',
     },
+    description:
+      locale === 'fr'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        : locale === 'nl'
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      minValue: 2,
+      maxValue: 10,
+    },
+    knowsAbout:
+      locale === 'fr'
+        ? [
+            "Événementiel",
+            "Logistique",
+            "Hospitalité",
+            "Jobs étudiants",
+            "Staffing d'événements",
+            "Service de catering",
+            "Travail étudiant en Belgique"
+          ]
+        : locale === 'nl'
+        ? [
+            "Evenementenwerk",
+            "Logistiek",
+            "Hospitality",
+            "Studentenjobs",
+            "Event staffing",
+            "Cateringdiensten",
+            "Studentenwerk in België"
+          ]
+        : [
+            "Event staffing",
+            "Logistics",
+            "Hospitality",
+            "Student jobs",
+            "Catering services",
+            "Student staffing in Belgium"
+          ],
+    areaServed: 'BE',
+    email: 'tommy@skwd.be',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rue Picard 7/ 204',
+      streetAddress: 'Rue Picard 7/204',
       addressLocality: 'Brussels',
       postalCode: '1000',
-      addressCountry: 'BE'
+      addressCountry: 'BE',
     },
-    logo: `${siteUrl}/images/logo-dark.png`,
+    logo: `${siteUrl}/Logo.jpg`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
@@ -57,7 +100,6 @@ export default function ContactClient() {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
         telephone: '+32 476 02 64 39',
-        email: 'info@skwd.be',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },
@@ -106,8 +148,24 @@ export default function ContactClient() {
         : 'Organizing an event or reception? Contact SKWD to find enthusiastic students for your team.',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
-    mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+    mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
+    contactType: 'Customer Service',
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'SKWD',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+32 476 02 64 39',
+          contactType: 'Customer Service',
+          email: 'tommy@skwd.be',
+          areaServed: 'BE',
+          availableLanguage: ['English', 'French', 'Dutch'],
+        },
+      ],
+    },
   };
 
   const [formData, setFormData] = useState({

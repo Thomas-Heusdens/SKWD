@@ -30,9 +30,9 @@ export async function generateMetadata({
       seoTitle: 'Welkom bij SKWD - Uitzendkantoor voor studenten',
       ogTitle: 'Welkom bij SKWD - Uitzendkantoor voor studenten',
       description:
-        'Ontdek SKWD, het Belgische agency dat studenten en bedrijven verbindt voor succesvolle evenementen in België.',
+        'Ontdek SKWD: wij verbinden gemotiveerde studenten met bedrijven voor feilloze events in België. Event staffing, hospitality en logistiek — snel geregeld.',
       ogDescription:
-        'Ontdek SKWD, jouw partner voor geslaagde evenementen in België. Gespecialiseerd in studentenevenementen en staffing.',
+        'Ontdek SKWD — jouw partner voor event staffing met studenten in België.',
       url: `${siteUrl}/nl`,
     },
     en: {
@@ -56,6 +56,13 @@ export async function generateMetadata({
     alt: 'SKWD homepage preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -76,6 +83,15 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
 
     alternates: {
       canonical: t.url,

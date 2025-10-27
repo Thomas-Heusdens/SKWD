@@ -33,9 +33,9 @@ export async function generateMetadata({
       ogTitle:
         'Sector Logistiek – Ontdek de unieke ervaringen en verschillende soorten logistieke jobs waarin je kunt werken',
       description:
-        'Ontdek onze logistieke diensten: van opbouw en afbouw tot transport, wij zorgen voor de juiste mensen op de juiste plaats.',
+        'Logistieke support voor events: op- en afbouw, transport en magazijn. SKWD levert de juiste studenten — op tijd, goed gebriefd, inzetklaar.',
       ogDescription:
-        'Verken SKWD, jouw Belgische partner voor logistiek personeel — opbouw, afbouw, magazijnwerk en meer.',
+        'SKWD voor logistiek personeel — opbouw, afbouw, warehouse & transport.',
       url: `${siteUrl}/nl/logistiek`,
     },
     en: {
@@ -60,6 +60,13 @@ export async function generateMetadata({
     alt: 'SKWD logistics sector preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -78,6 +85,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

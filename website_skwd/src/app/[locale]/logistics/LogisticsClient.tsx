@@ -45,20 +45,63 @@ export default function LogisticsClient() {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'SKWD',
+    alternateName: 'SKWD Staffing',
     url: siteUrl,
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
       name: 'Tommy Ulens'
     },
+    description:
+      locale === 'fr'
+        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        : locale === 'nl'
+        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+    numberOfEmployees: {
+      '@type': "QuantitativeValue",
+      minValue: 2,
+      maxValue: 10
+    },
+    knowsAbout:
+      locale === 'fr'
+        ? [
+            "Événementiel",
+            "Logistique",
+            "Hospitalité",
+            "Jobs étudiants",
+            "Staffing d'événements",
+            "Service de catering",
+            "Travail étudiant en Belgique"
+          ]
+        : locale === 'nl'
+        ? [
+            "Evenementenwerk",
+            "Logistiek",
+            "Hospitality",
+            "Studentenjobs",
+            "Event staffing",
+            "Cateringdiensten",
+            "Studentenwerk in België"
+          ]
+        : [
+            "Event staffing",
+            "Logistics",
+            "Hospitality",
+            "Student jobs",
+            "Catering services",
+            "Student staffing in Belgium"
+          ],
+    areaServed: "BE",
+    email: "tommy@skwd.be",
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rue Picard 7/ 204',
+      streetAddress: 'Rue Picard 7/204',
       addressLocality: 'Brussels',
       postalCode: '1000',
       addressCountry: 'BE'
     },
-    logo: `${siteUrl}/images/logo-dark.png`,
+    logo: `${siteUrl}/Logo.jpg`,
     sameAs: [
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
@@ -112,6 +155,7 @@ export default function LogisticsClient() {
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
     inLanguage: locale,
+    mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
 
     description:
       locale === 'fr'
@@ -119,6 +163,36 @@ export default function LogisticsClient() {
         : locale === 'nl'
         ? 'Ontdek onze logistieke diensten: van opbouw en afbouw tot transport, wij zorgen voor de juiste mensen op de juiste plaats.'
         : 'Discover our logistics services: from setup and dismantling to warehouse support, we place the right people in the right place.',
+    about: {
+      '@type': 'Service',
+      name: 'SKWD Logistics',
+      serviceType: 'Student staffing for logistics and transport',
+      provider: { '@id': `${siteUrl}/#organization` },
+      areaServed: 'BE',
+      availableLanguage: ['English', 'French', 'Dutch'],
+      description:
+        locale === 'fr'
+          ? "Nous fournissons des étudiants fiables pour la logistique, le transport et l'assistance en entrepôt à travers la Belgique."
+          : locale === 'nl'
+          ? 'Wij voorzien betrouwbare studenten voor logistiek, transport en magazijnondersteuning in heel België.'
+          : 'We provide reliable student workers for logistics, transport, and warehouse support across Belgium.',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name:
+          locale === 'fr'
+            ? 'Services logistiques'
+            : locale === 'nl'
+            ? 'Logistieke diensten'
+            : 'Logistics services',
+        itemListElement: [
+          { '@type': 'Offer', name: t('logistics_carousel_1_title') },
+          { '@type': 'Offer', name: t('logistics_carousel_2_title') },
+          { '@type': 'Offer', name: t('logistics_carousel_3_title') },
+          { '@type': 'Offer', name: t('logistics_carousel_4_title') },
+          { '@type': 'Offer', name: t('logistics_carousel_5_title') },
+        ],
+      },
+    },
   };
 
   const src = isSmallScreen
@@ -222,7 +296,7 @@ export default function LogisticsClient() {
             <div className="flex justify-center gap-4 flex-wrap">
               <AnimatedContent distance={40} duration={1.2} delay={0.5}>
                 <Link
-                  href="https://jobs.skwd.be/logistics"
+                  href="https://jobs.skwd.be/studentenjob"
                   className="px-6 py-3 bg-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   {t('logistics_cta_apply')}
@@ -332,7 +406,7 @@ export default function LogisticsClient() {
                 </h2>
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2}>
-                <Link href="https://jobs.skwd.be/logistics" className="px-6 py-3 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+                <Link href="https://jobs.skwd.be/studentenjob" className="px-6 py-3 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
                   {t('logistics_easy_apply_cta')}
                 </Link>
               </AnimatedContent>

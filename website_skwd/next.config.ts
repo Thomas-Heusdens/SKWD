@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       { source: '/nl/logistics', destination: '/nl/logistiek', permanent: true },
 
       // --- Work with us ---
-      { source: '/fr/work-with-us', destination: '/fr/collaborer-avec-nous', permanent: true },
+      { source: '/fr/work-with-us', destination: '/fr/travailler-avec-nous', permanent: true },
       { source: '/nl/work-with-us', destination: '/nl/werk-met-ons', permanent: true },
 
       // --- FAQ ---
@@ -43,7 +43,7 @@ const nextConfig: NextConfig = {
       { source: '/fr/logistique', destination: '/fr/logistics' },
       { source: '/nl/logistiek', destination: '/nl/logistics' },
       // Work With Us localized path
-      { source: '/fr/collaborer-avec-nous', destination: '/fr/work-with-us' },
+      { source: '/fr/travailler-avec-nous', destination: '/fr/work-with-us' },
       { source: '/nl/werk-met-ons', destination: '/nl/work-with-us' },
       // FAQ localized path
       { source: '/nl/veelgestelde-vragen', destination: '/nl/faq' },

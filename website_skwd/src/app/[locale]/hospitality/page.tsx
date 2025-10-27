@@ -33,9 +33,9 @@ export async function generateMetadata({
       ogTitle:
         'Sector Hospitality – Ontdek de unieke ervaringen en verschillende soorten jobs waarin je kunt werken',
       description:
-        'Ontdek onze hospitalitydiensten: van catering tot brand activaties, wij zorgen voor de juiste mensen op de juiste plaats.',
+        'Hospitality-staffing voor catering, ontvangst en service. SKWD selecteert en brieft studenten voor een gastvrije eventervaring.',
       ogDescription:
-        'Verken SKWD, jouw Belgische partner voor hospitality staffing — catering, ontvangst, service en meer.',
+        'SKWD voor hospitality — catering, onthaal, service & activaties.',
       url: `${siteUrl}/nl/hospitality`,
     },
     en: {
@@ -60,6 +60,13 @@ export async function generateMetadata({
     alt: 'SKWD hospitality sector preview image',
   };
 
+  const keywords =
+    locale === 'fr'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      : locale === 'nl'
+      ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
+      : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';
+
   return {
     title: t.title,
     description: t.description,
@@ -78,6 +85,14 @@ export async function generateMetadata({
       description: t.ogDescription,
       images: [ogImage.url],
     },
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: 'large',
+      maxVideoPreview: -1,
+    },
+    keywords,
     alternates: {
       canonical: t.url,
       languages: {

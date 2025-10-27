@@ -21,7 +21,7 @@ export const localizedRoutes = {
   },
   work: {
     en: 'work-with-us',
-    fr: 'collaborer-avec-nous',
+    fr: 'travailler-avec-nous',
     nl: 'werk-met-ons',
   },
   contact: {
