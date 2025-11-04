@@ -366,7 +366,7 @@ export default function ContactClient() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.API_GOOGLE_MAPS_KEY}&q=place_id:ChIJpbbnE-jDw0cRhte5ZDAwAaI`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.API_KEY}&q=place_id:ChIJpbbnE-jDw0cRhte5ZDAwAaI`}
                   />
                 </div>
               </div>

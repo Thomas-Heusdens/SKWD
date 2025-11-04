@@ -10,7 +10,6 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { useState } from 'react';
 import { ReceiptText, Users, Mail, Clock8, Zap, Truck, UtensilsCrossed, BrainCog, HeartHandshake } from 'lucide-react';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import AnimatedContent from '@/components/AnimatedContent';
 import InfoCardStep from '@/components/InfoCardStep';
 
