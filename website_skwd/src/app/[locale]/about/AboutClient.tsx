@@ -110,7 +110,7 @@ export default function AboutClient() {
             "Student staffing in Belgium"
           ],
     areaServed: 'BE',
-    email: 'tommy@skwd.be',
+    email: 'info@skwd.be',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rue Picard 7/204',
@@ -123,12 +123,13 @@ export default function AboutClient() {
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
       'https://www.facebook.com/people/SKWD/61562389827787/',
+      'https://maps.app.goo.gl/pXp9tQXUyUNWhmJp6',
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 476 02 64 39',
+        telephone: '+32 456 82 45 51',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },
@@ -178,10 +179,11 @@ export default function AboutClient() {
         name: 'Tommy Ulens'
       },
       foundingDate: '2024',
-      sameAs: [
+        sameAs: [
         'https://www.linkedin.com/company/skwd-staffing/',
         'https://www.instagram.com/skwd.be/?hl=en',
         'https://www.facebook.com/people/SKWD/61562389827787/',
+        'https://maps.app.goo.gl/pXp9tQXUyUNWhmJp6',
       ]
     },
   };
@@ -254,7 +256,7 @@ export default function AboutClient() {
 
               <article className="flex-1 text-center min-w-[120px]">
                 <RollingCounter
-                  finalValue={250}
+                  finalValue={350}
                   label={t('about_numbers_students')}
                   suffix="+"
                   places={[100, 10, 1]}
@@ -265,7 +267,7 @@ export default function AboutClient() {
 
               <article className="flex-1 text-center min-w-[120px]">
                 <RollingCounter
-                  finalValue={80}
+                  finalValue={90}
                   label={t('about_numbers_clients')}
                   suffix="+"
                   places={[10, 1]}

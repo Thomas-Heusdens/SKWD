@@ -10,7 +10,6 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { useState } from 'react';
 import { ReceiptText, Users, Mail, Clock8, Zap, Truck, UtensilsCrossed, BrainCog, HeartHandshake } from 'lucide-react';
-import LogoLoop from '@/components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import AnimatedContent from '@/components/AnimatedContent';
 import InfoCardStep from '@/components/InfoCardStep';
@@ -87,7 +86,7 @@ export default function WorkWithUsClient() {
             "Student staffing in Belgium"
           ],
     areaServed: 'BE',
-    email: 'tommy@skwd.be',
+    email: 'info@skwd.be',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rue Picard 7/204',
@@ -100,12 +99,13 @@ export default function WorkWithUsClient() {
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
       'https://www.facebook.com/people/SKWD/61562389827787/',
+      'https://maps.app.goo.gl/pXp9tQXUyUNWhmJp6',
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 476 02 64 39',
+        telephone: '+32 456 82 45 51',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },
@@ -195,30 +195,6 @@ export default function WorkWithUsClient() {
     { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
     { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
     { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
-  ];
-
-  const carouselItems = [
-    {
-      step: t('work_step_1'),
-      title: t('work_steps_1_title'),
-      description: t('work_steps_1_description'),
-      id: 1,
-      icon: <Mail className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('work_step_2'),
-      title: t('work_steps_2_title'),
-      description: t('work_steps_2_description'),
-      id: 2,
-      icon: <ReceiptText className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('work_step_3'),
-      title: t('work_steps_3_title'),
-      description: t('work_steps_3_description'),
-      id: 3,
-      icon: <Users className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
   ];
 
   return (
@@ -315,28 +291,6 @@ export default function WorkWithUsClient() {
             <div className="absolute inset-0 bg-skwd-dark-blue/70 pointer-events-none" />
           </div>
         </header>
-
-        {/* ===== PARTNERS LOGO SCROLL SECTION ===== */}
-        <section
-          id="partners"
-          aria-label="Our partners"
-          className="py-6 bg-skwd-light-blue text-white overflow-hidden"
-        >
-          <div className='relative h-[78px] overflow-hidden section-container'>
-            <LogoLoop
-              logos={techLogos}
-              speed={120}
-              direction="left"
-              logoHeight={65}
-              gap={100}
-              pauseOnHover
-              scaleOnHover
-              fadeOut
-              fadeOutColor="#1414A8"
-              ariaLabel="Technology partners"
-            />
-          </div>
-        </section>
 
         {/* ===== STEP-BY-STEP SECTION ===== */}
         <section

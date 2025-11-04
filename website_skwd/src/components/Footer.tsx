@@ -193,14 +193,14 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="text-skwd-button mt-1 w-5 h-5"/>
-                <a href="tel:+32476026439" className="hover:text-white transition-colors font-light">
-                  +32 476 02 64 39
+                <a href="tel:+32456824551" className="hover:text-white transition-colors font-light">
+                  +32 456 82 45 51
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <MailPlus className="text-skwd-button mt-1 w-5 h-5"/>
-                <a href="mailto:tommy@skwd.be" className="hover:text-white transition-colors font-light">
-                  tommy@skwd.be
+                <a href="mailto:info@skwd.be" className="hover:text-white transition-colors font-light">
+                  info@skwd.be
                 </a>
               </li>
             </ul>

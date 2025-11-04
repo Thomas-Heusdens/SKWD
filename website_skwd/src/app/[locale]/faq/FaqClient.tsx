@@ -84,7 +84,7 @@ export default function FaqClient() {
             "Student staffing in Belgium"
           ],
     areaServed: 'BE',
-    email: 'tommy@skwd.be',
+    email: 'info@skwd.be',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rue Picard 7/204',
@@ -97,12 +97,13 @@ export default function FaqClient() {
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
       'https://www.facebook.com/people/SKWD/61562389827787/',
+      'https://maps.app.goo.gl/pXp9tQXUyUNWhmJp6',
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 476 02 64 39',
+        telephone: '+32 456 82 45 51',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },

@@ -81,7 +81,7 @@ export default function ContactClient() {
             "Student staffing in Belgium"
           ],
     areaServed: 'BE',
-    email: 'tommy@skwd.be',
+    email: 'info@skwd.be',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rue Picard 7/204',
@@ -94,12 +94,13 @@ export default function ContactClient() {
       'https://www.linkedin.com/company/skwd-staffing/',
       'https://www.instagram.com/skwd.be/?hl=en',
       'https://www.facebook.com/people/SKWD/61562389827787/',
+      'https://maps.app.goo.gl/pXp9tQXUyUNWhmJp6',
     ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 476 02 64 39',
+        telephone: '+32 456 82 45 51',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },
@@ -158,9 +159,9 @@ export default function ContactClient() {
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+32 476 02 64 39',
+          telephone: '+32 456 82 45 51',
           contactType: 'Customer Service',
-          email: 'tommy@skwd.be',
+          email: 'info@skwd.be',
           areaServed: 'BE',
           availableLanguage: ['English', 'French', 'Dutch'],
         },
@@ -316,7 +317,7 @@ export default function ContactClient() {
                         </div>
                         <div>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_email')}</h3>
-                          <p className="text-sm text-white/70">tommy@skwd.be</p>
+                          <p className="text-sm text-white/70">info@skwd.be</p>
                         </div>
                       </div>
                     </div>
@@ -331,7 +332,7 @@ export default function ContactClient() {
                         </div>
                         <div>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_phone')}</h3>
-                          <p className="text-sm text-white/70">+32 476 02 64 39</p>
+                          <p className="text-sm text-white/70">+32 456 82 45 51</p>
                         </div>
                       </div>
                     </div>
@@ -365,8 +366,8 @@ export default function ContactClient() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Rue+de+la+Science+14,Brussels,Belgium`}
-                  ></iframe>
+                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCTNRi5GeZQNTN079wD4wQblEf-0Lr7m9s&q=place_id:ChIJpbbnE-jDw0cRhte5ZDAwAaI`}
+                  />
                 </div>
               </div>
 
