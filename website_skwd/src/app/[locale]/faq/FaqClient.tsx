@@ -152,54 +152,216 @@ export default function FaqClient() {
         '@type': 'Question',
         name:
           locale === 'fr'
-            ? 'Comment puis-je postuler chez SKWD ?'
+            ? 'Qu’est-ce que SKWD ?'
             : locale === 'nl'
-            ? 'Hoe kan ik solliciteren bij SKWD?'
-            : 'How can I apply at SKWD?',
+            ? 'Wat is SKWD?'
+            : 'What is SKWD?',
         acceptedAnswer: {
           '@type': 'Answer',
           text:
             locale === 'fr'
-              ? 'Vous pouvez postuler directement via notre formulaire en ligne.'
+              ? "SKWD est une agence d’intérim dynamique spécialisée dans la mise en relation d’étudiants motivés avec des emplois dans les secteurs de l’hospitalité et de la logistique."
               : locale === 'nl'
-              ? 'Je kunt direct solliciteren via ons online formulier.'
-              : 'You can apply directly through our online form.',
+              ? 'SKWD is een dynamisch uitzendbureau dat studenten koppelt aan uiteenlopende jobs binnen de hospitality- en logistieke sector.'
+              : 'SKWD is a dynamic staffing agency focused on connecting motivated students with job opportunities in the hospitality and logistics sectors.',
         },
       },
       {
         '@type': 'Question',
         name:
           locale === 'fr'
-            ? 'Quels types de jobs proposez-vous ?'
+            ? 'Quels types d’événements proposez-vous ?'
             : locale === 'nl'
-            ? 'Welke soorten jobs bieden jullie aan?'
-            : 'What types of jobs do you offer?',
+            ? 'Welke soorten evenementen?'
+            : 'What types of events do you work with?',
         acceptedAnswer: {
           '@type': 'Answer',
           text:
             locale === 'fr'
-              ? "Nous proposons des postes dans les secteurs de l'hospitalité, de la logistique et des événements."
+              ? 'Nous collaborons avec des festivals, mariages, événements d’entreprise, conférences et événements sportifs. Nous proposons aussi des postes comme chauffeur, order picker, parking boy, steward ou équipe de montage et démontage.'
               : locale === 'nl'
-              ? 'Wij bieden functies aan binnen hospitality, logistiek en evenementen.'
-              : 'We offer positions in hospitality, logistics, and events.',
+              ? 'We werken samen met festivals, huwelijken, bedrijfsevenementen, conferenties en sportevenementen. Ook functies zoals chauffeur, orderpicker, parkingboy, steward en op- en afbouw van evenementen komen vaak voor.'
+              : 'We collaborate with festivals, weddings, corporate events, conferences, and sports events. We also offer positions such as driver, order picker, parking attendant, steward, and event setup or teardown crew.',
         },
       },
       {
         '@type': 'Question',
         name:
           locale === 'fr'
-            ? 'Les jobs sont-ils adaptés aux étudiants ?'
+            ? 'Dans quelles villes êtes-vous actifs ?'
             : locale === 'nl'
-            ? 'Zijn de jobs geschikt voor studenten?'
-            : 'Are the jobs suitable for students?',
+            ? 'In welke steden zijn jullie actief?'
+            : 'In which cities are you active?',
         acceptedAnswer: {
           '@type': 'Answer',
           text:
             locale === 'fr'
-              ? 'Oui, SKWD se spécialise dans les jobs étudiants flexibles adaptés à vos horaires.'
+              ? 'Nos bureaux sont situés à Bruxelles et à Anvers, mais nos missions couvrent toute la Belgique et parfois même les pays voisins.'
               : locale === 'nl'
-              ? 'Ja, SKWD is gespecialiseerd in flexibele studentenjobs die passen bij jouw planning.'
-              : 'Yes, SKWD specializes in flexible student jobs that fit your schedule.',
+              ? 'Onze kantoren bevinden zich in Brussel en Antwerpen, maar onze opdrachten vinden plaats in heel België en soms zelfs in de buurlanden.'
+              : 'Our offices are based in Brussels and Antwerp, but our events take place all across Belgium and sometimes even in neighboring countries.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Comment puis-je m’inscrire ?'
+            : locale === 'nl'
+            ? 'Hoe kan ik mij registreren?'
+            : 'How can I register?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Rendez-vous sur https://jobs.skwd.be/studentenjob et suivez les étapes simples pour créer votre profil.'
+              : locale === 'nl'
+              ? 'Ga naar https://jobs.skwd.be/studentenjob en volg de eenvoudige stappen om je profiel aan te maken.'
+              : 'Visit https://jobs.skwd.be/studentenjob and follow the simple steps to create your profile.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Quels documents sont nécessaires ?'
+            : locale === 'nl'
+            ? 'Welke documenten heb ik nodig?'
+            : 'Which documents are required?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Un simple CV suffit — l’inscription ne prend que quelques minutes.'
+              : locale === 'nl'
+              ? 'Enkel je CV! De registratie duurt maar enkele minuten.'
+              : 'Just your CV — the registration only takes a few minutes.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Que se passe-t-il après la candidature ?'
+            : locale === 'nl'
+            ? 'Wat gebeurt er na de sollicitatie?'
+            : 'What happens after applying?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Après votre candidature, vous serez invité(e) à une séance d’information. Pour le secteur de l’horeca, une courte formation est ensuite organisée dans nos bureaux, tandis qu’aucune formation n’est requise pour le secteur logistique. Nos séances d’information suivent un cycle fixe : Semaine 1 – Lundi (Infosession Bruxelles), Mardi (Formation Bruxelles), Mercredi (Infosession + Formation Anvers). Semaine 2 – Lundi (Infosession Bruxelles), Mardi (Infosession Malines), Mercredi (Infosession Anvers). Le cycle se répète ensuite en continu.'
+              : locale === 'nl'
+              ? 'Na je sollicitatie word je uitgenodigd voor een infosessie. Voor de horecasector volgt daarna een korte opleiding op kantoor, terwijl dit voor de logistieke sector niet nodig is. Onze infosessies volgen een vast schema: Week 1 – Maandag (Infosessie Brussel), Dinsdag (Opleiding Brussel), Woensdag (Infosessie + Opleiding Antwerpen). Week 2 – Maandag (Infosessie Brussel), Dinsdag (Infosessie Mechelen), Woensdag (Infosessie Antwerpen). Daarna herhaalt het schema zich voortdurend.'
+              : 'After applying, you’ll be invited to an information session. For the hospitality sector, a short in-office training follows, while no training is required for the logistics sector. Our information sessions follow a recurring schedule: Week 1 – Monday (Brussels Info Session), Tuesday (Brussels Training), Wednesday (Antwerp Info + Training). Week 2 – Monday (Brussels Info Session), Tuesday (Mechelen Info Session), Wednesday (Antwerp Info Session). This schedule then repeats continuously.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Quel est l’âge minimum pour postuler ?'
+            : locale === 'nl'
+            ? 'Wat is de minimumleeftijd?'
+            : 'What is the minimum age?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Il faut avoir au moins 18 ans pour postuler.'
+              : locale === 'nl'
+              ? 'Je moet minstens 18 jaar oud zijn om te kunnen solliciteren.'
+              : 'You must be at least 18 years old to apply.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Faut-il de l’expérience ?'
+            : locale === 'nl'
+            ? 'Is ervaring verplicht?'
+            : 'Do I need experience?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Non, aucune expérience n’est requise — une formation est prévue pour les nouveaux candidats.'
+              : locale === 'nl'
+              ? 'Nee, ervaring is niet verplicht — je krijgt vooraf een korte opleiding.'
+              : 'No, experience is not required — we provide the necessary training for new candidates.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Quelle est la flexibilité du travail ?'
+            : locale === 'nl'
+            ? 'Hoe flexibel is het werk?'
+            : 'How flexible is the work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Vous choisissez vous-même où et quand vous travaillez.'
+              : locale === 'nl'
+              ? 'Je kiest zelf wanneer en waar je werkt — maximale flexibiliteit.'
+              : 'You’re in control — choose when and where you want to work.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Comment annuler ou modifier un shift ?'
+            : locale === 'nl'
+            ? 'Hoe kan ik een shift annuleren of wijzigen?'
+            : 'How can I cancel or change a shift?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Veuillez prévenir votre planificateur au moins 24 heures à l’avance en cas d’annulation ou de changement.'
+              : locale === 'nl'
+              ? 'Verwittig je planner minstens 24 uur op voorhand als je een shift wilt annuleren of aanpassen.'
+              : 'Please notify your planner at least 24 hours in advance if you need to cancel or modify a shift.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Comment postuler à un shift ?'
+            : locale === 'nl'
+            ? 'Hoe solliciteer ik voor een shift?'
+            : 'How do I apply for a shift?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Tout se fait via notre application partenaire Beeple. Nous créons ensemble votre compte lors de la séance d’information.'
+              : locale === 'nl'
+              ? 'Alles verloopt via onze Beeple-app. Tijdens de infosessie maken we samen je account aan.'
+              : 'All scheduling happens through the Beeple app. We’ll help you create your account during the information session.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name:
+          locale === 'fr'
+            ? 'Puis-je travailler chez SKWD en tant que flexi-job ?'
+            : locale === 'nl'
+            ? 'Kan ik ook als flexi bij SKWD werken?'
+            : 'Can I work at SKWD as a flexi-job employee?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text:
+            locale === 'fr'
+              ? 'Oui, bien sûr ! Chez SKWD, nous collaborons avec différents statuts : flexi-jobs, étudiants et étudiants indépendants. Toute personne motivée est la bienvenue dans notre équipe.'
+              : locale === 'nl'
+              ? 'Ja, zeker! Bij SKWD werken we met verschillende statuten: flexi-jobbers, studenten en zelfstandige studenten. Iedereen met de juiste motivatie is welkom om deel uit te maken van ons team.'
+              : 'Absolutely! At SKWD, we work with various profiles — flexi-job workers, students, and self-employed students. Anyone motivated is welcome to join our team.',
         },
       },
     ],
@@ -221,10 +383,14 @@ export default function FaqClient() {
     },
     {
       category: t('faq_category_general'),
+      question: t('faq_q_flexi_possible'),
+      answer: t('faq_a_flexi_possible'),
+    },
+    {
+      category: t('faq_category_general'),
       question: t('faq_q_cities_active'),
       answer: t('faq_a_cities_active'),
     },
-
     {
       category: t('faq_category_registration'),
       question: t('faq_q_register'),
@@ -234,6 +400,11 @@ export default function FaqClient() {
       category: t('faq_category_registration'),
       question: t('faq_q_documents'),
       answer: t('faq_a_documents'),
+    },
+    {
+      category: t('faq_category_registration'),
+      question: t('faq_q_after_application'),
+      answer: t('faq_a_after_application'),
     },
     {
       category: t('faq_category_registration'),

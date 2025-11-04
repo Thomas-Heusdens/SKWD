@@ -213,37 +213,6 @@ export default function HospitalityClient() {
     },
   ];
 
-  const carouselItems = [
-    {
-      step: t('hospitality_step_1'),
-      title: t('hospitality_step_1_title'),
-      description: t('hospitality_step_1_description'),
-      id: 1,
-      icon: <Vote className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('hospitality_step_2'),
-      title: t('hospitality_step_2_title'),
-      description: t('hospitality_step_2_description'),
-      id: 2,
-      icon: <MousePointer className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('hospitality_step_3'),
-      title: t('hospitality_step_3_title'),
-      description: t('hospitality_step_3_description'),
-      id: 3,
-      icon: <BookA className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('hospitality_step_4'),
-      title: t('hospitality_step_4_title'),
-      description: t('hospitality_step_4_description'),
-      id: 4,
-      icon: <BicepsFlexed className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-  ];
-
   return (
     <>
       <script

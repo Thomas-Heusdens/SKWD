@@ -54,10 +54,10 @@ export async function generateMetadata({
   const t = content[locale as 'en' | 'fr' | 'nl'] || content.en;
 
   const ogImage = {
-    url: `${siteUrl}/images/og-logistics.png`,
+    url: `${siteUrl}/images/og-image.png`,
     width: 1200,
     height: 630,
-    alt: 'SKWD logistics sector preview image',
+    alt: 'SKWD OpenGraph image',
   };
 
   const keywords =

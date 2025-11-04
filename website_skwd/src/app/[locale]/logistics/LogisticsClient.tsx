@@ -228,30 +228,6 @@ export default function LogisticsClient() {
     },
   ];
 
-  const carouselItems = [
-    {
-      step: t('logistics_step_1'),
-      title: t('logistics_step_1_title'),
-      description: t('logistics_step_1_description'),
-      id: 1,
-      icon: <Vote className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('logistics_step_2'),
-      title: t('logistics_step_2_title'),
-      description: t('logistics_step_2_description'),
-      id: 2,
-      icon: <MousePointer className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-    {
-      step: t('logistics_step_3'),
-      title: t('logistics_step_3_title'),
-      description: t('logistics_step_3_description'),
-      id: 3,
-      icon: <BookA className="h-[25px] md:h-[30px] w-[25px] md:w-[30px] text-white" />,
-    },
-  ];
-
   return (
     <>
       <script
