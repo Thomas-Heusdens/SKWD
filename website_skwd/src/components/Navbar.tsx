@@ -20,7 +20,7 @@ export default function Navbar() {
     { key: 'about', label: { en: 'About', fr: 'À propos', nl: 'Over ons' } },
     { key: 'hospitality', label: { en: 'Hospitality', fr: 'Hospitalité', nl: 'Hospitality' } },
     { key: 'logistics', label: { en: 'Logistics', fr: 'Logistique', nl: 'Logistiek' } },
-    { key: 'work', label: { en: 'Work with us', fr: 'Collaborer avec nous', nl: 'Werk met ons' } },
+    { key: 'work', label: { en: 'Work with us', fr: 'Travailler avec nous', nl: 'Werk met ons' } },
     { key: 'faq', label: { en: 'FAQ', fr: 'FAQ', nl: 'Veelgestelde vragen' } },
     { key: 'contact', label: { en: 'Contact', fr: 'Contact', nl: 'Contact' } },
   ];
