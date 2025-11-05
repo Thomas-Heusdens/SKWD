@@ -20,7 +20,7 @@ export default function HomePage() {
   const hideDescription = useHideDescription();
 
   // --- JSON-LD: build absolute URLs and localized page URL
-  const siteUrl = 'https://skwd.vercel.app/';
+  const siteUrl = 'https://skwd.vercel.app';
   const pageUrl =
     locale === 'en' ? `${siteUrl}/en`
     : locale === 'fr' ? `${siteUrl}/fr`

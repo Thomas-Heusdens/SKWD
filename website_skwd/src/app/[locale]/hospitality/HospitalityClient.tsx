@@ -22,7 +22,7 @@ export default function HospitalityClient() {
   const locale: 'en' | 'fr' | 'nl' =
     ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
 
-  const siteUrl = 'https://skwd.vercel.app/';
+  const siteUrl = 'https://skwd.vercel.app';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/hospitalite`

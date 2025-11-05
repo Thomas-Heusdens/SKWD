@@ -23,7 +23,7 @@ export default function WorkWithUsClient() {
   const isMobile = useIsMobile(1024);
   const [activeSector, setActiveSector] = useState('hospitality');
 
-  const siteUrl = 'https://skwd.vercel.app/';
+  const siteUrl = 'https://skwd.vercel.app';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/collaborer-avec-nous`

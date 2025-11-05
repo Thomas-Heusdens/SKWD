@@ -19,7 +19,7 @@ export default function ContactClient() {
       ? (localeFromPath as 'en' | 'fr' | 'nl')
       : 'en';
 
-  const siteUrl = 'https://skwd.vercel.app/';
+  const siteUrl = 'https://skwd.vercel.app';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/contactez-nous`

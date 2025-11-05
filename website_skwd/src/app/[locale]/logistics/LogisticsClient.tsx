@@ -31,7 +31,7 @@ export default function LogisticsClient() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const siteUrl = 'https://skwd.vercel.app/';
+  const siteUrl = 'https://skwd.vercel.app';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/logistique`
