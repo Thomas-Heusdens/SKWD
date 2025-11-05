@@ -48,7 +48,7 @@ export default function AboutClient() {
   ];
 
   // --- JSON-LD: build absolute URLs and localized page URL
-  const siteUrl = 'https://skwd.be';
+  const siteUrl = 'https://skwd.vercel.app/';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/a-propos`
