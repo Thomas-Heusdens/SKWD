@@ -39,9 +39,6 @@ export default function TeamMemberCard({
           <p className="text-sm font-light text-skwd-text-highlight">
             {t(`about_team_member_role_${memberNumber}`)}
           </p>
-          <p className="text-sm font-light text-white/80 mt-2">
-            {t(`about_team_member_desc_${memberNumber}`)}
-          </p>
           <a
             href={linkedinUrl}
             aria-label={`${name} LinkedIn`}

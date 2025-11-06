@@ -20,7 +20,7 @@ export default function HomePage() {
   const hideDescription = useHideDescription();
 
   // --- JSON-LD: build absolute URLs and localized page URL
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'en' ? `${siteUrl}/en`
     : locale === 'fr' ? `${siteUrl}/fr`
@@ -41,10 +41,10 @@ export default function HomePage() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -139,10 +139,10 @@ export default function HomePage() {
 
     description:
       locale === 'fr'
-        ? "Découvrez SKWD, l'agence belge qui relie étudiants motivés et entreprises pour des événements réussis en Belgique."
+        ? "SKWD est votre partenaire fiable en Belgique pour les étudiants et les flexi-jobs. Jeune, dynamique et flexible."
         : locale === 'nl'
-        ? 'Ontdek SKWD, het Belgische agency dat studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.',
+        ? 'SKWD is jouw betrouwbare partner in België voor studenten en flexi’s. Jong, dynamisch en flexibel.'
+        : 'SKWD is your reliable partner in Belgium for students and flexi workers. Young, dynamic, and flexible.',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },

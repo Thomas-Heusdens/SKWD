@@ -22,7 +22,7 @@ export default function FaqClient() {
       ? (localeFromPath as 'en' | 'fr' | 'nl')
       : 'en';
 
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/faq`
@@ -45,10 +45,10 @@ export default function FaqClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -142,10 +142,10 @@ export default function FaqClient() {
         : 'Frequently asked questions - SKWD',
     description:
       locale === 'fr'
-        ? 'Trouvez rapidement les réponses à vos questions sur le travail chez SKWD. Une question manquante? Contactez-nous!'
+        ? 'Des réponses à vos questions sur le travail chez SKWD : inscription, planning, rémunération et support. Votre question ne s’y trouve pas ? N’hésitez pas à nous contacter.'
         : locale === 'nl'
-        ? 'Vind snel antwoorden op je vragen over werken bij SKWD. Staat je vraag er niet bij? Neem gerust contact met ons op!'
-        : 'Find quick answers about working at SKWD. Don’t see your question? Feel free to contact us!',
+        ? 'Antwoorden op je vragen over werken bij SKWD: inschrijven, planning, verloning en support. Staat je vraag er niet bij? Neem gerust contact op.'
+        : 'Answers to your questions about working at SKWD: registration, scheduling, payment, and support. Don’t see your question listed? Feel free to contact us.',
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: [
       {

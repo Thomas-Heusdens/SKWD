@@ -11,42 +11,41 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
     fr: {
-      title: 'Secteur Logistique - SKWD',
+      title: 'Logistique - SKWD',
       seoTitle: 'Secteur Logistique',
       ogTitle:
         'Secteur Logistique – Découvrez toutes les expériences uniques et les différents types de missions dans la logistique événementielle',
-
       description:
-        "Découvrez nos services dans le secteur de la logistique : de la manutention au transport, nous plaçons les bons profils aux bons endroits.",
+        "Support logistique pour les événements : montage et démontage, transport et entrepôt. SKWD fournit les bons étudiants — ponctuels et bien briefés.",
       ogDescription:
-        "Explorez SKWD, votre partenaire belge pour le staffing logistique — manutention, transport, entrepôt et plus encore.",
+        "SKWD pour le personnel logistique — montage, démontage, entrepôt et transport.",
       url: `${siteUrl}/fr/logistique`,
     },
     nl: {
-      title: 'Sector Logistiek - SKWD',
+      title: 'Logistiek - SKWD',
       seoTitle: 'Sector Logistiek',
       ogTitle:
         'Sector Logistiek – Ontdek de unieke ervaringen en verschillende soorten logistieke jobs waarin je kunt werken',
       description:
-        'Logistieke support voor events: op- en afbouw, transport en magazijn. SKWD levert de juiste studenten — op tijd, goed gebriefd, inzetklaar.',
+        'Logistieke support voor events: opbouw en afbraak, transport en magazijn. SKWD levert de juiste studenten — op tijd en goed gebriefd.',
       ogDescription:
         'SKWD voor logistiek personeel — opbouw, afbouw, warehouse & transport.',
       url: `${siteUrl}/nl/logistiek`,
     },
     en: {
-      title: 'Logistics sector - SKWD',
+      title: 'Logistics - SKWD',
       seoTitle: 'Logistics sector',
       ogTitle:
         'Logistics sector – Discover all the unique experiences and diverse jobs you could work in within logistics and events',
       description:
-        'Discover our logistics services: from setup and dismantling to warehouse support, we place the right people in the right place.',
+        'Logistical support for events: setup and teardown, transport, and warehouse work. SKWD provides the right students — on time and well briefed.',
       ogDescription:
-        'Explore SKWD, your Belgian partner for logistics staffing — setup, warehouse operations, and event logistics.',
+        'SKWD for logistics staff — setup, teardown, warehouse & transport.',
       url: `${siteUrl}/en/logistics`,
     },
   };

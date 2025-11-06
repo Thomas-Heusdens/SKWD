@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
@@ -21,9 +21,9 @@ export async function generateMetadata({
       ogTitle:
         "Contactez-nous - N’attendez plus et envoyez-nous votre demande pour trouver des étudiants pour votre événement",
       description:
-        "Vous organisez un événement et recherchez des étudiants motivés ? Contactez notre équipe via cette page.",
+        "Vous organisez une fête, une réception ou un événement et cherchez des étudiants motivés ? Contactez SKWD — nous vous aidons rapidement.",
       ogDescription:
-        "SKWD – votre partenaire pour le personnel étudiant dans les secteurs de l’événementiel, de l’horeca et de la logistique en Belgique.",
+        "Contactez SKWD — des étudiants pour l’horeca, la logistique et les événements.",
       url: `${siteUrl}/fr/contactez-nous`,
     },
     nl: {
@@ -43,9 +43,9 @@ export async function generateMetadata({
       ogTitle:
         "Contact us - Don't wait, send us your request for motivated students at your event",
       description:
-        'Organizing an event or reception? Contact SKWD to find enthusiastic students for your team.',
+        'Planning a party, reception, or event and looking for motivated students? Contact SKWD — we’ll help you right away.',
       ogDescription:
-        'SKWD – your Belgian partner for student staffing in hospitality, logistics, and event support.',
+        'Contact SKWD — students for hospitality, logistics, and events.',
       url: `${siteUrl}/en/contact-us`,
     },
   };

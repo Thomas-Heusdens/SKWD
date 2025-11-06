@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
@@ -20,11 +20,10 @@ export async function generateMetadata({
       seoTitle: 'Questions fréquentes',
       ogTitle:
         'Questions fréquentes – Découvrez les réponses aux questions les plus posées par nos étudiants et partenaires',
-
       description:
-        'Trouvez rapidement les réponses à vos questions sur le travail chez SKWD. Une question manquante ? Contactez-nous !',
+        'Des réponses à vos questions sur le travail chez SKWD : inscription, planning, rémunération et support. Votre question ne s’y trouve pas ? N’hésitez pas à nous contacter.',
       ogDescription:
-        'Découvrez les réponses aux questions fréquentes sur SKWD, les jobs étudiants et le processus de recrutement.',
+        'FAQ : tout sur les jobs étudiants chez SKWD — candidature, planning, travail.',
       url: `${siteUrl}/fr/faq`,
     },
     nl: {
@@ -44,9 +43,9 @@ export async function generateMetadata({
       ogTitle:
         'Frequently asked questions – Find out what our users ask most and learn more about working with SKWD',
       description:
-        'Find quick answers about working at SKWD. Don’t see your question? Feel free to contact us!',
+        'Answers to your questions about working at SKWD: registration, scheduling, payment, and support. Don’t see your question listed? Feel free to contact us.',
       ogDescription:
-        'Learn everything about SKWD student jobs, application process, and work planning.',
+        'FAQ: everything about student jobs at SKWD — applying, scheduling, working.',
       url: `${siteUrl}/en/faq`,
     },
   };

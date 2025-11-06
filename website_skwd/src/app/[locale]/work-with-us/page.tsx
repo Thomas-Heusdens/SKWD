@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
@@ -21,9 +21,9 @@ export async function generateMetadata({
       ogTitle:
         "Travailler avec nous – Découvrez pourquoi collaborer avec les étudiants de SKWD est le bon choix pour vos événements",
       description:
-        "Découvrez comment collaborer avec SKWD pour vos événements. Nous mettons en relation entreprises et étudiants motivés pour des missions de qualité.",
+        "Travailler avec SKWD ? Nous constituons des équipes d’étudiants flexibles pour votre événement ou votre entreprise — de la sélection et du briefing jusqu’à l’évaluation finale.",
       ogDescription:
-        "Travaillez avec SKWD — votre partenaire belge pour le staffing événementiel. Réservez des étudiants formés pour vos événements.",
+        "Travaillez avec SKWD — votre partenaire belge pour un staffing événementiel sur mesure.",
       url: `${siteUrl}/fr/collaborer-avec-nous`,
     },
     nl: {
@@ -43,9 +43,9 @@ export async function generateMetadata({
       ogTitle:
         'Work with us – Discover why collaborating with SKWD students is the right choice for your event',
       description:
-        'Discover how to collaborate with SKWD for your events. We connect motivated students with companies for efficient, high-quality staffing.',
+        'Working with SKWD? We build flexible student teams for your event or company — from selection and briefing to final evaluation.',
       ogDescription:
-        'Partner with SKWD — your trusted Belgian staffing agency connecting students and businesses for professional events.',
+        'Work with SKWD — your Belgian partner for custom event staffing.',
       url: `${siteUrl}/en/work-with-us`,
     },
   };

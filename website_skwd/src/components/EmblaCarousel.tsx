@@ -79,15 +79,10 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
                   
                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
                   
-                  <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 text-center">
+                  <div className="relative z-10 h-full flex flex-col items-center justify-start p-6 text-center">
                     <h3 className="text-white text-xl md:text-xl lg:text-2xl font-semibold mb-2">
                       {slide.title}
                     </h3>
-                    {slide.description && (
-                      <p className="text-white/90 text-base font-light md:text-base">
-                        {slide.description}
-                      </p>
-                    )}
                   </div>
                 </div>
               </div>

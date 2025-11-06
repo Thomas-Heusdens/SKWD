@@ -2,15 +2,13 @@
 
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
-import Stack from "@/components/Stack";
 import RollingCounter from '@/components/RollingCounter';
 import TeamMemberCard from '@/components/TeamMember';
 import { CircleQuestionMark, HandCoins, HeartHandshake, TrendingUp, Users } from 'lucide-react';
-import InfoCard from '@/components/InfoCard';
+import InfoSimpleCard from '@/components/InfoSimpleCard';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
-import { useEffect, useState } from 'react';
 import AnimatedContent from '@/components/AnimatedContent';
 
 export default function AboutClient() {
@@ -18,27 +16,6 @@ export default function AboutClient() {
   const pathname = usePathname();
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
-  const [cardDimensions, setCardDimensions] = useState({ width: 540, height: 360 });
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 330) {
-        setCardDimensions({ width: 220, height: 140 });
-      } else if (window.innerWidth < 480) {
-        setCardDimensions({ width: 260, height: 170 });
-      } else if (window.innerWidth < 768) {
-        setCardDimensions({ width: 340, height: 220 });
-      } else if (window.innerWidth < 1024) {
-        setCardDimensions({ width: 440, height: 300 });
-      } else {
-        setCardDimensions({ width: 540, height: 360 });
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const images = [
     { id: 1, img: "/images/planner-2.jpg" },
@@ -48,7 +25,7 @@ export default function AboutClient() {
   ];
 
   // --- JSON-LD: build absolute URLs and localized page URL
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/a-propos`
@@ -71,10 +48,10 @@ export default function AboutClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -166,10 +143,10 @@ export default function AboutClient() {
     mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
     description:
       locale === 'fr'
-        ? "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique."
+        ? "Découvrez SKWD : une agence belge qui met en relation étudiants et entreprises pour des équipes d’événements, d’hospitalité et de logistique, de la sélection au briefing."
         : locale === 'nl'
-        ? 'Kom meer te weten over ons en hoe het SKWD-team studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.',
+        ? 'Leer SKWD kennen: Belgisch agency dat studenten en bedrijven samenbrengt voor event-, hospitality- en logistieke teams, van selectie tot briefing.'
+        : 'Get to know SKWD: a Belgian agency that connects students and businesses for event, hospitality, and logistics teams — from selection to briefing.',
     mainEntity: {
       '@type': 'Organization',
       '@id': `${siteUrl}/#organization`,
@@ -203,7 +180,7 @@ export default function AboutClient() {
           aria-label="About SKWD hero section"
           className="relative w-full min-h-screen flex flex-col items-center justify-center text-center"
         >
-          <div className="absolute inset-0 -z-10 opacity-10">
+          <div className="absolute inset-0 -z-10 opacity-5">
             <Image
               src="/images/pattern-bg.png"
               alt="Pattern background"
@@ -213,95 +190,19 @@ export default function AboutClient() {
             />
           </div>
 
-          <div className="section-container relative z-10 flex flex-col items-center justify-center">
+          <div className="section-container h-screen relative z-10 flex flex-col items-center justify-center">
             <AnimatedContent distance={40} duration={1.2}>
               <h1 className="font-extrabold text-white text-3xl sm:text-5xl md:text-6xl leading-tight mb-2">
                 YOUR STAFFING <span className="text-skwd-text-highlight">AGENCY</span>
               </h1>
             </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-              <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-8" />
+            <AnimatedContent distance={30} duration={1.2} delay={0.3}>
+              <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-12" />
             </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-              <div className="flex items-center justify-center w-full max-w-[90vw] md:max-w-[700px]">
-                <Stack
-                  sendToBackOnClick={true}
-                  cardDimensions={cardDimensions}
-                  cardsData={images}
-                />
-              </div>
-            </AnimatedContent>
-          </div>
-        </header>
-
-        {/* AGENCY NUMBERS SECTION */}
-        <section
-          id="agency-numbers"
-          aria-labelledby="agency-numbers-heading"
-          className="py-8 bg-skwd-dark-blue text-white"
-        >
-          <div className="section-container">
-            <div className="flex flex-wrap justify-between items-center gap-3 md:gap-0">
-              <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
-
-              <article className="flex-1 text-center min-w-[120px]">
-                <RollingCounter
-                  finalValue={2024}
-                  label={t('about_numbers_established')}
-                  places={[1000, 100, 10, 1]}
-                />
-              </article>
-
-              <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
-
-              <article className="flex-1 text-center min-w-[120px]">
-                <RollingCounter
-                  finalValue={350}
-                  label={t('about_numbers_students')}
-                  suffix="+"
-                  places={[100, 10, 1]}
-                />
-              </article>
-
-              <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
-
-              <article className="flex-1 text-center min-w-[120px]">
-                <RollingCounter
-                  finalValue={90}
-                  label={t('about_numbers_clients')}
-                  suffix="+"
-                  places={[10, 1]}
-                />
-              </article>
-
-              <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
-
-              <article className="flex-1 text-center min-w-[120px]">
-                <RollingCounter
-                  finalValue={98}
-                  label={t('about_numbers_fill_rate')}
-                  suffix="%"
-                  places={[10, 1]}
-                />
-              </article>
-
-              <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
-            </div>
-          </div>
-        </section>
-
-        {/* ===== TEAM SECTION ===== */}
-        <section
-          id="team"
-          aria-labelledby="team-heading"
-          className="pb-20 bg-skwd-dark-blue text-white"
-        >
-          <div className="section-container">
-            <header className="mb-12 text-center mx-auto">
-              <AnimatedContent distance={40} duration={1.2} delay={0.1}>
-                <h2 id="team-heading" className="text-3xl md:text-4xl mb-4 font-medium text-center">
+            <AnimatedContent distance={40} duration={1.2} delay={0.1}>
+                <h2 id="team-heading" className="text-3xl md:text-4xl mb-12 font-medium text-center">
                   {(() => {
-                    const words = t('about_team_intro_headline').split(' ');
+                    const words = t('about_quote').split(' ');
                     const lastTwoStart = words.length - 2;
                     return (
                       <>
@@ -319,12 +220,72 @@ export default function AboutClient() {
                     );
                   })()}
                 </h2>
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-                <p className='font-light text-sm md:text-base'>{t('about_team_intro_text')}</p>
-              </AnimatedContent>
-            </header>
+            </AnimatedContent>
+            {/* AGENCY NUMBERS SECTION */}
+            <section
+              id="agency-numbers"
+              aria-labelledby="agency-numbers-heading"
+              className="py-8 text-white w-full absolute bottom-0 left-0"
+            >
+                <div className="flex flex-wrap justify-between items-center gap-3 md:gap-0">
+                  <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
 
+                  <article className="flex-1 text-center min-w-[120px]">
+                    <RollingCounter
+                      finalValue={2024}
+                      label={t('about_numbers_established')}
+                      places={[1000, 100, 10, 1]}
+                    />
+                  </article>
+
+                  <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
+
+                  <article className="flex-1 text-center min-w-[120px]">
+                    <RollingCounter
+                      finalValue={350}
+                      label={t('about_numbers_students')}
+                      suffix="+"
+                      places={[100, 10, 1]}
+                    />
+                  </article>
+
+                  <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
+
+                  <article className="flex-1 text-center min-w-[120px]">
+                    <RollingCounter
+                      finalValue={90}
+                      label={t('about_numbers_clients')}
+                      suffix="+"
+                      places={[10, 1]}
+                    />
+                  </article>
+
+                  <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
+
+                  <article className="flex-1 text-center min-w-[120px]">
+                    <RollingCounter
+                      finalValue={98}
+                      label={t('about_numbers_fill_rate')}
+                      suffix="%"
+                      places={[10, 1]}
+                    />
+                  </article>
+
+                  <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
+                </div>
+            </section>
+          </div>
+        </header>
+
+        
+
+        {/* ===== TEAM SECTION ===== */}
+        <section
+          id="team"
+          aria-labelledby="team-heading"
+          className="py-20 bg-skwd-dark-blue text-white"
+        >
+          <div className="section-container">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
               <AnimatedContent distance={40} duration={1.2}>
                 <TeamMemberCard
@@ -383,56 +344,11 @@ export default function AboutClient() {
           </div>
         </section>
 
-        {/* ===== QUOTE / MOTTO SECTION ===== */}
-        <section
-          id="quote"
-          aria-label="Agency motto section"
-          className="relative bg-skwd-blue py-14 md:py-20 text-center text-white overflow-hidden"
-        >
-          <div className="absolute inset-0 z-0 opacity-10">
-            <Image  
-              src="/images/pattern-bg.png"
-              alt="Partern background"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative section-container z-10">
-            <AnimatedContent distance={40} duration={1.2}>
-              <h2 className="text-3xl md:text-4xl text-center font-semibold">
-                {(() => {
-                  const words = t('about_quote').split(' ');
-                  const middleStart = Math.floor(words.length / 2) - 1;
-                  const middleEnd = middleStart + 2;
-                  const endStart = words.length - 3;
-
-                  return (
-                    <>
-                      <span className="text-white">
-                        {words.slice(0, middleStart).join(' ')}
-                      </span>{' '}
-                      <span className="text-skwd-text-highlight">
-                        {words.slice(middleStart, middleEnd).join(' ')}
-                      </span>{' '}
-                      <span className="text-white">
-                        {words.slice(middleEnd, endStart).join(' ')}
-                      </span>{' '}
-                      <span className="text-skwd-text-highlight">
-                        {words.slice(endStart).join(' ')}
-                      </span>
-                    </>
-                  );
-                })()}
-              </h2>
-            </AnimatedContent>
-          </div>
-        </section>
-
         {/* ===== WHY STUDENTS CHOOSE US ===== */}
         <section
           id="why-us"
           aria-labelledby="why-us-heading"
-          className="py-14 md:py-20 bg-skwd-dark-blue"
+          className="pb-14 md:pb-20 bg-skwd-dark-blue"
         >
           <div className="section-container">
             <header className="text-center mb-8 md:mb-10">
@@ -453,37 +369,33 @@ export default function AboutClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <AnimatedContent distance={40} duration={1.2} delay={0.4}>
-                <InfoCard 
+                <InfoSimpleCard 
                   cardTitle='about_why_card1_title'
-                  cardDescription='about_why_card1_description'
                   icon={Users} 
                   patternOverlaySrc='/images/Tile2.png'
                   color='skwd-blue'
                 />
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-                <InfoCard 
+                <InfoSimpleCard 
                   cardTitle='about_why_card2_title'
-                  cardDescription='about_why_card2_description'
                   icon={TrendingUp} 
                   patternOverlaySrc='/images/Tile4.png'
                   color='skwd-blue'
                 />
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2} delay={0.2}>
-                <InfoCard 
+                <InfoSimpleCard 
                 cardTitle='about_why_card3_title'
-                cardDescription='about_why_card3_description'
                 icon={HandCoins} 
                 patternOverlaySrc='/images/Tile3.png'
                 color='skwd-blue'
               />
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2} delay={0.2}>
-                <InfoCard 
+                <InfoSimpleCard 
                   cardTitle='about_why_card4_title'
-                  cardDescription='about_why_card4_description'
-                  icon={HeartHandshake} 
+                  icon={HeartHandshake}
                   patternOverlaySrc='/images/Tile5.png'
                   color='skwd-blue'
                 />
@@ -496,18 +408,12 @@ export default function AboutClient() {
         <section
           id="contact-cta"
           aria-labelledby="contact-cta-heading"
-          className="relative bg-skwd-light-blue py-14 md:py-20 text-white"
+          className="relative bg-skwd-dark-blue text-white"
         >
-          <div className="absolute inset-0">
-            <Image
-              src="/images/pattern-bg.png"
-              alt="Pattern background"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="relative section-container flex justify-center z-10">
+          <AnimatedContent distance={30} duration={1.2} delay={0.3}>
+            <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-14 md:pb:20" />
+          </AnimatedContent>
+          <div className="relative section-container flex justify-center z-10 pb-14 md:pb-20">
             <AnimatedContent distance={40} duration={1.2}>
               <div className="bg-skwd-blue p-10 rounded-2xl max-w-xl text-center">
                 <header className="mb-6">

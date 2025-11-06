@@ -3,10 +3,9 @@
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
-import InfoCard from '@/components/InfoCard';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
-import { BadgeCheck, Clock8, ChefHat, Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
+import { Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
 import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
@@ -22,7 +21,7 @@ export default function HospitalityClient() {
   const locale: 'en' | 'fr' | 'nl' =
     ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
 
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/hospitalite`
@@ -45,10 +44,10 @@ export default function HospitalityClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -130,17 +129,17 @@ export default function HospitalityClient() {
 
     headline:
       locale === 'fr'
-        ? "Secteur de l'hospitalité"
+        ? "Hospitalité"
         : locale === 'nl'
-        ? 'Sector hospitality'
-        : 'Hospitality sector',
+        ? 'Hospitality'
+        : 'Hospitality',
 
     name:
       locale === 'fr'
-        ? 'Secteur Hospitalité - SKWD'
+        ? 'Hospitalité - SKWD'
         : locale === 'nl'
-        ? 'Sector Hospitality - SKWD'
-        : 'Hospitality sector - SKWD',
+        ? 'Hospitality - SKWD'
+        : 'Hospitality - SKWD',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntityOfPage: { '@id': `${siteUrl}/#organization` },
@@ -148,10 +147,10 @@ export default function HospitalityClient() {
 
     description:
       locale === 'fr'
-        ? "Découvrez nos services dans le secteur de l'hospitalité : du catering aux activations de marque, nous plaçons les bons profils aux bons endroits."
+        ? "Staffing en hospitalité pour le catering, l’accueil et le service. SKWD sélectionne et briefe des étudiants pour une expérience événementielle accueillante."
         : locale === 'nl'
-        ? 'Ontdek onze hospitalitydiensten: van catering tot brand activaties, wij zorgen voor de juiste mensen op de juiste plaats.'
-        : 'Discover our hospitality services: from catering to brand activations, we place the right people in the right place.',
+        ? 'Hospitality-staffing voor catering, ontvangst en service. SKWD selecteert en brieft studenten voor een gastvrije eventervaring.'
+        : 'Hospitality staffing for catering, reception, and service. SKWD selects and briefs students for a welcoming event experience.',
 
     about: {
       '@type': 'Service',
@@ -189,27 +188,22 @@ export default function HospitalityClient() {
     {
       image: '/images/festival.jpeg',
       title: t('hospitality_carousel_1_title'),
-      description: t('hospitality_carousel_1_description'),
     },
     {
       image: '/images/wedding.jpeg',
       title: t('hospitality_carousel_2_title'),
-      description: t('hospitality_carousel_2_description'),
     },
     {
       image: '/images/Corporate.jpg',
       title: t('hospitality_carousel_3_title'),
-      description: t('hospitality_carousel_3_description'),
     },
     {
       image: '/images/Conferenties.jpeg',
       title: t('hospitality_carousel_4_title'),
-      description: t('hospitality_carousel_4_description'),
     },
     {
       image: '/images/sport.JPG',
       title: t('hospitality_carousel_5_title'),
-      description: t('hospitality_carousel_5_description'),
     },
   ];
 
@@ -239,16 +233,8 @@ export default function HospitalityClient() {
 
           <div className="relative z-10 text-center max-w-3xl px-6">
             <AnimatedContent distance={40} duration={1.2}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-2 md:mb-4 text-center">
-                {(() => {
-                  const words = t('hospitality_title').split(' ');
-                  return (
-                    <>
-                      <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                      <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                    </>
-                  );
-                })()}
+              <h1 className="text-4xl text-white sm:text-5xl md:text-6xl font-semibold mb-2 md:mb-4 text-center">
+                {t('hospitality_title')}
               </h1>
             </AnimatedContent>
             <AnimatedContent distance={40} duration={1.2} delay={0.3}>
@@ -291,22 +277,9 @@ export default function HospitalityClient() {
           </div>
           <div className="section-container text-center">
             <AnimatedContent distance={40} duration={1.2}>
-              <h2 id="job-types-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
-                {(() => {
-                  const words = t('hospitality_jobs_title').split(' ');
-                  return (
-                    <>
-                      <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                      <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                    </>
-                  );
-                })()}
+              <h2 id="job-types-heading" className="text-2xl text-white md:text-3xl font-semibold mb-6 md:mb-10 text-center">
+                {t('hospitality_jobs_title')}
               </h2>
-            </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-              <p className="max-w-2xl font-light text-sm md:text-base mx-auto text-white/90 mb-6 md:mb-10">
-                {t('hospitality_jobs_description')}
-              </p>
             </AnimatedContent>
             <AnimatedContent distance={40} duration={1.2} delay={0.5}>
               <div
@@ -319,48 +292,6 @@ export default function HospitalityClient() {
                 </div>
               </div>
             </AnimatedContent>
-          </div>
-        </section>
-
-        {/* ===== EVENT EXPERIENCE SECTION ===== */}
-        <section
-          id="event-experience"
-          aria-labelledby="event-experience-heading"
-          className="py-14 md:py-20 bg-skwd-blue text-white"
-        >
-          <div className="section-container">
-            <header className="text-center mb-6 md:mb-10">
-              <AnimatedContent distance={40} duration={1.2}>
-                <h2 id="event-experience-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
-                  {(() => {
-                    const words = t('hospitality_event_title').split(' ');
-                    return (
-                      <>
-                        <span className="text-white">{words.slice(0, -2).join(' ')}</span>{' '}
-                        <span className="text-skwd-text-highlight">{words.slice(-2).join(' ')}</span>
-                      </>
-                    );
-                  })()}
-                </h2>
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-                <p className="text-white/90 font-light text-sm md:text-base max-w-xl mx-auto">
-                  {t('hospitality_event_description')}
-                </p>
-              </AnimatedContent>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <AnimatedContent distance={40} duration={1.2} delay={0.4}>
-                <InfoCard cardTitle='hospitality_event_card_title_1' cardDescription='hospitality_event_card_description_1' icon={Clock8} patternOverlaySrc="/images/Tile2.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-                <InfoCard cardTitle='hospitality_event_card_title_2' cardDescription='hospitality_event_card_description_2' icon={ChefHat} patternOverlaySrc="/images/Tile3.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.6}>
-                <InfoCard cardTitle='hospitality_event_card_title_3' cardDescription='hospitality_event_card_description_3' icon={BadgeCheck} patternOverlaySrc="/images/Tile4.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-            </div>
           </div>
         </section>
 

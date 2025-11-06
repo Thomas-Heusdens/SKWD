@@ -65,12 +65,12 @@ const SquareMasonry: React.FC<SquareMasonryProps> = ({
         if (entry.isIntersecting) {
           const el = entry.target;
 
-          const randomDelay = Math.random() * 0.8;
-          const randomDuration = duration * (0.8 + Math.random() * 0.8);
+          const randomDelay = Math.random() * 0.4;
+          const randomDuration = duration * (0.4 + Math.random() * 0.4);
 
           gsap.fromTo(
             el,
-            { opacity: 0, y: 100, filter: 'blur(6px)' },
+            { opacity: 0, y: 80, filter: 'blur(6px)' },
             {
               opacity: 1,
               y: 0,

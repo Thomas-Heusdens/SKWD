@@ -11,38 +11,38 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
     fr: {
       title: 'Accueil - SKWD',
-      seoTitle: 'Bienvenue chez SKWD – Agence d’intérim pour étudiants',
-      ogTitle: 'Bienvenue chez SKWD – Agence d’intérim pour étudiants',
+      seoTitle: 'Bienvenue chez SKWD – votre partenaire de staffing pour étudiants et flexi-jobs',
+      ogTitle: 'Bienvenue chez SKWD – votre partenaire de staffing pour étudiants et flexi-jobs',
       description:
-        "Découvrez SKWD, l'agence belge qui relie étudiants motivés et entreprises pour des événements réussis en Belgique.",
+        "SKWD est votre partenaire fiable en Belgique pour les étudiants et les flexi-jobs. Jeune, dynamique et flexible.",
       ogDescription:
-        "Découvrez SKWD, votre partenaire pour des événements réussis en Belgique. Une agence spécialisée dans le staffing événementiel étudiant.",
+        "SKWD est votre partenaire fiable en Belgique pour les étudiants et les flexi-jobs. Jeune, dynamique et flexible.",
       url: `${siteUrl}/fr`,
     },
     nl: {
       title: 'Startpagina - SKWD',
-      seoTitle: 'Welkom bij SKWD - Uitzendkantoor voor studenten',
-      ogTitle: 'Welkom bij SKWD - Uitzendkantoor voor studenten',
+      seoTitle: 'Welkom bij SKWD – jouw staffing partner voor studenten en flexis',
+      ogTitle: 'Welkom bij SKWD – jouw staffing partner voor studenten en flexis',
       description:
-        'Ontdek SKWD: wij verbinden gemotiveerde studenten met bedrijven voor feilloze events in België. Event staffing, hospitality en logistiek — snel geregeld.',
+        'SKWD is jouw betrouwbare partner in België voor studenten en flexi’s. Jong, dynamisch en flexibel.',
       ogDescription:
-        'Ontdek SKWD — jouw partner voor event staffing met studenten in België.',
+        'SKWD is jouw betrouwbare partner in België voor studenten en flexi’s. Jong, dynamisch en flexibel.',
       url: `${siteUrl}/nl`,
     },
     en: {
       title: 'Home - SKWD',
-      seoTitle: 'Welcome to SKWD – Student staffing agency',
-      ogTitle: 'Welcome to SKWD – Student staffing agency',
+      seoTitle: 'Welcome to SKWD – your staffing partner for students and flexi workers',
+      ogTitle: 'Welcome to SKWD – your staffing partner for students and flexi workers',
       description:
-        'Discover SKWD, the Belgian agency connecting motivated students and businesses for successful events across Belgium.',
+        'SKWD is your reliable partner in Belgium for students and flexi workers. Young, dynamic, and flexible.',
       ogDescription:
-        'SKWD is your partner for successful events in Belgium — connecting students and companies through reliable event staffing.',
+        'SKWD is your reliable partner in Belgium for students and flexi workers. Young, dynamic, and flexible.',
       url: `${siteUrl}/en`,
     },
   };

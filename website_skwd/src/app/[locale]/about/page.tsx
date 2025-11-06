@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
@@ -20,9 +20,9 @@ export async function generateMetadata({
       seoTitle: 'À propos',
       ogTitle: 'À propos - Découvrez notre équipe et la force qui fait le succès de SKWD',
       description:
-        "Découvrez qui nous sommes et comment l'équipe SKWD relie étudiants motivés et entreprises pour des événements réussis en Belgique.",
+        "Découvrez SKWD : une agence belge qui met en relation étudiants et entreprises pour des équipes d’événements, d’hospitalité et de logistique, de la sélection au briefing.",
       ogDescription:
-        "Plongez dans les coulisses de SKWD : une équipe passionnée qui fait le lien entre étudiants motivés et entreprises ambitieuses pour des événements inoubliables.",
+        "SKWD : agence belge de staffing événementiel — nous relions les étudiants et les entreprises.",
       url: `${siteUrl}/fr/a-propos`,
     },
     nl: {
@@ -40,9 +40,9 @@ export async function generateMetadata({
       seoTitle: 'About us',
       ogTitle: 'About us - Meet our team and discover the people driving SKWD’s success',
       description:
-        'Learn more about SKWD and how our team connects motivated students and businesses for successful events across Belgium.',
+        'Get to know SKWD: a Belgian agency that connects students and businesses for event, hospitality, and logistics teams — from selection to briefing.',
       ogDescription:
-        'Get to know the SKWD team — the passionate individuals connecting students and companies to create unforgettable event experiences.',
+        'SKWD: Belgian event staffing agency — we connect students and companies.',
       url: `${siteUrl}/en/about-us`,
     },
   };

@@ -11,24 +11,23 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
 
   // --- Localized metadata content ---
   const content = {
     fr: {
-      title: 'Secteur Hospitalité - SKWD',
+      title: 'Hospitalité - SKWD',
       seoTitle: 'Secteur Hospitalité',
       ogTitle:
         "Secteur Hospitalité – Découvrez toutes les expériences uniques et les différents types de jobs proposés",
-
       description:
-        "Découvrez nos services dans le secteur de l'hospitalité : du catering aux activations de marque, nous plaçons les bons profils aux bons endroits.",
+        "Staffing en hospitalité pour le catering, l’accueil et le service. SKWD sélectionne et briefe des étudiants pour une expérience événementielle accueillante.",
       ogDescription:
-        "Explorez SKWD, votre partenaire belge pour le staffing hospitality — catering, accueil, service, et plus encore.",
+        "SKWD pour l’hospitalité — catering, accueil, service et activations.",
       url: `${siteUrl}/fr/hospitalite`,
     },
     nl: {
-      title: 'Sector Hospitality - SKWD',
+      title: 'Hospitality - SKWD',
       seoTitle: 'Sector Hospitality',
       ogTitle:
         'Sector Hospitality – Ontdek de unieke ervaringen en verschillende soorten jobs waarin je kunt werken',
@@ -39,14 +38,14 @@ export async function generateMetadata({
       url: `${siteUrl}/nl/hospitality`,
     },
     en: {
-      title: 'Hospitality sector - SKWD',
+      title: 'Hospitality - SKWD',
       seoTitle: 'Hospitality sector',
       ogTitle:
         'Hospitality sector – Discover all the unique experiences and different types of jobs you could be working in',
       description:
-        'Discover our hospitality services: from catering to brand activations, we place the right people in the right place.',
+        'Hospitality staffing for catering, reception, and service. SKWD selects and briefs students for a welcoming event experience.',
       ogDescription:
-        'Explore SKWD, your Belgian partner for hospitality staffing — catering, brand activation, and premium event service.',
+        'SKWD for hospitality — catering, reception, service & activations.',
       url: `${siteUrl}/en/hospitality`,
     },
   };

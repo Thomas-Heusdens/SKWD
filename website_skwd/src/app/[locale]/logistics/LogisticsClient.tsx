@@ -3,10 +3,9 @@
 import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
-import InfoCard from '@/components/InfoCard';
 import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
-import { BadgeCheck, Clock8, Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
+import { Vote, MousePointer, BookA } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
 import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
@@ -31,7 +30,7 @@ export default function LogisticsClient() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/logistique`
@@ -54,10 +53,10 @@ export default function LogisticsClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': "QuantitativeValue",
       minValue: 2,
@@ -140,18 +139,18 @@ export default function LogisticsClient() {
     // Match visible H1
     headline:
       locale === 'fr'
-        ? 'Secteur de la logistique'
+        ? 'Logistique'
         : locale === 'nl'
-        ? 'Sector logistiek'
-        : 'Logistics sector',
+        ? 'Logistiek'
+        : 'Logistics',
 
     // Match browser tab title
     name:
       locale === 'fr'
-        ? 'Secteur Logistique - SKWD'
+        ? 'Logistique - SKWD'
         : locale === 'nl'
-        ? 'Sector Logistiek - SKWD'
-        : 'Logistics sector - SKWD',
+        ? 'Logistiek - SKWD'
+        : 'Logistics - SKWD',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
     mainEntity: { '@id': `${siteUrl}/#organization` },
@@ -160,10 +159,10 @@ export default function LogisticsClient() {
 
     description:
       locale === 'fr'
-        ? "Découvrez nos services dans le secteur de la logistique : de la manutention au transport, nous plaçons les bons profils aux bons endroits."
+        ? "Support logistique pour les événements : montage et démontage, transport et entrepôt. SKWD fournit les bons étudiants — ponctuels et bien briefés."
         : locale === 'nl'
-        ? 'Ontdek onze logistieke diensten: van opbouw en afbouw tot transport, wij zorgen voor de juiste mensen op de juiste plaats.'
-        : 'Discover our logistics services: from setup and dismantling to warehouse support, we place the right people in the right place.',
+        ? 'Logistieke support voor events: opbouw en afbraak, transport en magazijn. SKWD levert de juiste studenten — op tijd en goed gebriefd.'
+        : 'Logistical support for events: setup and teardown, transport, and warehouse work. SKWD provides the right students — on time and well briefed.',
     about: {
       '@type': 'Service',
       name: 'SKWD Logistics',
@@ -204,27 +203,22 @@ export default function LogisticsClient() {
     {
       image: '/images/Logistiek.jpeg',
       title: t('logistics_carousel_1_title'),
-      description: t('logistics_carousel_1_description'),
     },
     {
       image: '/images/parking.jpeg',
       title: t('logistics_carousel_2_title'),
-      description: t('logistics_carousel_2_description'),
     },
     {
       image: '/images/orderpicker.jpeg',
       title: t('logistics_carousel_3_title'),
-      description: t('logistics_carousel_3_description'),
     },
     {
       image: '/images/driver.jpg',
       title: t('logistics_carousel_4_title'),
-      description: t('logistics_carousel_4_description'),
     },
     {
       image: '/images/débarras.jpg',
       title: t('logistics_carousel_5_title'),
-      description: t('logistics_carousel_5_description'),
     },
   ];
 
@@ -254,16 +248,8 @@ export default function LogisticsClient() {
 
           <div className="relative z-10 text-center max-w-3xl px-6">
             <AnimatedContent distance={40} duration={1.2}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4 text-center">
-                {(() => {
-                  const words = t('logistics_title').split(' ');
-                  return (
-                    <>
-                      <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                      <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                    </>
-                  );
-                })()}
+              <h1 className="text-4xl text-white sm:text-5xl md:text-6xl font-semibold mb-4 text-center">
+                {t('logistics_title')}
               </h1>
             </AnimatedContent>
             <AnimatedContent distance={40} duration={1.2} delay={0.3}>
@@ -298,22 +284,9 @@ export default function LogisticsClient() {
           </div>
           <div className="section-container text-center">
             <AnimatedContent distance={40} duration={1.2}>
-              <h2 id="job-types-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
-                {(() => {
-                  const words = t('logistics_jobs_title').split(' ');
-                  return (
-                    <>
-                      <span className="text-white">{words.slice(0, -1).join(' ')}</span>{' '}
-                      <span className="text-skwd-text-highlight">{words.slice(-1).join(' ')}</span>
-                    </>
-                  );
-                })()}
+              <h2 id="job-types-heading" className="text-2xl md:text-3xl font-semibold mb-6 md:mb-10 text-center">
+                {t('logistics_jobs_title')}
               </h2>
-            </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-              <p className="max-w-2xl font-light text-sm md:text-base mx-auto text-white/90 mb-6 md:mb-10">
-                {t('logistics_jobs_description')}
-              </p>
             </AnimatedContent>
             <AnimatedContent distance={40} duration={1.2} delay={0.3}>
               <div id="job-carousel" className="relative w-full overflow-hidden" aria-label="Job types carousel">
@@ -322,42 +295,6 @@ export default function LogisticsClient() {
                 </div>
               </div>
             </AnimatedContent>
-          </div>
-        </section>
-
-        {/* ===== EVENT EXPERIENCE ===== */}
-        <section id="event-experience" aria-labelledby="event-experience-heading" className="py-14 md:py-20 bg-skwd-blue text-white">
-          <div className="section-container">
-            <header className="text-center mb-6 md:mb-10">
-              <AnimatedContent distance={40} duration={1.2}>
-                <h2 id="event-experience-heading" className="text-2xl md:text-3xl font-semibold mb-2 md:mb-4 text-center">
-                  {(() => {
-                    const words = t('logistics_event_title').split(' ');
-                    return (
-                      <>
-                        <span className="text-white">{words.slice(0, -2).join(' ')}</span>{' '}
-                        <span className="text-skwd-text-highlight">{words.slice(-2).join(' ')}</span>
-                      </>
-                    );
-                  })()}
-                </h2>
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-                <p className="text-white/90 font-light text-sm md:text-base max-w-xl mx-auto">{t('logistics_event_description')}</p>
-              </AnimatedContent>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <AnimatedContent distance={40} duration={1.2} delay={0.4}>
-                <InfoCard cardTitle='logistics_event_card_title_1' cardDescription='logistics_event_card_description_1' icon={Clock8} patternOverlaySrc="/images/Tile2.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-                <InfoCard cardTitle='logistics_event_card_title_2' cardDescription='logistics_event_card_description_2' icon={BicepsFlexed} patternOverlaySrc="/images/Tile3.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-                <InfoCard cardTitle='logistics_event_card_title_3' cardDescription='logistics_event_card_description_3' icon={BadgeCheck} patternOverlaySrc="/images/Tile4.png" color='skwd-dark-blue' />
-              </AnimatedContent>
-            </div>
           </div>
         </section>
 

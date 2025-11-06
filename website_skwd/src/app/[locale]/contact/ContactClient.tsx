@@ -19,7 +19,7 @@ export default function ContactClient() {
       ? (localeFromPath as 'en' | 'fr' | 'nl')
       : 'en';
 
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/contactez-nous`
@@ -42,10 +42,10 @@ export default function ContactClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -143,10 +143,10 @@ export default function ContactClient() {
 
     description:
       locale === 'fr'
-        ? "Vous organisez un événement et recherchez des étudiants motivés ? Contactez notre équipe via cette page."
+        ? "Vous organisez une fête, une réception ou un événement et cherchez des étudiants motivés ? Contactez SKWD — nous vous aidons rapidement."
         : locale === 'nl'
-        ? 'Heeft u binnenkort een feest, receptie of evenement en zoekt u enthousiaste studenten? Neem via deze pagina contact op met ons team.'
-        : 'Organizing an event or reception? Contact SKWD to find enthusiastic students for your team.',
+        ? 'Plant u een feest, receptie of event en zoekt u gemotiveerde studenten? Neem contact op met SKWD — wij helpen u snel verder.'
+        : 'Planning a party, reception, or event and looking for motivated students? Contact SKWD — we’ll help you right away.',
 
     isPartOf: { '@id': `${siteUrl}/#website` },
     inLanguage: locale,

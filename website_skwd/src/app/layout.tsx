@@ -16,7 +16,7 @@ export const metadata = {
   icons: {
     icon: '/logo-skwd.png'
   },
-  metadataBase: new URL('https://skwd.vercel.app'),
+  metadataBase: new URL('https://skwd.be'),
 };
 
 

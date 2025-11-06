@@ -23,7 +23,7 @@ export default function WorkWithUsClient() {
   const isMobile = useIsMobile(1024);
   const [activeSector, setActiveSector] = useState('hospitality');
 
-  const siteUrl = 'https://skwd.vercel.app';
+  const siteUrl = 'https://skwd.be';
   const pageUrl =
     locale === 'fr'
       ? `${siteUrl}/fr/collaborer-avec-nous`
@@ -46,10 +46,10 @@ export default function WorkWithUsClient() {
     },
     description:
       locale === 'fr'
-        ? 'SKWD – Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
-        ? 'SKWD – Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
-        : 'SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
+        ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
+        : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       minValue: 2,
@@ -150,10 +150,10 @@ export default function WorkWithUsClient() {
 
     description:
       locale === 'fr'
-        ? "Découvrez comment collaborer avec SKWD pour vos événements. Nous mettons en relation entreprises et étudiants motivés pour des missions de qualité."
+        ? "Travailler avec SKWD ? Nous constituons des équipes d’étudiants flexibles pour votre événement ou votre entreprise — de la sélection et du briefing jusqu’à l’évaluation finale."
         : locale === 'nl'
-        ? 'Ontdek hoe uw bedrijf met SKWD kan samenwerken voor evenementen. Wij verbinden ondernemingen met gemotiveerde studenten.'
-        : 'Discover how to collaborate with SKWD for your events. We connect motivated students with companies for efficient, high-quality staffing.',
+        ? 'Samenwerken met SKWD? We bouwen flexibele studententeams voor uw event of onderneming — van selectie en briefing tot nacalculatie.'
+        : 'Working with SKWD? We build flexible student teams for your event or company — from selection and briefing to final evaluation.',
     about: {
       '@type': 'Service',
       name:
