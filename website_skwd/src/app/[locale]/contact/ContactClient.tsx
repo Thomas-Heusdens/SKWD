@@ -637,7 +637,7 @@ export default function ContactClient() {
                       loading="lazy"
                       allowFullScreen
                       referrerPolicy="no-referrer-when-downgrade"
-                      src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Rue+de+la+Science+14,Brussels,Belgium`}
+                      src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=place_id:ChIJpbbnE-jDw0cRhte5ZDAwAaI`}
                     ></iframe>
                   </div>
                 </div>

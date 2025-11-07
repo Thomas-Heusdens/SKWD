@@ -17,13 +17,6 @@ export default function AboutClient() {
   const localeFromPath = pathname.split('/')[1];
   const locale: 'en' | 'fr' | 'nl' = ['en', 'fr', 'nl'].includes(localeFromPath) ? (localeFromPath as 'en' | 'fr' | 'nl') : 'en';
 
-  const images = [
-    { id: 1, img: "/images/planner-2.jpg" },
-    { id: 2, img: "/images/team-2.jpeg" },
-    { id: 3, img: "/images/planner-1.jpeg" },
-    { id: 4, img: "/images/team-hero.jpeg" },
-  ];
-
   // --- JSON-LD: build absolute URLs and localized page URL
   const siteUrl = 'https://skwd.be';
   const pageUrl =
@@ -197,10 +190,10 @@ export default function AboutClient() {
               </h1>
             </AnimatedContent>
             <AnimatedContent distance={30} duration={1.2} delay={0.3}>
-              <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-12" />
+              <div className="h-1 w-12 bg-skwd-button rounded-full mx-auto mb-4 md:mb-12" />
             </AnimatedContent>
             <AnimatedContent distance={40} duration={1.2} delay={0.1}>
-                <h2 id="team-heading" className="text-3xl md:text-4xl mb-12 font-medium text-center">
+                <h2 id="team-heading" className="text-xl md:text-4xl mb-12 font-medium text-center">
                   {(() => {
                     const words = t('about_quote').split(' ');
                     const lastTwoStart = words.length - 2;
@@ -225,7 +218,7 @@ export default function AboutClient() {
             <section
               id="agency-numbers"
               aria-labelledby="agency-numbers-heading"
-              className="py-8 text-white w-full absolute bottom-0 left-0"
+              className="py-8 text-white w-full absolute bottom-12 md:bottom-0 left-0"
             >
                 <div className="flex flex-wrap justify-between items-center gap-3 md:gap-0">
                   <div className="hidden md:block h-16 w-px bg-white rounded-full"></div>
