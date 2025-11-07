@@ -97,7 +97,8 @@ export default function Footer() {
             <div className="text-sm text-white/80 space-y-1">
               <p className="font-light">{t.recognition_label}</p>
               <p className="font-light">{t.recognition_number}</p>
-              <p className="font-light">VG.2432/U - W.DISP.2143)</p>
+              <p className="font-light">VG.2432/U - W.DISP.2143</p>
+              <p className='font-light'>BG: 20518-406-20250429)</p>
               <p className="font-light">RSZ: 1061808-55</p>
             </div>
             <div className="flex gap-3 mt-2">

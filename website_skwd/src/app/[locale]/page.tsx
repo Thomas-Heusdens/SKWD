@@ -327,7 +327,6 @@ export default function HomePage() {
 
                     <p className="font-semibold text-sm md:text-base">{t('ceo_name')}</p>
                     <p className="text-sm opacity-80">{t('ceo_role')}</p>
-                    <p className="text-sm opacity-60 font-light">{t('ceo_experience')}</p>
                   </footer>
                 </blockquote>
               </div>
