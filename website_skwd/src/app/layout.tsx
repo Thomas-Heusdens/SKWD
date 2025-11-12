@@ -1,8 +1,8 @@
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Barlow } from "next/font/google";
 import OrientationWarning from '@/components/OrientationWarning';
 import "./globals.css";
+import LayoutClient from '@/components/LayoutClient';
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -29,8 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar />
           </header>
           <OrientationWarning />
-          {children}
-          <Footer />
+          <LayoutClient>{children}</LayoutClient>
         </main>
       </body>
     </html>

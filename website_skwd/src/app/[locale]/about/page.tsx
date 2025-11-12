@@ -58,7 +58,7 @@ export async function generateMetadata({
 
   const keywords =
     locale === 'fr'
-      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence de staffing, Belgique'
+      ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence d\'intérim, Belgique'
       : locale === 'nl'
       ? 'studentenwerk, logistiek, hospitality, evenementen, studentenjobs, uitzendbureau, België'
       : 'student staffing, event staffing, logistics, hospitality, student jobs, Belgium';

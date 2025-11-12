@@ -3,9 +3,6 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from '@/lib/i18n';
-import { Listbox, Transition } from '@headlessui/react';
-import { ChevronDown } from 'lucide-react';
-import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 import Image from 'next/image';
@@ -42,7 +39,7 @@ export default function ContactClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
@@ -173,8 +170,6 @@ export default function ContactClient() {
     fullName: '',
     email: '',
     company: '',
-    inquiryType: '',
-    sector: '',
     message: '',
   });
   const [sending, setSending] = useState(false);
@@ -189,21 +184,6 @@ export default function ContactClient() {
     if (sending) return;
     e.preventDefault();
 
-    // --- Frontend validation ---
-    if (!formData.inquiryType || !formData.sector) {
-      setValidationError(
-        locale === 'fr'
-          ? 'Veuillez sélectionner le type de demande et le secteur.'
-          : locale === 'nl'
-          ? 'Selecteer het type aanvraag en de sector.'
-          : 'Please select both inquiry type and sector.'
-      );
-
-      setTimeout(() => setValidationError(null), 5000);
-
-      setSuccess(null);
-      return;
-    }
     setValidationError(null);
     setSending(true);
     setSuccess(null);
@@ -212,8 +192,6 @@ export default function ContactClient() {
       fullName: formData.fullName,
       email: formData.email,
       company: formData.company,
-      inquiryType: formData.inquiryType,
-      sector: formData.sector,
       message: formData.message,
     };
 
@@ -229,8 +207,6 @@ export default function ContactClient() {
         fullName: '',
         email: '',
         company: '',
-        inquiryType: '',
-        sector: '',
         message: '',
       });
     } catch (err) {
@@ -240,13 +216,6 @@ export default function ContactClient() {
       setSending(false);
     }
   };
-
-  const inquiryOptions = [
-    { value: '', label: t('contact_select') },
-    { value: 'collaboration', label: t('contact_option_collaboration') },
-    { value: 'question', label: t('contact_option_question') },
-    { value: 'student_request', label: t('contact_option_student_request') },
-  ];
 
   return (
     <>
@@ -297,16 +266,10 @@ export default function ContactClient() {
                     <div className="h-1 w-20 bg-skwd-button rounded-full" />
                   </AnimatedContent>
                 </div>
-
-                <AnimatedContent distance={30} duration={1.2} delay={0.3} direction='horizontal'>
-                  <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-xl">
-                    {t('contact_description')}
-                  </p>
-                </AnimatedContent>
                 
                 {/* Contact Information Cards */}
                 <AnimatedContent distance={30} duration={1.2} delay={0.5} direction='horizontal'>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                     {/* Email Card */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:bg-white/10 transition-all duration-300">
                       <div className="flex items-start gap-3">
@@ -317,7 +280,7 @@ export default function ContactClient() {
                         </div>
                         <div>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_email')}</h3>
-                          <p className="text-sm text-white/70">info@skwd.be</p>
+                          <a href="mailto:info@skwd.be" className="text-sm text-white/70">info@skwd.be</a>
                         </div>
                       </div>
                     </div>
@@ -332,7 +295,7 @@ export default function ContactClient() {
                         </div>
                         <div>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_phone')}</h3>
-                          <p className="text-sm text-white/70">+32 456 82 45 51</p>
+                          <a href="tel:+32456824551" className="text-sm text-white/70">+32 456 82 45 51</a>
                         </div>
                       </div>
                     </div>
@@ -346,9 +309,11 @@ export default function ContactClient() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
                         </div>
-                        <div>
+                        <div className='flex flex-col'>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_address')}</h3>
-                          <p className="text-sm text-white/70">{t('contact_address_name')}</p>
+                          <a href='https://www.google.com/maps/place/SKWD/@50.8642498,4.3414631,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3c3e813e7b6a5:0xa201303064b9d786!8m2!3d50.8642464!4d4.344038!16s%2Fg%2F11x2x9sxz2?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D' target='_blank' className="text-sm text-white/70">{t('contact_address_name_brussels')}</a>
+                          <a href="https://maps.app.goo.gl/riaq21uyMWZ5jiPB6" target='_blank' className="text-sm text-white/70">{t('contact_address_name_antwerp')}</a>
+                          <a href="https://maps.app.goo.gl/Grvri2EQBqpdsuPs9" target='_blank' className="text-sm text-white/70">{t('contact_address_name_mechelen')}</a>
                         </div>
                       </div>
                     </div>
@@ -432,123 +397,6 @@ export default function ContactClient() {
                           className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
                           placeholder={t('contact_placeholder_company')}
                         />
-                      </div>
-
-                      {/* Two Column Layout for Selects on larger screens */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {/* Inquiry Type */}
-                        <Listbox value={formData.inquiryType} onChange={(value) => setFormData({...formData, inquiryType: value})}>
-                          <div className="relative">
-                            <label htmlFor="sector" className="block text-sm font-medium text-white/90 mb-2">
-                              {t('contact_inquiry')} <span className="text-red-400">*</span>
-                            </label>
-                            <Listbox.Button
-                              className={`w-full bg-white/5 border rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 
-                                ${!formData.inquiryType ? 'border-red-500/50' : 'border-white/20'}`}
-                            >
-                              {inquiryOptions.find(o => o.value === formData.inquiryType)?.label || t('contact_select')}
-                              <ChevronDown className="w-5 h-5 text-white/60" />
-                            </Listbox.Button>
-
-                            <Transition
-                              as={Fragment}
-                              leave="transition ease-in duration-100"
-                              leaveFrom="opacity-100"
-                              leaveTo="opacity-0"
-                            >
-                              <Listbox.Options className="absolute mt-2 w-full bg-slate-800 border border-white/20 rounded-lg shadow-lg z-10">
-                                {inquiryOptions.map((option) => (
-                                  <Listbox.Option
-                                    key={option.value}
-                                    value={option.value}
-                                    className={({ active }) =>
-                                      `cursor-pointer select-none px-4 py-2 text-white ${
-                                        active ? 'bg-blue-500/30' : 'bg-slate-800'
-                                      }`
-                                    }
-                                  >
-                                    {option.label}
-                                  </Listbox.Option>
-                                ))}
-                              </Listbox.Options>
-                            </Transition>
-                          </div>
-                        </Listbox>
-
-                        {/* Sector */}
-                        <Listbox
-                          value={formData.sector}
-                          onChange={(value) => setFormData({ ...formData, sector: value })}
-                        >
-                          <div className="relative">
-                            <label
-                              htmlFor="sector"
-                              className="block text-sm font-medium text-white/90 mb-2"
-                            >
-                              {t('contact_sector')} <span className="text-red-400">*</span>
-                            </label>
-
-                            {/* Button */}
-                            <Listbox.Button
-                              className={`w-full bg-white/5 border rounded-lg px-4 py-3 text-left text-white cursor-pointer flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 
-                                ${!formData.sector ? 'border-red-500/50' : 'border-white/20'}`}
-                            >
-                              {formData.sector
-                                ? {
-                                    hospitality: t('contact_sector_hospitality'),
-                                    logistics: t('contact_sector_logistics'),
-                                    both: t('contact_sector_both'),
-                                  }[formData.sector]
-                                : t('contact_select')}
-                              <ChevronDown className="w-5 h-5 text-white/60" />
-                            </Listbox.Button>
-
-                            <Transition
-                              as={Fragment}
-                              leave="transition ease-in duration-100"
-                              leaveFrom="opacity-100"
-                              leaveTo="opacity-0"
-                            >
-                              <Listbox.Options className="absolute mt-2 w-full bg-slate-800 border border-white/20 rounded-lg shadow-lg z-10 overflow-hidden">
-                                <Listbox.Option
-                                  key="hospitality"
-                                  value="hospitality"
-                                  className={({ active }) =>
-                                    `cursor-pointer select-none px-4 py-2 text-white ${
-                                      active ? 'bg-blue-500/30' : 'bg-slate-800'
-                                    }`
-                                  }
-                                >
-                                  {t('contact_sector_hospitality')}
-                                </Listbox.Option>
-
-                                <Listbox.Option
-                                  key="logistics"
-                                  value="logistics"
-                                  className={({ active }) =>
-                                    `cursor-pointer select-none px-4 py-2 text-white ${
-                                      active ? 'bg-blue-500/30' : 'bg-slate-800'
-                                    }`
-                                  }
-                                >
-                                  {t('contact_sector_logistics')}
-                                </Listbox.Option>
-
-                                <Listbox.Option
-                                  key="both"
-                                  value="both"
-                                  className={({ active }) =>
-                                    `cursor-pointer select-none px-4 py-2 text-white ${
-                                      active ? 'bg-blue-500/30' : 'bg-slate-800'
-                                    }`
-                                  }
-                                >
-                                  {t('contact_sector_both')}
-                                </Listbox.Option>
-                              </Listbox.Options>
-                            </Transition>
-                          </div>
-                        </Listbox>
                       </div>
 
                       {/* Message */}

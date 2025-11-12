@@ -4,7 +4,8 @@ import { useTranslation } from '@/lib/i18n';
 import Image from 'next/image';
 import RollingCounter from '@/components/RollingCounter';
 import TeamMemberCard from '@/components/TeamMember';
-import { CircleQuestionMark, HandCoins, HeartHandshake, TrendingUp, Users } from 'lucide-react';
+import TeamMembersCard from '@/components/TeamMembersCard';
+import { CircleQuestionMark, HandCoins, HeartHandshake, Linkedin, TrendingUp, Users } from 'lucide-react';
 import InfoSimpleCard from '@/components/InfoSimpleCard';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -41,7 +42,7 @@ export default function AboutClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
@@ -270,7 +271,57 @@ export default function AboutClient() {
           </div>
         </header>
 
-        
+        {/* ===== CEO TESTIMONIAL SECTION ===== */}
+        <section
+          id="testimony"
+          className="bg-skwd-light-blue text-white p-0 m-0"
+          aria-labelledby="testimony-heading"
+        >
+          <AnimatedContent distance={50} duration={1.5}>
+            <div className="relative py-10 md:py-14 section-container">
+              <h2
+                id="testimony-heading"
+                className="hidden md:block absolute top-5 md:left-4 text-[250px] leading-none text-skwd-text-highlight font-medium select-none pointer-events-none"
+              >
+                &quot;
+              </h2>
+
+              <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-8 mx-auto">
+                
+                <div className="relative w-64 h-64 md:w-72 md:h-72 md:order-2 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                      src="/images/ceo.jpeg"
+                      alt={t('ceo_name')}
+                      fill
+                      sizes="(max-width: 768px) 256px, 288px"
+                      className="object-cover object-bottom"
+                      priority
+                    />
+                </div>
+
+                <blockquote className="text-left max-w-xl md:mt-20">
+                  <p className="text-base md:text-lg mb-6 font-light">{t('ceo_testimony')}</p>
+                  <footer className="relative pl-6 flex flex-col">
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-skwd-text-highlight rounded-full" />
+
+                    <p className="font-semibold text-sm md:text-base">{t('ceo_name')}</p>
+                    <p className="text-sm text-skwd-text-highlight">{t('ceo_role')}</p>
+                    <a href="mailto:tommy@skwd.be" className="text-sm font-light">tommy@skwd.be</a>
+                    <a
+                      href="https://www.linkedin.com/in/tommy-ulens-017747225/"
+                      aria-label="Tommy LinkedIn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-1"
+                    >
+                      <Linkedin className="w-6 h-6 text-white" />
+                    </a>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </AnimatedContent>
+        </section>        
 
         {/* ===== TEAM SECTION ===== */}
         <section
@@ -279,22 +330,14 @@ export default function AboutClient() {
           className="py-20 bg-skwd-dark-blue text-white"
         >
           <div className="section-container">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              <AnimatedContent distance={40} duration={1.2}>
-                <TeamMemberCard
-                  memberNumber={1}
-                  imageUrl="/images/ceo.jpeg"
-                  name="Tommy Ulens"
-                  linkedinUrl="https://www.linkedin.com/in/tommy-ulens-017747225/"
-                />
-              </AnimatedContent>
-              
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">              
               <AnimatedContent distance={40} duration={1.2} delay={0.1}>
                 <TeamMemberCard
                   memberNumber={2}
                   imageUrl="/images/benjamin.jpeg"
                   name="Benjamin Fontenai"
                   linkedinUrl="https://www.linkedin.com/in/benjamin-fontenai-a04794236/"
+                  email='benjamin@skwd.be'
                 />
               </AnimatedContent>
               
@@ -304,6 +347,7 @@ export default function AboutClient() {
                   imageUrl="/images/antoine.jpeg"
                   name="Antoine Collin"
                   linkedinUrl="https://www.linkedin.com/in/antoine-collin-3937292a5/"
+                  email='antoine@skwd.be'
                 />
               </AnimatedContent>
               
@@ -313,31 +357,24 @@ export default function AboutClient() {
                   imageUrl="/images/cintia.jpeg"
                   name="Cintia Saliba"
                   linkedinUrl="https://www.linkedin.com/in/cintia-saliba/"
+                  email='cintia@skwd.be'
                 />
               </AnimatedContent>    
               
               <AnimatedContent distance={40} duration={1.2} delay={0.1}>
-                <TeamMemberCard
-                  memberNumber={5}
-                  imageUrl="/images/adam.jpg"
-                  name="Adam Sakhraoui"
-                  linkedinUrl="https://www.linkedin.com/in/adam-sakhraoui-672281353/"
-                />
-              </AnimatedContent>    
-              
-              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
-                <TeamMemberCard
-                  memberNumber={6}
-                  imageUrl="/images/thomas.jpg"
-                  name="Thomas Heusdens"
-                  linkedinUrl="https://www.linkedin.com/in/thomas-heusdens-0bba19258/"
+                <TeamMembersCard
+                  imageUrl="/images/planner-2.jpg"
+                  name="Adam Sakhraoui & Thomas Heusdens"
+                  linkedinUrl1="https://www.linkedin.com/in/adam-sakhraoui-672281353/"
+                  linkedinUrl2="https://www.linkedin.com/in/thomas-heusdens-0bba19258/"
+                  email='work@skwd.be'
                 />
               </AnimatedContent>
             </div>
           </div>
         </section>
 
-        {/* ===== WHY STUDENTS CHOOSE US ===== */}
+        {/* ===== WHY CHOOSE US ===== */}
         <section
           id="why-us"
           aria-labelledby="why-us-heading"
@@ -355,13 +392,10 @@ export default function AboutClient() {
                   </span>
                 </h2>
               </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-                <p className='font-light text-sm md:text-base w-[80%] mx-auto'>{t('about_why_description')}</p>
-              </AnimatedContent>
             </header>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <AnimatedContent distance={40} duration={1.2} delay={0.4}>
+              <AnimatedContent distance={40} duration={1.2} delay={0.1}>
                 <InfoSimpleCard 
                   cardTitle='about_why_card1_title'
                   icon={Users} 
@@ -369,7 +403,7 @@ export default function AboutClient() {
                   color='skwd-blue'
                 />
               </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.5}>
+              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
                 <InfoSimpleCard 
                   cardTitle='about_why_card2_title'
                   icon={TrendingUp} 
@@ -377,7 +411,7 @@ export default function AboutClient() {
                   color='skwd-blue'
                 />
               </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+              <AnimatedContent distance={40} duration={1.2} delay={0.3}>
                 <InfoSimpleCard 
                 cardTitle='about_why_card3_title'
                 icon={HandCoins} 
@@ -385,7 +419,7 @@ export default function AboutClient() {
                 color='skwd-blue'
               />
               </AnimatedContent>
-              <AnimatedContent distance={40} duration={1.2} delay={0.2}>
+              <AnimatedContent distance={40} duration={1.2} delay={0.4}>
                 <InfoSimpleCard 
                   cardTitle='about_why_card4_title'
                   icon={HeartHandshake}

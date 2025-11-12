@@ -45,7 +45,7 @@ export default function FaqClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
@@ -196,10 +196,10 @@ export default function FaqClient() {
           '@type': 'Answer',
           text:
             locale === 'fr'
-              ? 'Nos bureaux sont situés à Bruxelles et à Anvers, mais nos missions couvrent toute la Belgique et parfois même les pays voisins.'
+              ? 'Nos bureaux sont situés à Bruxelles, Anvers et à Malines, mais nos missions couvrent toute la Belgique et parfois même les pays voisins.'
               : locale === 'nl'
-              ? 'Onze kantoren bevinden zich in Brussel en Antwerpen, maar onze opdrachten vinden plaats in heel België en soms zelfs in de buurlanden.'
-              : 'Our offices are based in Brussels and Antwerp, but our events take place all across Belgium and sometimes even in neighboring countries.',
+              ? 'Onze kantoren bevinden zich in Brussel, Antwerpen en in Mechelen, maar onze opdrachten vinden plaats in heel België en soms zelfs in de buurlanden.'
+              : 'Our offices are based in Brussels, Antwerp, and in Mechelen but our events take place all across Belgium and sometimes even in neighboring countries.',
         },
       },
       {
@@ -378,8 +378,8 @@ export default function FaqClient() {
     },
     {
       category: t('faq_category_general'),
-      question: t('faq_q_events_types'),
-      answer: t('faq_a_events_types'),
+      question: t('faq_q_why_skwd'),
+      answer: t('faq_a_why_skwd'),
     },
     {
       category: t('faq_category_general'),
@@ -539,7 +539,21 @@ export default function FaqClient() {
                           </header>
                           {isOpen && (
                             <p className="pb-4 text-sm md:text-base text-white/80 font-light leading-relaxed">
-                              {answer}
+                              {answer.split(/(https?:\/\/[^\s]+)/g).map((part, index) =>
+                                part.match(/^https?:\/\//) ? (
+                                  <a
+                                    key={index}
+                                    href={part}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-white/80 underline hover:text-white transition"
+                                  >
+                                    {part}
+                                  </a>
+                                ) : (
+                                  part
+                                )
+                              )}
                             </p>
                           )}
                         </article>

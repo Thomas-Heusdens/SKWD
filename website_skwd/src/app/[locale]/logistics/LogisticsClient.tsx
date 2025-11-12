@@ -7,12 +7,12 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { Vote, MousePointer, BookA } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
-import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
 import useIsMobile from '@/hooks/useIsMobile';
 import { useEffect, useState } from 'react';
 import AnimatedContent from '@/components/AnimatedContent';
 import InfoCardStep from '@/components/InfoCardStep';
+import ProjectsBento from '@/components/ProjectsBentoLogistiek';
 
 export default function LogisticsClient() {
   const isMobile = useIsMobile(776);
@@ -53,7 +53,7 @@ export default function LogisticsClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
@@ -199,29 +199,6 @@ export default function LogisticsClient() {
     ? '/images/Logistiek-hero2.jpeg'
     : '/images/logistiek3.jpeg';
 
-  const carouselSlides = [
-    {
-      image: '/images/Logistiek.jpeg',
-      title: t('logistics_carousel_1_title'),
-    },
-    {
-      image: '/images/parking.jpeg',
-      title: t('logistics_carousel_2_title'),
-    },
-    {
-      image: '/images/orderpicker.jpeg',
-      title: t('logistics_carousel_3_title'),
-    },
-    {
-      image: '/images/driver.jpg',
-      title: t('logistics_carousel_4_title'),
-    },
-    {
-      image: '/images/débarras.jpg',
-      title: t('logistics_carousel_5_title'),
-    },
-  ];
-
   return (
     <>
       <script
@@ -277,24 +254,31 @@ export default function LogisticsClient() {
           </div>
         </header>
 
-        {/* ===== JOB TYPES ===== */}
-        <section id="job-types" aria-labelledby="job-types-heading" className="relative py-14 md:py-20 px-6 text-white">
-          <div className="absolute inset-0 opacity-5">
-            <Image src="/images/pattern-bg.png" alt="Pattern background" fill className="object-cover" />
+        {/* ===== PROJECT GALLERY / IMPACT SECTION ===== */}
+        <section
+          id="projects"
+          aria-labelledby="projects-heading"
+          className="relative overflow-hidden"
+        >
+          <div className="absolute inset-0 opacity-10">
+            <Image
+              src="/images/pattern-bg.png"
+              alt="Pattern background"
+              fill
+              className="object-cover"
+            />
           </div>
-          <div className="section-container text-center">
-            <AnimatedContent distance={40} duration={1.2}>
-              <h2 id="job-types-heading" className="text-2xl md:text-3xl font-semibold mb-6 md:mb-10 text-center">
-                {t('logistics_jobs_title')}
+          <div className="py-14 md:py-20 section-container">
+            <AnimatedContent distance={50} duration={1.2}>
+              <h2 id="projects-heading" className="text-2xl md:text-3xl text-center font-semibold mb-6 md:mb-10">
+                <span className="text-white">{t('projects_title_logistiek').split(' ').slice(0, -2).join(' ')}</span>
+                {' '}
+                <span className="text-skwd-text-highlight">{t('projects_title_logistiek').split(' ').slice(-2).join(' ')}</span>
               </h2>
             </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.3}>
-              <div id="job-carousel" className="relative w-full overflow-hidden" aria-label="Job types carousel">
-                <div className="w-full">
-                  <EmblaCarousel slides={carouselSlides} />
-                </div>
-              </div>
-            </AnimatedContent>
+            <AnimatedContent distance={50} duration={1.2} delay={0.2}>
+              <ProjectsBento />
+            </AnimatedContent>      
           </div>
         </section>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/lib/i18n';
-import MagicBento from '@/components/MagicBento';
+import MagicBento from '@/components/MagicBentoHospitality';
 import { useMemo } from 'react';
 
 export default function ProjectsBento() {
@@ -11,45 +11,33 @@ export default function ProjectsBento() {
     () => [
       {
         color: '#060010',
-        title: t('project1_title'),
-        description: t('project1_tag'),
+        title: t('hospitality_carousel_1_title'),
         label: '1',
-        image: '/images/festival.JPG',
+        image: '/images/festival.jpeg',
       },
       {
         color: '#060010',
-        title: t('project2_title'),
-        description: t('project2_tag'),
+        title: t('hospitality_carousel_2_title'),
         label: '2',
-        image: '/images/hero-right.jpeg',
-      },
-      {
-        color: '#060010',
-        title: t('project3_title'),
-        description: t('project3_tag'),
-        label: '3',
         image: '/images/wedding.jpeg',
       },
       {
         color: '#060010',
-        title: t('project4_title'),
-        description: t('project4_tag'),
-        label: '4',
-        image: '/images/Logistiek.jpeg',
+        title: t('hospitality_carousel_3_title'),
+        label: '3',
+        image: '/images/Corporate.jpg',
       },
       {
         color: '#060010',
-        title: t('project5_title'),
-        description: t('project5_tag'),
+        title: t('hospitality_carousel_4_title'),
+        label: '4',
+        image: '/images/Conferenties.jpeg',
+      },
+      {
+        color: '#060010',
+        title: t('hospitality_carousel_5_title'),
         label: '5',
         image: '/images/sport.JPG',
-      },
-      {
-        color: '#060010',
-        title: t('project6_title'),
-        description: t('project6_tag'),
-        label: '6',
-        image: '/images/team-hero.jpeg',
       },
     ],
     [t]

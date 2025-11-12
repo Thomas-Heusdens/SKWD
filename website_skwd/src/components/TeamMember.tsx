@@ -9,13 +9,15 @@ interface TeamMemberCardProps {
   imageUrl: string;
   name: string;
   linkedinUrl: string;
+  email: string;
 }
 
 export default function TeamMemberCard({
   memberNumber,
   imageUrl,
   name,
-  linkedinUrl
+  linkedinUrl,
+  email
 }: TeamMemberCardProps) {
   const { t } = useTranslation();
 
@@ -34,17 +36,18 @@ export default function TeamMemberCard({
           />
         </div>
 
-        <figcaption className="bg-skwd-blue rounded-b-lg p-4 text-left">
+        <figcaption className="flex flex-col bg-skwd-blue rounded-b-lg p-4 text-left">
           <p className="text-lg font-medium text-white">{name}</p>
           <p className="text-sm font-light text-skwd-text-highlight">
             {t(`about_team_member_role_${memberNumber}`)}
           </p>
+          <a href={`mailto:${email}`} className='text-sm font-light text-white/90'>{email}</a>
           <a
             href={linkedinUrl}
             aria-label={`${name} LinkedIn`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-3"
+            className="inline-flex items-center gap-2 mt-1"
           >
             <Linkedin className="w-6 h-6 text-white" />
           </a>

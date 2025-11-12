@@ -46,7 +46,7 @@ export default function WorkWithUsClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',

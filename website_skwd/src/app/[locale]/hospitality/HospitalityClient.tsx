@@ -7,11 +7,11 @@ import { usePathname } from 'next/navigation';
 import { localizedRoutes } from '@/lib/routes';
 import { Vote, MousePointer, BookA, BicepsFlexed } from 'lucide-react';
 import CardSwap, { Card } from '@/components/CardSwap';
-import EmblaCarousel from '@/components/EmblaCarousel';
 import SquareMasonry from '@/components/SquareMasonry';
 import useIsMobile from '@/hooks/useIsMobile';
 import AnimatedContent from '@/components/AnimatedContent';
 import InfoCardStep from '@/components/InfoCardStep';
+import ProjectsBento from '@/components/ProjectsBentoHospitality';
 
 export default function HospitalityClient() {
   const isMobile = useIsMobile(776);
@@ -44,7 +44,7 @@ export default function HospitalityClient() {
     },
     description:
       locale === 'fr'
-        ? 'Agence de staffing étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
+        ? 'Agence d\'intérim étudiant reliant des étudiants motivés et des entreprises pour des événements réussis en Belgique.'
         : locale === 'nl'
         ? 'Uitzendkantoor voor studenten dat gemotiveerde studenten en bedrijven verbindt voor succesvolle evenementen in België.'
         : 'Student staffing agency connecting motivated students with professional events and businesses across Belgium.',
@@ -184,29 +184,6 @@ export default function HospitalityClient() {
     },
   };
 
-  const carouselSlides = [
-    {
-      image: '/images/festival.jpeg',
-      title: t('hospitality_carousel_1_title'),
-    },
-    {
-      image: '/images/wedding.jpeg',
-      title: t('hospitality_carousel_2_title'),
-    },
-    {
-      image: '/images/Corporate.jpg',
-      title: t('hospitality_carousel_3_title'),
-    },
-    {
-      image: '/images/Conferenties.jpeg',
-      title: t('hospitality_carousel_4_title'),
-    },
-    {
-      image: '/images/sport.JPG',
-      title: t('hospitality_carousel_5_title'),
-    },
-  ];
-
   return (
     <>
       <script
@@ -261,13 +238,13 @@ export default function HospitalityClient() {
           </div>
         </header>
 
-        {/* ===== JOB TYPES SECTION ===== */}
+        {/* ===== PROJECT GALLERY / IMPACT SECTION ===== */}
         <section
-          id="job-types"
-          aria-labelledby="job-types-heading"
-          className="relative py-14 md:py-20 px-6 text-white"
+          id="projects"
+          aria-labelledby="projects-heading"
+          className="relative overflow-hidden"
         >
-          <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 opacity-10">
             <Image
               src="/images/pattern-bg.png"
               alt="Pattern background"
@@ -275,23 +252,17 @@ export default function HospitalityClient() {
               className="object-cover"
             />
           </div>
-          <div className="section-container text-center">
-            <AnimatedContent distance={40} duration={1.2}>
-              <h2 id="job-types-heading" className="text-2xl text-white md:text-3xl font-semibold mb-6 md:mb-10 text-center">
-                {t('hospitality_jobs_title')}
+          <div className="py-14 md:py-20 section-container">
+            <AnimatedContent distance={50} duration={1.2}>
+              <h2 id="projects-heading" className="text-2xl md:text-3xl text-center font-semibold mb-6 md:mb-10">
+                <span className="text-white">{t('projects_title_hospitality').split(' ').slice(0, -2).join(' ')}</span>
+                {' '}
+                <span className="text-skwd-text-highlight">{t('projects_title_hospitality').split(' ').slice(-2).join(' ')}</span>
               </h2>
             </AnimatedContent>
-            <AnimatedContent distance={40} duration={1.2} delay={0.5}>
-              <div
-                id="job-carousel"
-                className="relative w-full overflow-hidden"
-                aria-label="Job types carousel"
-              >
-                <div className="w-full">
-                  <EmblaCarousel slides={carouselSlides} />
-                </div>
-              </div>
-            </AnimatedContent>
+            <AnimatedContent distance={50} duration={1.2} delay={0.2}>
+              <ProjectsBento />
+            </AnimatedContent>      
           </div>
         </section>
 
