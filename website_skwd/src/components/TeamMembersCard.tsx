@@ -27,7 +27,7 @@ export default function TeamMembersCard({
       className="flex flex-col"
     >
       <figure className="flex flex-col">
-        <div className="relative w-full aspect-square overflow-hidden rounded-t-lg">
+        <div className="relative w-full aspect-square overflow-hidden rounded-t-lg grayscale hover:grayscale-0 transition-all duration-[500ms]">
           <Image
             src={imageUrl}
             alt={name}
