@@ -544,7 +544,6 @@ export default function FaqClient() {
                                   <a
                                     key={index}
                                     href={part}
-                                    target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-white/80 underline hover:text-white transition"
                                   >

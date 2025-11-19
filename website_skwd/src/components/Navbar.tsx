@@ -21,8 +21,14 @@ export default function Navbar() {
     { key: 'hospitality', label: { en: 'Hospitality', fr: 'Hospitalité', nl: 'Hospitality' } },
     { key: 'logistics', label: { en: 'Logistics', fr: 'Logistique', nl: 'Logistiek' } },
     { key: 'work', label: { en: 'Work with us', fr: 'Travailler avec nous', nl: 'Werk met ons' } },
-    { key: 'faq', label: { en: 'FAQ', fr: 'FAQ', nl: 'Veelgestelde vragen' } },
     { key: 'contact', label: { en: 'Contact', fr: 'Contact', nl: 'Contact' } },
+
+    { 
+      key: 'apply',
+      external: true,
+      href: 'https://jobs.skwd.be/studentenjob',
+      label: { en: 'Apply', fr: 'Solliciter', nl: 'Solliciteren' }
+    },
   ];
 
   return (
@@ -57,6 +63,21 @@ export default function Navbar() {
 
         <div className="hidden min-[945px]:flex items-center gap-6">
           {navLinks.map((link) => {
+            const isExternal = link.external === true;
+
+            if (isExternal) {
+              return (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  rel="noopener noreferrer"
+                  className="font-light transition-colors hover:text-gray-300 text-white"
+                >
+                  {link.label[locale]}
+                </a>
+              );
+            }
+
             const routeKey = link.key as LocalizedRouteKey;
             const routeObj = localizedRoutes[routeKey];
             const routePath = routeObj[locale];
@@ -112,6 +133,26 @@ export default function Navbar() {
         `}
       >
         {navLinks.map((link) => {
+          const isExternal = link.external === true;
+
+          if (isExternal) {
+            return (
+              <a
+                key={link.key}
+                href={link.href}
+                rel="noopener noreferrer"
+                className="
+                  w-full text-center py-3 px-4
+                  font-light text-base transition-all
+                  hover:bg-white/10 rounded-xl text-white
+                "
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label[locale]}
+              </a>
+            );
+          }
+
           const routeKey = link.key as LocalizedRouteKey;
           const routeObj = localizedRoutes[routeKey];
           const routePath = routeObj[locale];

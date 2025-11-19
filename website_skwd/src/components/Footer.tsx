@@ -156,7 +156,6 @@ export default function Footer() {
                     <li key={link.key} className='text-sm'>
                       <a
                         href={link.url}
-                        target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition-colors text-sm font-light"
                       >

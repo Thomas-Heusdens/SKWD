@@ -247,7 +247,6 @@ export default function HomePage() {
               <AnimatedContent distance={40} duration={1.2} delay={0.7}>
                 <a
                   href="https://jobs.skwd.be/studentenjob"
-                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 md:mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
