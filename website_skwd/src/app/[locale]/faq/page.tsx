@@ -101,8 +101,8 @@ export async function generateMetadata({
       canonical: t.url,
       languages: {
         en: `${siteUrl}/en/faq`,
-        fr: `${siteUrl}/fr/faq`,
-        nl: `${siteUrl}/nl/veelgestelde-vragen`,
+        'fr-BE': `${siteUrl}/fr/faq`,
+        'nl-BE': `${siteUrl}/nl/veelgestelde-vragen`,
         'x-default': siteUrl,
       },
     },

@@ -4,7 +4,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://skwd.be';
 
   const pages = [
-    '',
     '/fr',
     '/nl',
     '/en',
@@ -30,11 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return pages.map((path) => ({
     url: `${siteUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'monthly',
     priority:
-      path === '' || path === '/fr' || path === '/nl' || path === '/en'
-        ? 1.0
-        : 0.8,
+      path === '/nl' ? 1.0 :
+      path === '/fr' ? 0.9 :
+      path === '/en' ? 0.8 :
+      0.7
   }));
 }
