@@ -103,7 +103,7 @@ export default function FaqClient() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 456 82 45 51',
+        telephone: '+32 456 08 03 13',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },

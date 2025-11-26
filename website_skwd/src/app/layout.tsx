@@ -23,7 +23,6 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-
       <head>
         {/* META PIXEL CODE */}
         <Script id="meta-pixel" strategy="afterInteractive">

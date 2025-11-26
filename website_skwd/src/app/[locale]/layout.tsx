@@ -17,7 +17,7 @@ export async function generateMetadata({
   const content = {
     fr: {
       title: 'Accueil - SKWD',
-      seoTitle: 'Bienvenue chez SKWD',
+      seoTitle: 'Bienvenue chez SKWD – votre partenaire de staffing',
       ogTitle: 'Bienvenue chez SKWD – votre partenaire de staffing pour étudiants et flexi-jobs',
       description:
         "SKWD est votre partenaire de staffing fiable en Belgique pour les étudiants et les flexi-jobs. Jeune, dynamique et flexible.",
@@ -27,7 +27,7 @@ export async function generateMetadata({
     },
     nl: {
       title: 'Startpagina - SKWD',
-      seoTitle: 'Welkom bij SKWD',
+      seoTitle: 'Welkom bij SKWD – jouw staffing partner',
       ogTitle: 'Welkom bij SKWD – jouw staffing partner voor studenten en flexis',
       description:
         'SKWD is jouw betrouwbare staffing partner in België voor studenten en flexi’s. Jong, dynamisch en flexibel.',
@@ -37,7 +37,7 @@ export async function generateMetadata({
     },
     en: {
       title: 'Home - SKWD',
-      seoTitle: 'Welcome to SKWD',
+      seoTitle: 'Welcome to SKWD – your staffing partner',
       ogTitle: 'Welcome to SKWD – your staffing partner for students and flexi workers',
       description:
         'SKWD is your reliable staffing partner in Belgium for students and flexi workers. Young, dynamic, and flexible.',

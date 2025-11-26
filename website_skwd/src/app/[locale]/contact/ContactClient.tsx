@@ -97,7 +97,7 @@ export default function ContactClient() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        telephone: '+32 456 82 45 51',
+        telephone: '+32 456 08 03 13',
         areaServed: 'BE',
         availableLanguage: ['English', 'French', 'Dutch'],
       },
@@ -156,7 +156,7 @@ export default function ContactClient() {
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+32 456 82 45 51',
+          telephone: '+32 456 08 03 13',
           contactType: 'Customer Service',
           email: 'info@skwd.be',
           areaServed: 'BE',
@@ -295,7 +295,7 @@ export default function ContactClient() {
                         </div>
                         <div>
                           <h3 className="text-sm font-semibold text-white mb-1">{t('contact_phone')}</h3>
-                          <a href="tel:+32456824551" className="text-sm text-white/70">+32 456 82 45 51</a>
+                          <a href="tel:+32456080313" className="text-sm text-white/70">+32 456 08 03 13</a>
                         </div>
                       </div>
                     </div>
