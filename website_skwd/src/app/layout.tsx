@@ -1,15 +1,5 @@
-import Navbar from '@/components/Navbar';
-import { Barlow } from "next/font/google";
-import OrientationWarning from '@/components/OrientationWarning';
 import "./globals.css";
-import LayoutClient from '@/components/LayoutClient';
 import Script from "next/script";
-
-const barlow = Barlow({
-  subsets: ["latin"],
-  weight: ["300", "500", "600", "800"],
-  variable: "--font-barlow",
-});
 
 export const metadata = {
   title: 'SKWD',
@@ -20,9 +10,13 @@ export const metadata = {
   metadataBase: new URL('https://skwd.be'),
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <>
       <head>
         {/* META PIXEL CODE */}
         <Script id="meta-pixel" strategy="afterInteractive">
@@ -51,16 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
       </head>
 
-      <body className={`${barlow.variable} antialiased`}>
-        <main>
-          <header>
-            <Navbar />
-          </header>
-          <OrientationWarning />
-          <LayoutClient>{children}</LayoutClient>
-        </main>
-      </body>
-
-    </html>
+      {children}
+    </>
   );
 }

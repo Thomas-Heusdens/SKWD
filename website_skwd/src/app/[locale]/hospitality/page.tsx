@@ -59,6 +59,11 @@ export async function generateMetadata({
     alt: 'SKWD OpenGraph image',
   };
 
+  const ogLocale =
+    locale === 'fr' ? 'fr_BE'
+    : locale === 'nl' ? 'nl_BE'
+    : 'en';
+
   const keywords =
     locale === 'fr'
       ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence d\'intérim, Belgique'
@@ -75,7 +80,7 @@ export async function generateMetadata({
       url: t.url,
       siteName: 'SKWD',
       images: [ogImage],
-      locale,
+      locale: ogLocale,
       type: 'website',
     },
     twitter: {
@@ -98,6 +103,7 @@ export async function generateMetadata({
         en: `${siteUrl}/en/hospitality`,
         fr: `${siteUrl}/fr/hospitalite`,
         nl: `${siteUrl}/nl/hospitality`,
+        'x-default': siteUrl,
       },
     },
   };

@@ -1,5 +1,16 @@
 import I18nProvider from '@/components/I18nProvider';
 import { languages } from '@/i18n/settings';
+import Navbar from '@/components/Navbar';
+import { Barlow } from "next/font/google";
+import OrientationWarning from '@/components/OrientationWarning';
+import "@/app/globals.css";
+import LayoutClient from '@/components/LayoutClient';
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "500", "600", "800"],
+  variable: "--font-barlow",
+});
 
 export async function generateStaticParams() {
   return languages.map((lng: (typeof languages)[number]) => ({ locale: lng }));
@@ -56,6 +67,11 @@ export async function generateMetadata({
     alt: 'SKWD OpenGraph image',
   };
 
+  const ogLocale =
+    locale === 'fr' ? 'fr_BE'
+    : locale === 'nl' ? 'nl_BE'
+    : 'en';
+
   const keywords =
     locale === 'fr'
       ? 'staffing étudiant, événementiel, logistique, hospitalité, jobs étudiants, agence d\'intérim, Belgique'
@@ -73,7 +89,7 @@ export async function generateMetadata({
       url: t.url,
       siteName: 'SKWD',
       images: [ogImage],
-      locale,
+      locale: ogLocale,
       type: 'website',
     },
 
@@ -99,15 +115,31 @@ export async function generateMetadata({
         en: `${siteUrl}/en`,
         fr: `${siteUrl}/fr`,
         nl: `${siteUrl}/nl`,
+        'x-default': `${siteUrl}`,
       },
     },
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return <I18nProvider>{children}</I18nProvider>;
+  const { locale } = await params;
+
+  return (
+    <html lang={locale}>
+      <body className={`${barlow.variable} antialiased`}>
+        <Navbar />
+        <OrientationWarning />
+
+        <I18nProvider>
+          <LayoutClient>{children}</LayoutClient>
+        </I18nProvider>
+      </body>
+    </html>
+  );
 }
