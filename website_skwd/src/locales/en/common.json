@@ -1,5 +1,5 @@
 {
-  "home_main_title": "SKWD – Student staffing agency connecting motivated students with professional events and businesses across Belgium.",
+  "home_main_title": "Temp agency connecting motivated students with professional events and businesses across Belgium.",
   "hero_clients_title": "Looking for a SKWD?",
   "hero_clients_description": "Connect your company with talented students for unforgettable events.",
   "hero_clients_cta": "Work with us",
@@ -192,8 +192,8 @@
   "faq_a_shift_change": "Please notify your planner at least 24 hours in advance if you need to cancel or modify a shift.",
   "faq_q_register_shift": "How do I apply for a shift?",
   "faq_a_register_shift": "All scheduling happens through the Beeple app. We’ll help you create your account during the information session.",
-  "work_hero_title_part1": "The right person",
-  "work_hero_title_part2": "in the right place,",
+  "work_hero_title_part1": "The right person ",
+  "work_hero_title_part2": "in the right place, ",
   "work_hero_title_part3": "at the right time.",
   "work_hero_description": "Discover why more than 90 companies choose SKWD to make their events a success with motivated, professional students.",
   "work_hero_cta": "Contact us",
