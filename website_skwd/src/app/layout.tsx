@@ -18,6 +18,22 @@ export default function RootLayout({
   return (
     <>
       <head>
+        {/* GOOGLE ADS TAG (gtag.js) */}
+        <Script
+          id="google-ads"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17743555355"
+        />
+
+        <Script id="google-ads-inline" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17743555355');
+          `}
+        </Script>
+        
         {/* META PIXEL CODE */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
