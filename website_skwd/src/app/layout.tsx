@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export const metadata = {
   title: 'SKWD',
-  description: 'Wij verbinden gemotiveerde studenten met bedrijven voor feilloze events in heel België. Event staffing voor hospitality en logistiek.',
+  description: 'Wij verbinden gemotiveerde studenten met bedrijven voor feilloze events in heel België. Uitzendkantoor voor hospitality en logistiek.',
   icons: {
     icon: '/logo-skwd.png'
   },
@@ -33,7 +33,7 @@ export default function RootLayout({
             gtag('config', 'AW-17743555355');
           `}
         </Script>
-        
+
         {/* META PIXEL CODE */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
