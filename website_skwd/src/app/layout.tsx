@@ -34,6 +34,24 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* GA4 TAG */}
+        <Script
+          id="ga4-script"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-S041M0JE43"
+        />
+
+        <Script id="ga4-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-S041M0JE43', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
         {/* META PIXEL CODE */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
