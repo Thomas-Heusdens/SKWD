@@ -1,7 +1,7 @@
 # SKWD Website
 
 Multilingual website built with **Next.js 15**, **TypeScript**, and **i18next** for internationalization.  
-This project serves as the official website for **SKWD**, supporting English, French, and Dutch with automatic language detection and instant client-side switching.
+This project serves as the official website for [**SKWD**](https://skwd.be/), supporting English, French, and Dutch with automatic language detection and instant client-side switching.
 
 ---
 
