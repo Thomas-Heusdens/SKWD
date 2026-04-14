@@ -246,7 +246,7 @@ export default function HomePage() {
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2} delay={0.7}>
                 <a
-                  href="https://jobs.skwd.be/studentenjob"
+                  href="https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 md:mt-4 px-5 py-2 bg-skwd-button text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >

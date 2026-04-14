@@ -77,7 +77,7 @@ export default function Footer() {
   ];
 
   const studentLinks = [
-    { key: '', label: t.apply, external: true, url: 'https://jobs.skwd.be/studentenjob' },
+    { key: '', label: t.apply, external: true, url: 'https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form' },
     { key: 'faq', label: t.faq, external: false },
   ];
 

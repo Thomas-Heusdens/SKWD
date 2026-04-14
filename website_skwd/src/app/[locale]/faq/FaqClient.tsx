@@ -214,10 +214,10 @@ export default function FaqClient() {
           '@type': 'Answer',
           text:
             locale === 'fr'
-              ? 'Rendez-vous sur https://jobs.skwd.be/studentenjob et suivez les étapes simples pour créer votre profil.'
+              ? 'Rendez-vous sur https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form et suivez les étapes simples pour créer votre profil.'
               : locale === 'nl'
-              ? 'Ga naar https://jobs.skwd.be/studentenjob en volg de eenvoudige stappen om je profiel aan te maken.'
-              : 'Visit https://jobs.skwd.be/studentenjob and follow the simple steps to create your profile.',
+              ? 'Ga naar https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form en volg de eenvoudige stappen om je profiel aan te maken.'
+              : 'Visit https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form and follow the simple steps to create your profile.',
         },
       },
       {

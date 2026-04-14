@@ -236,7 +236,7 @@ export default function LogisticsClient() {
             <div className="flex justify-center gap-4 flex-wrap">
               <AnimatedContent distance={40} duration={1.2} delay={0.5}>
                 <Link
-                  href="https://jobs.skwd.be/studentenjob"
+                  href="https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form"
                   className="px-6 py-3 bg-skwd-button rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   {t('logistics_cta_apply')}
@@ -304,7 +304,7 @@ export default function LogisticsClient() {
                 </h2>
               </AnimatedContent>
               <AnimatedContent distance={40} duration={1.2}>
-                <Link href="https://jobs.skwd.be/studentenjob" className="px-6 py-3 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+                <Link href="https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form" className="px-6 py-3 bg-skwd-button text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
                   {t('logistics_easy_apply_cta')}
                 </Link>
               </AnimatedContent>

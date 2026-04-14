@@ -26,7 +26,7 @@ export default function Navbar() {
     { 
       key: 'apply',
       external: true,
-      href: 'https://jobs.skwd.be/studentenjob',
+      href: 'https://airtable.com/appboAfPolbI3H8HD/pagHvZ83hUOUPDFjo/form',
       label: { en: 'Apply', fr: 'Solliciter', nl: 'Solliciteren' }
     },
   ];
