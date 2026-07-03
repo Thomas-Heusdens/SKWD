@@ -181,7 +181,7 @@ export default function HomePage() {
 
             <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
               <Image
-                src="/images/hero-right.jpeg"
+                src="/images/bts_3.jpeg"
                 alt="Are you a student background"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

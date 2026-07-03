@@ -25,7 +25,7 @@ export default function ProjectsBento() {
         color: '#060010',
         title: t('logistics_carousel_1_title'),
         label: '1',
-        image: '/images/Logistiek.jpeg',
+        image: '/images/bts_2.jpeg',
       },
       {
         color: '#060010',
@@ -43,7 +43,7 @@ export default function ProjectsBento() {
         color: '#060010',
         title: t('logistics_carousel_4_title'),
         label: '4',
-        image: '/images/driver.jpg',
+        image: '/images/kanye_2.jpeg',
       },
     ],
     [t]

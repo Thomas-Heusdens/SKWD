@@ -197,7 +197,7 @@ export default function LogisticsClient() {
 
   const src = isSmallScreen
     ? '/images/Logistiek-hero2.jpeg'
-    : '/images/logistiek3.jpeg';
+    : '/images/Logistiek_3.jpg';
 
   return (
     <>
@@ -408,18 +408,27 @@ export default function LogisticsClient() {
         <section id="logistics-gallery" aria-labelledby="logistics-gallery-heading" className="bg-skwd-dark-blue text-white">
           <SquareMasonry
             images={[
+              '/images/kanye_1.jpeg',
+              '/images/debas.jpg',
+              '/images/kanye_3.jpeg',
+              '/images/steward.jpg',
+              '/images/kanye_5.jpeg',
+              '/images/graspop_1.jpeg',
+              '/images/bts_1.jpeg',
+              '/images/Logistiek-hero2.jpeg',
+              '/images/bts_3.jpeg',
               '/images/parking.jpeg',
               '/images/steward2.jpg',
-              '/images/Logistiek-hero2.jpeg',
               '/images/Logistiek.jpg',
               '/images/logistiek3.jpeg',
-              '/images/steward.jpg',
+              '/images/bts_2.jpeg',
               '/images/afbraak.jpeg',
               '/images/construction.jpeg',
               '/images/park.jpeg',
               '/images/débarras.jpg',
+              '/images/kanye_2.jpeg',
               '/images/mise-en-place.jpg',
-              '/images/debas.jpg',
+              '/images/kanye_4.jpeg',
             ]}
           />
         </section>
